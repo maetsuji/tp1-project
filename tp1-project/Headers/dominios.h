@@ -49,9 +49,13 @@ public:
 
 class Percentual{
 private:
-
+    int valor;
+    static const int valorMinimo = 0;
+    static const int valorMaximo = 100;
 public:
-
+    void setValor(int);
+    void validar(int);
+    int getValor();
 };
 
 class Senha{
