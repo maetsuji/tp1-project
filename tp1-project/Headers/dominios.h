@@ -7,9 +7,12 @@ public:
 
 class codigoDeTitulo{
 private:
-
+    string codigoDeTitulo;
+    string identificador;
 public:
-
+    void setCodigo(string);
+    void validar(string);
+    string getCodigo();
 };
 
 class CPF{
