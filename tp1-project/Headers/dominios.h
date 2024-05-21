@@ -1,4 +1,4 @@
-class codigoDePagamento{ 
+class codigoDePagamento{
 private:
 
 public:
@@ -17,9 +17,12 @@ public:
 
 class CPF{
 private:
-
+    string CPF
+    int validchar
 public:
-
+    void setCPF(string);
+    void validarCPF(string);
+    string getCPF();
 };
 
 class Data{

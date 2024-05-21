@@ -20,6 +20,25 @@ string codigoDeTitulo::getCodigo(){
     return codigoDeTitulo;
 };
 
+void CPF::setCPF(string CPF){
+    validarCPF(CPF);
+    this->CPF=CPF;
+};
+
+void CPF::validarCPF(string CPF){
+    // codar aqui rs
+    // modelo: XXX.XXX.XXX-CC
+    int validChar_1 = stoi(CPF[-2]);
+    int validChar_2 = stoi(CPF[-1]);
+    // Validação com primeiro dígito
+    int minusCount = 10;
+    for (char i = 0; i)
+
+};
+
+string CPF::getCPF(){
+    return CPF;
+};
 
 void Percentual::setValor(int valor){
     validar(valor);
