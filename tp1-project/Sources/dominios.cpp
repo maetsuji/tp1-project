@@ -30,7 +30,7 @@ void CPF::validarCPF(string CPF){
     // modelo: XXX.XXX.XXX-CC
     int validChar_1 = stoi(CPF[-2]);
     int validChar_2 = stoi(CPF[-1]);
-    // Valida��o com primeiro d�gito
+    // Validação com primeiro dígito
     int minusCount = 10;
     for (char i = 0; i)
 
@@ -51,3 +51,63 @@ void Percentual::validar(int valor){
 int Percentual::getValor(){
     return valor;
 };
+
+Estado::Estado(const std::string& novoEstado) {
+    validarEstado(novoEstado);
+    estado = novoEstado;
+}
+
+std::string Estado::getEstado() const {
+    return estado;
+}
+
+void estado::setEstado(const std::string& novoEstado) {
+    validarEstado(novoEstado);
+    estado = novoEstado;
+}
+
+void Estado::validarEstado(const std:: string& estado) const {
+    if (estado != "Previsto" && estado != "Liquidado" && estado != "Inadimplente") {
+        throw std::invalid_argument("Estado inválido");
+    }
+}
+
+Setor::Setor(const std::string& novoNome) {
+    validarNome(novoNome);
+    nome = novoNome;
+}
+
+std::string Setor::getNome() const {
+    return nome;
+}
+
+void Setor::setNome(const std::string& novoNome) {
+    validarNome(novoNome);
+    nome = novoNome;
+}
+
+void Setor::validarNome(const std::string& nome) const {
+    static const std::string setoresValidos[] = {
+        "Agricultura",
+        "Construção civil",
+        "Energia", 
+        "Finanças",
+        "Imobiliário",
+        "Papel e celulose",
+        "Pecuária",
+        "Química e petroquímica",
+        "Metalurgia e siderurgia",
+        "Mineração"
+    };
+
+    bool encontrado = false;
+    for (const auto& setor : setoresValidos) {
+        if (nome == setor) {
+            encontrado = true; 
+            break;
+        }
+    }
+    if (!encontrado) {
+        throw std::invalid_argument("Setor inválido");
+    }
+}
