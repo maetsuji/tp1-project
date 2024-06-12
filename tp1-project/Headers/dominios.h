@@ -41,9 +41,12 @@ public:
 
 class Estado{
 private:
-
+    std::string estado;
+    void validarEstado(const std::string& estado) const;
 public:
-
+    Estado(const std::string& novoEstado);
+    std::string getEstado() const;
+    void setEstado(const std::string& novoEstado);
 };
 
 class Nome{
@@ -73,7 +76,10 @@ public:
 
 class Setor{
 private:
-
+    std::string nome;
+    void validarNome(const std::string& nome) const;
 public:
-
+    Setor(const std::string& novoNome);
+    std::string getNome() const;
+    void setNome(const std::string& novoNome);
 };
