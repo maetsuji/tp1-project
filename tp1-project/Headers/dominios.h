@@ -27,8 +27,16 @@ public:
 
 class Data{
 private:
+    int dia;
+    int mes;
+    int ano;
 
 public:
+    Data(int dia, int mes, int ano);
+    int getDia() const;
+    int getMes() const;
+    int getAno() const;
+    void imprimirData() const;
 
 };
 
@@ -51,9 +59,14 @@ public:
 
 class Nome{
 private:
+    std::string primeiroTermo;
+    std::string segundoTermo;
+    bool validarTermo(const std::string& termo) const;
 
 public:
-
+    Nome(const std::string& nomeCompleto);
+    std::string getPrimeiroTermo() const;
+    std::string getSegundoTermo() const;
 };
 
 class Percentual{
