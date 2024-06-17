@@ -1,3 +1,5 @@
+using namespace std;
+
 void codigoDeTitulo::setCodigo(string codigoDeTitulo){
     validar(codigoDeTitulo);
     this->codigoDeTitulo=codigoDeTitulo;
@@ -42,7 +44,7 @@ string CPF::getCPF(){
 
 void Data::Data(int dia, int mes, int ano) : dia(dia), mes(mes), ano(ano) {
     if (!validarData()) {
-        std::cerr << "Erro: Data inválida!\n";
+        cerr << "Erro: Data inválida!\n";
         this->dia = 0;
         this->mes = 0;
         this->ano = 0;
@@ -76,7 +78,7 @@ int Data::getAno() const {
     return ano;
 }
 void Data::imprimirData() const {
-    std::cout << dia << "-" << mes << "-" << ano << std::endl;
+    cout << dia << "-" << mes << "-" << ano << endl;
 }
 
 void Percentual::setValor(int valor){
@@ -91,42 +93,42 @@ int Percentual::getValor(){
     return valor;
 };
 
-Estado::Estado(const std::string& novoEstado) {
+Estado::Estado(const string& novoEstado) {
     validarEstado(novoEstado);
     estado = novoEstado;
 }
 
-std::string Estado::getEstado() const {
+string Estado::getEstado() const {
     return estado;
 }
 
-void estado::setEstado(const std::string& novoEstado) {
+void estado::setEstado(const string& novoEstado) {
     validarEstado(novoEstado);
     estado = novoEstado;
 }
 
-void Estado::validarEstado(const std:: string& estado) const {
+void Estado::validarEstado(const  string& estado) const {
     if (estado != "Previsto" && estado != "Liquidado" && estado != "Inadimplente") {
-        throw std::invalid_argument("Estado inválido");
+        throw invalid_argument("Estado inválido");
     }
 }
 
-Setor::Setor(const std::string& novoNome) {
+Setor::Setor(const string& novoNome) {
     validarNome(novoNome);
     nome = novoNome;
 }
 
-std::string Setor::getNome() const {
+string Setor::getNome() const {
     return nome;
 }
 
-void Setor::setNome(const std::string& novoNome) {
+void Setor::setNome(const string& novoNome) {
     validarNome(novoNome);
     nome = novoNome;
 }
 
-void Setor::validarNome(const std::string& nome) const {
-    static const std::string setoresValidos[] = {
+void Setor::validarNome(const string& nome) const {
+    static const string setoresValidos[] = {
         "Agricultura",
         "Construção civil",
         "Energia", 
@@ -147,27 +149,27 @@ void Setor::validarNome(const std::string& nome) const {
         }
     }
     if (!encontrado) {
-        throw std::invalid_argument("Setor inválido");
+        throw invalid_argument("Setor inválido");
     }
 }
 
-void Nome::Nome(const std::string& nomeCompleto) {
+void Nome::Nome(const string& nomeCompleto) {
     size_t pos = nomeCompleto.find(' ');
 
     primeiroTermo = nomeCompleto.substr(0, pos);
 
-    if (pos != std::string::npos) {
+    if (pos != string::npos) {
         segundoTermo = nomeCompleto.substr(pos + 1);
     }
 
     if (!validarTermo(primeiroTermo) || !validarTermo(segundoTermo)) {
-        std::cerr << "Erro: Termo(s) inválido(s)!\n";
+        cerr << "Erro: Termo(s) inválido(s)!\n";
         primeiroTermo.clear();
         segundoTermo.clear();
     }
 }
 
-bool Nome::validarTermo(const std::string& termo) const {
+bool Nome::validarTermo(const string& termo) const {
     if (termo.empty() || !isupper(termo[0])) // maiúscula
         return false;
     for (char c : termo) {
@@ -177,10 +179,10 @@ bool Nome::validarTermo(const std::string& termo) const {
     return true;
 }
 
-std::string Nome::getPrimeiroTermo() const {
+string Nome::getPrimeiroTermo() const {
     return primeiroTermo;
 }
 
-std::string Nome::getSegundoTermo() const {
+string Nome::getSegundoTermo() const {
     return segundoTermo;
 }
