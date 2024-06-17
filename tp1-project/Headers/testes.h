@@ -4,7 +4,7 @@ class TUCodigoDeTitulo {
 private:
     const string VALOR_VALIDO   = "CRA1913576A";   // Definição de constante para evitar número mágico.
     const string VALOR_INVALIDO = "GWM12345678";   // Definição de constante para evitar número mágico.
-    codigoDeTitulo *CodigoDeTitulo;                         // Referência para unidade em teste.
+    codigoDeTitulo *codigo;                         // Referência para unidade em teste.
     int estado;                             // Estado do teste.
     void setUp();                           // Método para criar unidade em teste.
     void tearDown();                        // Método para destruir unidade em teste.
