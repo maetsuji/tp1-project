@@ -20,11 +20,10 @@ public:
 class CPF{
 private:
     string CPF;
-    int validchar;
 public:
-    void setCPF(string);
-    void validarCPF(string);
-    string getCPF();
+    void set(string);
+    void validar(string);
+    string get();
 };
 
 class Data{

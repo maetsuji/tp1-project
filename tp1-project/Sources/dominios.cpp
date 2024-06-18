@@ -22,23 +22,83 @@ string codigoDeTitulo::getCodigo(){
     return codigoDeTitulo;
 };
 
-void CPF::setCPF(string CPF){
+// CPF
+void CPF::set(string CPF){
     validarCPF(CPF);
     this->CPF=CPF;
 };
 
-void CPF::validarCPF(string CPF){
-    // codar aqui rs
+void CPF::validar(string CPF){
     // modelo: XXX.XXX.XXX-CC
-    int validChar_1 = stoi(CPF[-2]);
-    int validChar_2 = stoi(CPF[-1]);
-    // Validação com primeiro dígito
-    int minusCount = 10;
-    for (char i = 0; i)
+    if (CPF.length() != 14) {
+        // Validando o tamanho do CPF
+        throw invalid_argument("Erro: Tamanho do CPF Inválido.");
+    } else if (CPF[3] != '.' || CPF[7] != '.' || CPF[11] != '-') {
+        // Validando o formato do CPF
+        throw invalid_argument("Erro: Formato do CPF Inválido.");
+    } else if ((CPF[0] == CPF[1])&&(CPF[1]==CPF[2])&&(CPF[2]==CPF[4])&&(CPF[4]==CPF[5])&&(CPF[5]==CPF[6])&&(CPF[6]==CPF[8])&&(CPF[8]==CPF[9])&&(CPF[9]==CPF[10])&&(CPF[10]==CPF[12])&&(CPF[12]==CPF[13])) {
+        /*
+            Checagem de CPFs notoriamente inválidos,
+            como "000.000.000-00" ou "333.333.333-33"
+        */
+        throw invalid_argument("Erro: CPF Inválido conhecido.");
+    } else {
+        /*
+            Removendo traços e pontos do CPF, agora
+            ele possui o formato XXXXXXXXXCC
+        */
+        string cleanCPF = "";
+        for (int i = 0; i<14; i++) {
+            if (i != 3 && i != 7 && i != 11) {
+                string s(1, CPF[i]);
+                cleanCPF += s;
+            };
+        };
+        // Validação com primeiro dígito
 
+        // definindo o dígito de validação
+        int validDigit_1 = cleanCPF[9] - '0';
+
+        // n = número iterado que vai multiplicar cada dígito do CPF
+        // i = cada dígito do CPF
+        int digitSum_1 = 0; // stoi(CPF[i])*n
+        int n = 10;
+        for (int i = 0; i < 9; i++) {
+            digitSum_1 += (cleanCPF[i] - '0')*n;
+            n--;
+        };
+           int testModulo_1 = (digitSum_1*10)%11;
+        if (testModulo_1 == 10 && validDigit_1 != 0) {
+            throw invalid_argument("Erro: CPF Inválido, erro na primeira validação.");
+        } else if (testModulo_1 != validDigit_1) {
+            throw invalid_argument("Erro: CPF Inválido, erro na primeira validação.");
+        } else {
+            // Validação com segundo dígito
+            // definindo o dígito de validação
+            int validDigit_2 = cleanCPF[10] - '0';
+            // n = número iterado que vai multiplicar cada dígito do CPF
+            // i = cada dígito do CPF
+            int digitSum_2 = 0;
+            int n = 11  ;
+            for (int i = 0; i < 10; i++) {
+                digitSum_2 += (cleanCPF[i] - '0')*n;
+                n--;
+            };
+
+            int testModulo_2 = (digitSum_2*10)%11;
+            if (testModulo_2 == 10 && validDigit_2 != 0) {
+                throw invalid_argument("Erro: CPF Inválido, erro na segunda validação.");
+            } else if (testModulo_2 != validDigit_2) {
+                throw invalid_argument("Erro: CPF Inválido, erro na segunda validação.");
+            } else {
+                // se chegar até aqui, a validação teve sucesso.
+                cout << "CPF Válido!" << endl;
+            };
+        };
+    };
 };
 
-string CPF::getCPF(){
+string CPF::get(){
     return CPF;
 };
 
@@ -131,7 +191,7 @@ void Setor::validarNome(const string& nome) const {
     static const string setoresValidos[] = {
         "Agricultura",
         "Construção civil",
-        "Energia", 
+        "Energia",
         "Finanças",
         "Imobiliário",
         "Papel e celulose",
@@ -144,7 +204,7 @@ void Setor::validarNome(const string& nome) const {
     bool encontrado = false;
     for (const auto& setor : setoresValidos) {
         if (nome == setor) {
-            encontrado = true; 
+            encontrado = true;
             break;
         }
     }
@@ -174,7 +234,7 @@ bool Nome::validarTermo(const string& termo) const {
         return false;
     for (char c : termo) {
         if (!isalpha(c))
-            return false; 
+            return false;
     }
     return true;
 }

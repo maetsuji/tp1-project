@@ -34,4 +34,11 @@ public:
     int run();                              // Método para executar teste.
 };
 
+class TUCPF {
+private:
+    const static string VALOR_VALIDO    = "761.776.634-35"  //CPF fictício válido
+    const static string VALOR_INVALIDO  = "123.123.123-99"
+    // continuar
+public:
+};
 
