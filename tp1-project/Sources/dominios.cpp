@@ -1,5 +1,74 @@
 using namespace std;
 
+
+//codigo de pagamento
+
+void codigoDePagamento::validar(string codigoDePagamento){
+     int tamanho = codigoPagamentoTeste.size();
+            if(tamanho != 9){
+                    throw invalid_argument("Codigo de Pagamento Fornecido Invalido (nao tem 9 caracteres)");} //checa se tem 9 digitos
+            if(codigoPagamentoTeste[0] == '0') {
+                throw invalid_argument( "Codigo de Pagamento Fornecido Invalido (o primeiro digito e 0)"); } //checa se o primeiro digito !=0
+            for(int i = 0; i < tamanho; i++){
+                if(!isdigit(codigoPagamentoTeste[i])){
+                    throw invalid_argument ( "Codigo de Pagamento Fornecido Invalido (nem todos os caracteres sao digitos)");}} // checa se os digitos sao digitos
+};
+
+void codigoDePagamento::set(string codigoDePagamento){
+    validar(codigoDePagamento);
+    this->codigoPagamento = codigoDePagamento;
+}
+
+string codigoDePagamento::get(){
+    return codigoDePagamento;
+}
+
+//senha
+
+void Senha::validar(string senha){
+    int tamanho = senhaTeste.size();
+        if(tamanho != 6){
+            throw invalid_argument ("Senha Fornecida Invalida (nao tem 6 caracteres)");} //checa se tem 6 caracteres
+        if(senhaTeste[0] == '0') {
+            throw invalid_argument ("Senha Fornecida Invalida(o primeiro digito e 0)"); } // checa se o primeiro digito !=0
+        bool sequenciacresc = true, sequenciadecresc =  true;
+        for(int i = 0; i < tamanho; i++){
+            if(!isdigit(senhaTeste[i])){
+                throw invalid_argument ("Senha Fornecida Invalida (nem todos caracteres sao digitos)");}// checa se todos caracteres sao digitos
+            if(i<tamanho-1){
+                int atualc = senhaTeste[i] - '0';
+                int proxc = senhaTeste[i+1] -'0';
+                if(atualc != proxc-1){ sequenciacresc = false;}
+
+
+            }
+            if( i<tamanho-1){
+                int atuald = senhaTeste[i]-'0';
+                int proxd = senhaTeste[i+1]-'0';
+                if(atuald != proxd+1){ sequenciadecresc = false;}
+            }
+        }
+            if(sequenciacresc) {
+                throw invalid_argument ("Senha Fornecida Invalida (sequencia crescente)");}// checa se senha é sequencia crescente
+            if(sequenciadecresc) {
+                throw invalid_argument ("Senha Fornecida Invalida (sequencia decrescente)");}
+
+
+
+        };
+
+void Senha::set(string senha){
+    validar(senha);
+    this->senha=senha;
+}
+
+string Senha::get(){
+    return senha;
+}
+
+
+
+// codigo de titulo
 void codigoDeTitulo::setCodigo(string codigoDeTitulo){
     validar(codigoDeTitulo);
     this->codigoDeTitulo=codigoDeTitulo;

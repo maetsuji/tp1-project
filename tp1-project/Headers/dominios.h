@@ -2,9 +2,12 @@ using namespace std;
 
 class codigoDePagamento{
 private:
+    string codigoPagamento;
 
 public:
-
+    void validar;
+    void set(string);
+    string get();
 };
 
 class codigoDeTitulo{
@@ -83,8 +86,11 @@ public:
 
 class Senha{
 private:
-
+    string senha;
 public:
+    void validar(string);
+    void set(string);
+    string get();
 
 };
 
