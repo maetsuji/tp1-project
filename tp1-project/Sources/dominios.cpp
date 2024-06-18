@@ -93,7 +93,7 @@ string codigoDeTitulo::getCodigo(){
 
 // CPF
 void CPF::set(string CPF){
-    validarCPF(CPF);
+    validar(CPF);
     this->CPF=CPF;
 };
 
@@ -169,6 +169,22 @@ void CPF::validar(string CPF){
 
 string CPF::get(){
     return CPF;
+};
+
+void Dinheiro::set(float valor){
+    validar(valor);
+    this->valor=valor;
+};
+
+void Dinheiro::validar(float valor){
+    //codar aqui
+    if (valor < 0 || valor > 1000000){
+      throw invalid_argument("Valor inválido!");
+    };
+};
+
+float Dinheiro::get() {
+    return valor;
 };
 
 void Data::Data(int dia, int mes, int ano) : dia(dia), mes(mes), ano(ano) {
