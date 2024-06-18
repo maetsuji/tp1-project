@@ -37,3 +37,20 @@ public:
     Data getVencimento() const;
     Dinheiro getValor() const;
 };
+
+class Pagamento{
+private:
+    codigoDePagamento codigo;
+    Data data;
+    Percentual percentual;
+    Estado estado;
+public:
+    void setCodigo(const codigoDePagamento&);
+    void setData(const Data&);
+    void setPercentual(const Percentual&);
+    void setEstado(const Estado&);
+    codigoDePagamento getCodigo() const;
+    Data getData() const;
+    Percentual getPercentual() const;
+    Estado getEstado() const;
+};
