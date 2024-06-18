@@ -69,3 +69,42 @@ int TUPercentual::run(){
     tearDown();
     return estado;
 }
+
+void TUCPF::setUp(){
+    cpf = new CPF();
+    estado = SUCESSO;
+}
+
+void TUCPF::tearDown(){
+    delete cpf;
+}
+
+void TUCPF::testarCenarioSucesso(){
+    try{
+        cpf->set(VALOR_VALIDO);
+        if (cpf->get() != VALOR_VALIDO)
+            estado = FALHA;
+    }
+    catch(invalid_argument &excecao){
+        estado = FALHA;
+    }
+}
+
+void TUCPF::testarCenarioFalha(){
+    try{
+        codigo->set(VALOR_INVALIDO);
+        estado = FALHA;
+    }
+    catch(invalid_argument &excecao){
+        if (codigo->get() == VALOR_INVALIDO)
+            estado = FALHA;
+    }
+}
+
+int TUCPF::run(){
+    setUp();
+    testarCenarioSucesso();
+    testarCenarioFalha();
+    tearDown();
+    return estado;
+}
