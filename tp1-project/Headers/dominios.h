@@ -51,9 +51,9 @@ class Dinheiro{
 private:
     float valor;
 public:
-    void set(float);
+    void setValor(float);
     void validar(float);
-    float get();
+    float getValor();
 };
 
 class Estado{
