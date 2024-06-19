@@ -99,25 +99,23 @@ string codigoDeTitulo::getCodigo(){
 };
 
 // CPF
-void CPF::set(string CPF){
+void CPF::setCpf(string CPF){
     validar(CPF);
     this->CPF=CPF;
 };
 
 void CPF::validar(string CPF){
     // modelo: XXX.XXX.XXX-CC
-    if (CPF.length() != 14) {
-        // Validando o tamanho do CPF
-        throw invalid_argument("Erro: Tamanho do CPF Inválido.");
-    } else if (CPF[3] != '.' || CPF[7] != '.' || CPF[11] != '-') {
-        // Validando o formato do CPF
-        throw invalid_argument("Erro: Formato do CPF Inválido.");
+    if (CPF.length() != 14) {  /// Validando o tamanho do CPF
+        throw invalid_argument("Erro: Tamanho do CPF Invalido.");
+    } else if (CPF[3] != '.' || CPF[7] != '.' || CPF[11] != '-') {   /// Validando o formato do CPF
+        throw invalid_argument("Erro: Formato do CPF Invalido.");
     } else if ((CPF[0] == CPF[1])&&(CPF[1]==CPF[2])&&(CPF[2]==CPF[4])&&(CPF[4]==CPF[5])&&(CPF[5]==CPF[6])&&(CPF[6]==CPF[8])&&(CPF[8]==CPF[9])&&(CPF[9]==CPF[10])&&(CPF[10]==CPF[12])&&(CPF[12]==CPF[13])) {
         /*
             Checagem de CPFs notoriamente inválidos,
             como "000.000.000-00" ou "333.333.333-33"
         */
-        throw invalid_argument("Erro: CPF Inválido conhecido.");
+        throw invalid_argument("Erro: CPF Invalido conhecido.");
     } else {
         /*
             Removendo traços e pontos do CPF, agora
@@ -145,9 +143,9 @@ void CPF::validar(string CPF){
         };
            int testModulo_1 = (digitSum_1*10)%11;
         if (testModulo_1 == 10 && validDigit_1 != 0) {
-            throw invalid_argument("Erro: CPF Inválido, erro na primeira validação.");
+            throw invalid_argument("Erro: CPF Invalido, erro na primeira validacao.");
         } else if (testModulo_1 != validDigit_1) {
-            throw invalid_argument("Erro: CPF Inválido, erro na primeira validação.");
+            throw invalid_argument("Erro: CPF Invalido, erro na primeira validacao.");
         } else {
             // Validação com segundo dígito
             // definindo o dígito de validação
@@ -163,18 +161,18 @@ void CPF::validar(string CPF){
 
             int testModulo_2 = (digitSum_2*10)%11;
             if (testModulo_2 == 10 && validDigit_2 != 0) {
-                throw invalid_argument("Erro: CPF Inválido, erro na segunda validação.");
+                throw invalid_argument("Erro: CPF Invalido, erro na segunda validacao.");
             } else if (testModulo_2 != validDigit_2) {
-                throw invalid_argument("Erro: CPF Inválido, erro na segunda validação.");
+                throw invalid_argument("Erro: CPF Invalido, erro na segunda validacao.");
             } else {
                 // se chegar até aqui, a validação teve sucesso.
-                cout << "CPF Válido!" << endl;
+                cout << "CPF Valido!" << endl;
             };
         };
     };
 };
 
-string CPF::get(){
+string CPF::getCpf(){
     return CPF;
 };
 
