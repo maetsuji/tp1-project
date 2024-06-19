@@ -3,22 +3,22 @@ using namespace std;
 
 //codigo de pagamento
 void codigoDePagamento::validar(string codigoDePagamento){
-     int tamanho = codigoPagamentoTeste.size();
+     int tamanho = codigoDePagamento.size();
             if(tamanho != 9){
                     throw invalid_argument("Codigo de Pagamento Fornecido Invalido (nao tem 9 caracteres)");} //checa se tem 9 digitos
-            if(codigoPagamentoTeste[0] == '0') {
+            if(codigoDePagamento[0] == '0') {
                 throw invalid_argument( "Codigo de Pagamento Fornecido Invalido (o primeiro digito e 0)"); } //checa se o primeiro digito !=0
             for(int i = 0; i < tamanho; i++){
-                if(!isdigit(codigoPagamentoTeste[i])){
+                if(!isdigit(codigoDePagamento[i])){
                     throw invalid_argument ( "Codigo de Pagamento Fornecido Invalido (nem todos os caracteres sao digitos)");}} // checa se os digitos sao digitos
 };
 
-void codigoDePagamento::set(string codigoDePagamento){
+void codigoDePagamento::setCodigo(string codigoDePagamento){
     validar(codigoDePagamento);
-    this->codigoPagamento = codigoDePagamento;
+    this->codigoDePagamento = codigoDePagamento;
 };
 
-string codigoDePagamento::get(){
+string codigoDePagamento::getCodigo(){
     return codigoDePagamento;
 };
 
