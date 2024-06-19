@@ -187,7 +187,8 @@ float Dinheiro::get() {
     return valor;
 };
 
-void Data::Data(int dia, int mes, int ano) : dia(dia), mes(mes), ano(ano) {
+// Construtor
+Data::Data(int dia, int mes, int ano) : dia(dia), mes(mes), ano(ano) {
     if (!validarData()) {
         cerr << "Erro: Data inválida!\n";
         this->dia = 0;
@@ -196,6 +197,39 @@ void Data::Data(int dia, int mes, int ano) : dia(dia), mes(mes), ano(ano) {
     }
 }
 
+int Data::getDia() const {
+    return dia;
+}
+int Data::getMes() const {
+    return mes;
+}
+int Data::getAno() const {
+    return ano;
+}
+
+void Data::setDia(int dia) {
+    this->dia = dia;
+    if (!validarData()) {
+        cerr << "Erro: Data inválida!\n";
+        this->dia = 0; // Reverte para um valor inválido
+    }
+}
+void Data::setMes(int mes) {
+    this->mes = mes;
+    if (!validarData()) {
+        cerr << "Erro: Data inválida!\n";
+        this->mes = 0; // Reverte para um valor inválido
+    }
+}
+void Data::setAno(int ano) {
+    this->ano = ano;
+    if (!validarData()) {
+        cerr << "Erro: Data inválida!\n";
+        this->ano = 0; // Reverte para um valor inválido
+    }
+}
+
+// validar a data
 bool Data::validarData() const {
     if (ano < 2000 || ano > 2100 || mes < 1 || mes > 12)
         return false;
@@ -213,17 +247,9 @@ bool Data::validarData() const {
             return dia <= 31;
     }
 }
-int Data::getDia() const {
-    return dia;
-}
-int Data::getMes() const {
-    return mes;
-}
-int Data::getAno() const {
-    return ano;
-}
+//  imprimir a data
 void Data::imprimirData() const {
-    cout << dia << "-" << mes << "-" << ano << endl;
+    cout << dia << "-" << mes << "-" << ano << std::endl;
 }
 
 void Percentual::setValor(int valor){

@@ -29,19 +29,22 @@ public:
     string get();
 };
 
-class Data{
+class Data {
 private:
     int dia;
     int mes;
     int ano;
-
 public:
     Data(int dia, int mes, int ano);
     int getDia() const;
     int getMes() const;
     int getAno() const;
+    void setDia(int dia);
+    void setMes(int mes);
+    void setAno(int ano);
     void imprimirData() const;
-
+private:
+    bool validarData() const;
 };
 
 class Dinheiro{
