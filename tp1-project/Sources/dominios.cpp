@@ -2,7 +2,6 @@ using namespace std;
 
 
 //codigo de pagamento
-
 void codigoDePagamento::validar(string codigoDePagamento){
      int tamanho = codigoPagamentoTeste.size();
             if(tamanho != 9){
@@ -17,14 +16,13 @@ void codigoDePagamento::validar(string codigoDePagamento){
 void codigoDePagamento::set(string codigoDePagamento){
     validar(codigoDePagamento);
     this->codigoPagamento = codigoDePagamento;
-}
+};
 
 string codigoDePagamento::get(){
     return codigoDePagamento;
-}
+};
 
 //senha
-
 void Senha::validar(string senha){
     int tamanho = senhaTeste.size();
         if(tamanho != 6){
@@ -60,13 +58,11 @@ void Senha::validar(string senha){
 void Senha::set(string senha){
     validar(senha);
     this->senha=senha;
-}
+};
 
 string Senha::get(){
     return senha;
-}
-
-
+};
 
 // codigo de titulo
 void codigoDeTitulo::setCodigo(string codigoDeTitulo){
@@ -171,6 +167,7 @@ string CPF::get(){
     return CPF;
 };
 
+//dinheiro
 void Dinheiro::set(float valor){
     validar(valor);
     this->valor=valor;
@@ -187,6 +184,7 @@ float Dinheiro::get() {
     return valor;
 };
 
+//data
 void Data::Data(int dia, int mes, int ano) : dia(dia), mes(mes), ano(ano) {
     if (!validarData()) {
         cerr << "Erro: Data inválida!\n";
@@ -194,17 +192,19 @@ void Data::Data(int dia, int mes, int ano) : dia(dia), mes(mes), ano(ano) {
         this->mes = 0;
         this->ano = 0;
     }
-}
+};
 
 int Data::getDia() const {
     return dia;
-}
+};
+
 int Data::getMes() const {
     return mes;
-}
+};
+
 int Data::getAno() const {
     return ano;
-}
+};
 
 void Data::setDia(int dia) {
     this->dia = dia;
@@ -212,24 +212,25 @@ void Data::setDia(int dia) {
         cerr << "Erro: Data inválida!\n";
         this->dia = 0; 
     }
-}
+};
+
 void Data::setMes(int mes) {
     this->mes = mes;
     if (!validarData()) {
         cerr << "Erro: Data inválida!\n";
         this->mes = 0; 
     }
-}
+};
+
 void Data::setAno(int ano) {
     this->ano = ano;
     if (!validarData()) {
         cerr << "Erro: Data inválida!\n";
         this->ano = 0; 
     }
-}
+};
 
-// validar a data
-bool Data::validarData() const {
+bool Data::validarData() const {      // validar a data
     if (ano < 2000 || ano > 2100 || mes < 1 || mes > 12)
         return false;
     if (dia < 1)
@@ -245,20 +246,23 @@ bool Data::validarData() const {
         default: // Meses com 31 dias
             return dia <= 31;
     }
-}
-//  imprimir a data
-void Data::imprimirData() const {
-    cout << dia << "-" << mes << "-" << ano << endl;
-}
+};
 
+void Data::imprimirData() const {    //  imprimir a data
+    cout << dia << "-" << mes << "-" << ano << endl;
+};
+
+//percentual
 void Percentual::setValor(int valor){
     validar(valor);
     this->valor=valor;
 };
+
 void Percentual::validar(int valor){
     if (valor < 0 || valor > 100)
         throw invalid_argument("Percentual Invalido.");
 };
+
 int Percentual::getValor(){
     return valor;
 };
@@ -266,36 +270,37 @@ int Percentual::getValor(){
 Estado::Estado(const string& novoEstado) {
     validarEstado(novoEstado);
     estado = novoEstado;
-}
+};
 
 string Estado::getEstado() const {
     return estado;
-}
+};
 
 void estado::setEstado(const string& novoEstado) {
     validarEstado(novoEstado);
     estado = novoEstado;
-}
+};
 
 void Estado::validarEstado(const  string& estado) const {
     if (estado != "Previsto" && estado != "Liquidado" && estado != "Inadimplente") {
         throw invalid_argument("Estado inválido");
     }
-}
+};
 
+//setor
 Setor::Setor(const string& novoNome) {
     validarNome(novoNome);
     nome = novoNome;
-}
+};
 
 string Setor::getNome() const {
     return nome;
-}
+};
 
 void Setor::setNome(const string& novoNome) {
     validarNome(novoNome);
     nome = novoNome;
-}
+};
 
 void Setor::validarNome(const string& nome) const {
     static const string setoresValidos[] = {
@@ -321,7 +326,7 @@ void Setor::validarNome(const string& nome) const {
     if (!encontrado) {
         throw invalid_argument("Setor inválido");
     }
-}
+};
 
 void Nome::Nome(const std::string& nomeCompleto) {
     size_t pos = nomeCompleto.find(' ');
@@ -350,7 +355,7 @@ string Nome::getPrimeiroTermo() const {
 }
 string Nome::getSegundoTermo() const {
     return segundoTermo;
-}
+};
 
 void Nome::setPrimeiroTermo(const string& primeiroTermo) {
     if (validarTermo(primeiroTermo)) {
@@ -358,7 +363,7 @@ void Nome::setPrimeiroTermo(const string& primeiroTermo) {
     } else {
         cerr << "Erro: Primeiro termo inválido!\n";
     }
-}
+};
 
 void Nome::setSegundoTermo(const string& segundoTermo) {
     if (validarTermo(segundoTermo)) {
@@ -366,4 +371,4 @@ void Nome::setSegundoTermo(const string& segundoTermo) {
     } else {
         cerr << "Erro: Segundo termo inválido!\n";
     }
-}
+};
