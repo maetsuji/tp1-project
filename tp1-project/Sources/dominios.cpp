@@ -1,7 +1,6 @@
 using namespace std;
 
-
-//codigo de pagamento
+//Codigo de pagamento
 void codigoDePagamento::validar(string codigoDePagamento){
      int tamanho = codigoDePagamento.size();
             if(tamanho != 9){
@@ -22,49 +21,7 @@ string codigoDePagamento::getCodigo(){
     return codigoDePagamento;
 };
 
-//senha
-void Senha::validar(string senha){
-    int tamanho = senhaTeste.size();
-        if(tamanho != 6){
-            throw invalid_argument ("Senha Fornecida Invalida (nao tem 6 caracteres)");} //checa se tem 6 caracteres
-        if(senhaTeste[0] == '0') {
-            throw invalid_argument ("Senha Fornecida Invalida(o primeiro digito e 0)"); } // checa se o primeiro digito !=0
-        bool sequenciacresc = true, sequenciadecresc =  true;
-        for(int i = 0; i < tamanho; i++){
-            if(!isdigit(senhaTeste[i])){
-                throw invalid_argument ("Senha Fornecida Invalida (nem todos caracteres sao digitos)");}// checa se todos caracteres sao digitos
-            if(i<tamanho-1){
-                int atualc = senhaTeste[i] - '0';
-                int proxc = senhaTeste[i+1] -'0';
-                if(atualc != proxc-1){ sequenciacresc = false;}
-
-
-            }
-            if( i<tamanho-1){
-                int atuald = senhaTeste[i]-'0';
-                int proxd = senhaTeste[i+1]-'0';
-                if(atuald != proxd+1){ sequenciadecresc = false;}
-            }
-        }
-            if(sequenciacresc) {
-                throw invalid_argument ("Senha Fornecida Invalida (sequencia crescente)");}// checa se senha é sequencia crescente
-            if(sequenciadecresc) {
-                throw invalid_argument ("Senha Fornecida Invalida (sequencia decrescente)");}
-
-
-
-        };
-
-void Senha::set(string senha){
-    validar(senha);
-    this->senha=senha;
-};
-
-string Senha::get(){
-    return senha;
-};
-
-// codigo de titulo
+//Codigo de titulo
 void codigoDeTitulo::setCodigo(string codigoDeTitulo){
     validar(codigoDeTitulo);
     this->codigoDeTitulo=codigoDeTitulo;
@@ -176,7 +133,7 @@ string CPF::getCpf(){
     return CPF;
 };
 
-//dinheiro
+//Dinheiro
 void Dinheiro::setValor(float valor){
     validar(valor);
     this->valor=valor;
@@ -193,7 +150,7 @@ float Dinheiro::getValor() {
     return valor;
 };
 
-//data
+//Data
 void Data::Data(int dia, int mes, int ano) : dia(dia), mes(mes), ano(ano) {
     if (!validarData()) {
         cerr << "Erro: Data inválida!\n";
@@ -261,82 +218,23 @@ void Data::imprimirData() const {    //  imprimir a data
     cout << dia << "-" << mes << "-" << ano << endl;
 };
 
-//percentual
-void Percentual::setValor(int valor){
-    validar(valor);
-    this->valor=valor;
-};
-
-void Percentual::validar(int valor){
-    if (valor < 0 || valor > 100)
-        throw invalid_argument("Percentual Invalido.");
-};
-
-int Percentual::getValor(){
-    return valor;
-};
-
-Estado::Estado(const string& novoEstado) {
-    validarEstado(novoEstado);
-    estado = novoEstado;
-};
-
-string Estado::getEstado() const {
+//Estado
+string Estado::getEstado(){
     return estado;
 };
 
-void estado::setEstado(const string& novoEstado) {
-    validarEstado(novoEstado);
+void Estado::setEstado(string novoEstado){
+    validar(novoEstado);
     estado = novoEstado;
 };
 
-void Estado::validarEstado(const  string& estado) const {
+void Estado::validar(string estado){
     if (estado != "Previsto" && estado != "Liquidado" && estado != "Inadimplente") {
-        throw invalid_argument("Estado inválido");
+        throw invalid_argument("Estado invalido");
     }
 };
 
-//setor
-Setor::Setor(const string& novoNome) {
-    validarNome(novoNome);
-    nome = novoNome;
-};
-
-string Setor::getNome() const {
-    return nome;
-};
-
-void Setor::setNome(const string& novoNome) {
-    validarNome(novoNome);
-    nome = novoNome;
-};
-
-void Setor::validarNome(const string& nome) const {
-    static const string setoresValidos[] = {
-        "Agricultura",
-        "Construção civil",
-        "Energia",
-        "Finanças",
-        "Imobiliário",
-        "Papel e celulose",
-        "Pecuária",
-        "Química e petroquímica",
-        "Metalurgia e siderurgia",
-        "Mineração"
-    };
-
-    bool encontrado = false;
-    for (const auto& setor : setoresValidos) {
-        if (nome == setor) {
-            encontrado = true;
-            break;
-        }
-    }
-    if (!encontrado) {
-        throw invalid_argument("Setor inválido");
-    }
-};
-
+//Nome
 void Nome::Nome(const std::string& nomeCompleto) {
     size_t pos = nomeCompleto.find(' ');
     primeiroTermo = nomeCompleto.substr(0, pos);
@@ -379,5 +277,103 @@ void Nome::setSegundoTermo(const string& segundoTermo) {
         this->segundoTermo = segundoTermo;
     } else {
         cerr << "Erro: Segundo termo inválido!\n";
+    }
+};
+
+//Percentual
+void Percentual::setValor(int valor){
+    validar(valor);
+    this->valor=valor;
+};
+
+void Percentual::validar(int valor){
+    if (valor < 0 || valor > 100)
+        throw invalid_argument("Percentual Invalido.");
+};
+
+int Percentual::getValor(){
+    return valor;
+};
+
+//Senha
+void Senha::validar(string senha){
+    int tamanho = senhaTeste.size();
+        if(tamanho != 6){
+            throw invalid_argument ("Senha Fornecida Invalida (nao tem 6 caracteres)");} //checa se tem 6 caracteres
+        if(senhaTeste[0] == '0') {
+            throw invalid_argument ("Senha Fornecida Invalida(o primeiro digito e 0)"); } // checa se o primeiro digito !=0
+        bool sequenciacresc = true, sequenciadecresc =  true;
+        for(int i = 0; i < tamanho; i++){
+            if(!isdigit(senhaTeste[i])){
+                throw invalid_argument ("Senha Fornecida Invalida (nem todos caracteres sao digitos)");}// checa se todos caracteres sao digitos
+            if(i<tamanho-1){
+                int atualc = senhaTeste[i] - '0';
+                int proxc = senhaTeste[i+1] -'0';
+                if(atualc != proxc-1){ sequenciacresc = false;}
+
+
+            }
+            if( i<tamanho-1){
+                int atuald = senhaTeste[i]-'0';
+                int proxd = senhaTeste[i+1]-'0';
+                if(atuald != proxd+1){ sequenciadecresc = false;}
+            }
+        }
+            if(sequenciacresc) {
+                throw invalid_argument ("Senha Fornecida Invalida (sequencia crescente)");}// checa se senha é sequencia crescente
+            if(sequenciadecresc) {
+                throw invalid_argument ("Senha Fornecida Invalida (sequencia decrescente)");}
+
+
+
+        };
+
+void Senha::set(string senha){
+    validar(senha);
+    this->senha=senha;
+};
+
+string Senha::get(){
+    return senha;
+};
+
+//Setor
+Setor::Setor(const string& novoNome) {
+    validarNome(novoNome);
+    nome = novoNome;
+};
+
+string Setor::getNome() const {
+    return nome;
+};
+
+void Setor::setNome(const string& novoNome) {
+    validarNome(novoNome);
+    nome = novoNome;
+};
+
+void Setor::validarNome(const string& nome) const {
+    static const string setoresValidos[] = {
+        "Agricultura",
+        "Construção civil",
+        "Energia",
+        "Finanças",
+        "Imobiliário",
+        "Papel e celulose",
+        "Pecuária",
+        "Química e petroquímica",
+        "Metalurgia e siderurgia",
+        "Mineração"
+    };
+
+    bool encontrado = false;
+    for (const auto& setor : setoresValidos) {
+        if (nome == setor) {
+            encontrado = true;
+            break;
+        }
+    }
+    if (!encontrado) {
+        throw invalid_argument("Setor inválido");
     }
 };
