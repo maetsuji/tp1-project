@@ -2,12 +2,12 @@ using namespace std;
 
 class codigoDePagamento{
 private:
-    string codigoPagamento;
+    string codigoDePagamento;
 
 public:
-    void validar;
-    void set(string);
-    string get();
+    void validar(string);
+    void setCodigo(string);
+    string getCodigo();
 };
 
 class codigoDeTitulo{
