@@ -108,3 +108,33 @@ int TUCPF::run(){
     tearDown();
     return estado;
 }
+
+void TUNome::setUp() {
+    nome = new Nome(NOME_VALIDO);
+    estado = SUCESSO;
+}
+
+void TUNome::tearDown() {
+    delete nome;
+}
+
+void TUNome::testarCenarioSucesso() {
+    if (nome->getPrimeiroTermo() != "João" || nome->getSegundoTermo() != "Silva") {
+        estado = FALHA;
+    }
+}
+
+void TUNome::testarCenarioFalha() {
+    Nome nomeInvalido(NOME_INVALIDO);
+    if (!nomeInvalido.getPrimeiroTermo().empty() || !nomeInvalido.getSegundoTermo().empty()) {
+        estado = FALHA;
+    }
+}
+
+int TUNome::run() {
+    setUp();
+    testarCenarioSucesso();
+    testarCenarioFalha();
+    tearDown();
+    return estado;
+}

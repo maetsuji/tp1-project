@@ -51,3 +51,20 @@ public:
     int run();                              // Método para executar teste.
 };
 
+class TUNome {
+private:
+    const static string NOME_VALIDO  = "João Silva";   // Definição de constante para evitar valores mágicos.
+    const static string NOME_INVALIDO = "123456"; // Definição de constante para evitar valores mágicos.
+    Nome *nome;                             // Referência para a unidade em teste.
+    int estado;                             // Estado do teste.
+    void setUp();                           // Método para criar unadade em teste.
+    void tearDown();                        // Método para destruir unidade em teste.
+    void testarCenarioSucesso();            // Cenário de teste.
+    void testarCenarioFalha();              // Cenário de teste.
+
+public:
+    const static int SUCESSO =  0;          // Definição de constante para reportar resultado de teste.
+    const static int FALHA   = -1;          // Definição de constante para reportar resultado de teste.
+    int run();                              // Método para executar os testes.
+
+};
