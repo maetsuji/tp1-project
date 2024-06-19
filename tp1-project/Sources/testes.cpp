@@ -138,3 +138,33 @@ int TUNome::run() {
     tearDown();
     return estado;
 }
+
+void TUData::setUp() {
+    data = new Data(DIA_VALIDO, MES_VALIDO, ANO_VALIDO);
+    estado = SUCESSO;
+}
+
+void TUData::tearDown() {
+    delete data;
+}
+
+void TUData::testarCenarioSucesso() {
+    if (data->getDia() != DIA_VALIDO || data->getMes() != MES_VALIDO || data->getAno() != ANO_VALIDO) {
+        estado = FALHA;
+    }
+}
+
+void TUData::testarCenarioFalha() {
+    Data dataInvalida(DIA_INVALIDO, MES_INVALIDO, ANO_INVALIDO);
+    if (dataInvalida.getDia() != 0 || dataInvalida.getMes() != 0 || dataInvalida.getAno() != 0) {
+        estado = FALHA;
+    }
+}
+
+int TUData::run() {
+    setUp();
+    testarCenarioSucesso();
+    testarCenarioFalha();
+    tearDown();
+    return estado;
+}

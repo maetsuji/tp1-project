@@ -68,3 +68,25 @@ public:
     int run();                              // Método para executar os testes.
 
 };
+
+class TUData {
+private:
+    const static int DIA_VALIDO  = 10;   // Definição de constante para evitar valores mágicos.
+    const static int MES_VALIDO  = 5;   // Definição de constante para evitar valores mágicos.
+    const static int ANO_VALIDO  = 2023;   // Definição de constante para evitar valores mágicos.
+    const static int DIA_INVALIDO  = 32;   // Definição de constante para evitar valores mágicos.
+    const static int MES_INVALIDO  = 13;   // Definição de constante para evitar valores mágicos.
+    const static int ANO_INVALIDO  = 1999;   // Definição de constante para evitar valores mágicos.
+    Data *data;                             // Referência para a unidade em teste.
+    int estado;                             // Estado do teste.
+    void setUp();                           // Método para criar unadade em teste.
+    void tearDown();                        // Método para destruir unidade em teste.
+    void testarCenarioSucesso();            // Cenário de teste.
+    void testarCenarioFalha();              // Cenário de teste.
+
+public:
+    const static int SUCESSO =  0;          // Definição de constante para reportar resultado de teste.
+    const static int FALHA   = -1;          // Definição de constante para reportar resultado de teste.
+    int run();                              // Método para executar os testes.
+
+};
