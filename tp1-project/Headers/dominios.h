@@ -102,10 +102,9 @@ public:
 
 class Setor{
 private:
-    string nome;
-    void validarNome(const string& nome) const;
+    string setor;
 public:
-    Setor(const string& novoNome);
-    string getNome() const;
-    void setNome(const string& novoNome);
+    string getSetor();
+    void validar(string);
+    void setSetor(string);
 };
