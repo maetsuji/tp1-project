@@ -59,11 +59,10 @@ public:
 class Estado{
 private:
     string estado;
-    void validarEstado(const string& estado) const;
 public:
-    Estado(const string& novoEstado);
-    string getEstado() const;
-    void setEstado(const string& novoEstado);
+    string getEstado();
+    void validar(string);
+    void setEstado(string);
 };
 
 class Nome {
