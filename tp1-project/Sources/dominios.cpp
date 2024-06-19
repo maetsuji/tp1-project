@@ -72,16 +72,27 @@ void codigoDeTitulo::setCodigo(string codigoDeTitulo){
 
 void codigoDeTitulo::validar(string codigoDeTitulo){
     identificador.assign(codigoDeTitulo,0,3);
+    static const string codigosConhecidos[]={
+        "CDB",
+        "CRA",
+        "CRI",
+        "LCA",
+        "LCI",
+        "DEB"
+    };
     if (codigoDeTitulo.length()!=11)
-        throw invalid_argument("Codigo de Titulo Invalido.");
-    if (identificador!="CDB" && identificador!="CRA" && identificador!="CRI" && identificador!="LCA" && identificador!="LCI" && identificador!="DEB" )
-        throw invalid_argument("Codigo de Titulo Invalido.");
-    else
-        for (int i=3;i<11;i++){
-            if (!(isdigit(codigoDeTitulo[i])) && !(isupper(codigoDeTitulo[i])))
-                throw invalid_argument("Codigo de Titulo Invalido.");
+        throw invalid_argument("Codigo de Titulo Invalido (Tamanho invalido).");
+    for (int i=3;i<11;i++){
+        if (!(isdigit(codigoDeTitulo[i])) && !(isupper(codigoDeTitulo[i])))
+            throw invalid_argument("Codigo de Titulo Invalido.");
         };
+    for (string codigoValido : codigosConhecidos){
+        if (identificador == codigoValido)
+            return;
+    }
+    throw invalid_argument("Codigo de Titulo Invalido. (Identificador desconhecido)");
 };
+
 
 string codigoDeTitulo::getCodigo(){
     return codigoDeTitulo;
