@@ -24,9 +24,9 @@ class CPF{
 private:
     string CPF;
 public:
-    void set(string);
+    void setCpf(string);
     void validar(string);
-    string get();
+    string getCpf();
 };
 
 class Data {
