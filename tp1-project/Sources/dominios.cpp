@@ -187,8 +187,7 @@ float Dinheiro::get() {
     return valor;
 };
 
-// Construtor
-Data::Data(int dia, int mes, int ano) : dia(dia), mes(mes), ano(ano) {
+void Data::Data(int dia, int mes, int ano) : dia(dia), mes(mes), ano(ano) {
     if (!validarData()) {
         cerr << "Erro: Data inválida!\n";
         this->dia = 0;
@@ -211,21 +210,21 @@ void Data::setDia(int dia) {
     this->dia = dia;
     if (!validarData()) {
         cerr << "Erro: Data inválida!\n";
-        this->dia = 0; // Reverte para um valor inválido
+        this->dia = 0; 
     }
 }
 void Data::setMes(int mes) {
     this->mes = mes;
     if (!validarData()) {
         cerr << "Erro: Data inválida!\n";
-        this->mes = 0; // Reverte para um valor inválido
+        this->mes = 0; 
     }
 }
 void Data::setAno(int ano) {
     this->ano = ano;
     if (!validarData()) {
         cerr << "Erro: Data inválida!\n";
-        this->ano = 0; // Reverte para um valor inválido
+        this->ano = 0; 
     }
 }
 
@@ -249,7 +248,7 @@ bool Data::validarData() const {
 }
 //  imprimir a data
 void Data::imprimirData() const {
-    cout << dia << "-" << mes << "-" << ano << std::endl;
+    cout << dia << "-" << mes << "-" << ano << endl;
 }
 
 void Percentual::setValor(int valor){
@@ -324,36 +323,47 @@ void Setor::validarNome(const string& nome) const {
     }
 }
 
-void Nome::Nome(const string& nomeCompleto) {
+void Nome::Nome(const std::string& nomeCompleto) {
     size_t pos = nomeCompleto.find(' ');
-
     primeiroTermo = nomeCompleto.substr(0, pos);
-
-    if (pos != string::npos) {
+    if (pos != std::string::npos) {
         segundoTermo = nomeCompleto.substr(pos + 1);
     }
-
     if (!validarTermo(primeiroTermo) || !validarTermo(segundoTermo)) {
-        cerr << "Erro: Termo(s) inválido(s)!\n";
+        std::cerr << "Erro: Termo(s) inválido(s)!\n";
         primeiroTermo.clear();
         segundoTermo.clear();
     }
 }
 
-bool Nome::validarTermo(const string& termo) const {
-    if (termo.empty() || !isupper(termo[0])) // maiúscula
+bool Nome::validarTermo(const std::string& termo) const {
+    if (termo.empty() || !isupper(termo[0])) // Primeiro caractere deve ser maiúscula
         return false;
     for (char c : termo) {
         if (!isalpha(c))
-            return false;
+            return false; // Caractere não é uma letra
     }
     return true;
 }
-
 string Nome::getPrimeiroTermo() const {
     return primeiroTermo;
 }
-
 string Nome::getSegundoTermo() const {
     return segundoTermo;
+}
+
+void Nome::setPrimeiroTermo(const string& primeiroTermo) {
+    if (validarTermo(primeiroTermo)) {
+        this->primeiroTermo = primeiroTermo;
+    } else {
+        cerr << "Erro: Primeiro termo inválido!\n";
+    }
+}
+
+void Nome::setSegundoTermo(const string& segundoTermo) {
+    if (validarTermo(segundoTermo)) {
+        this->segundoTermo = segundoTermo;
+    } else {
+        cerr << "Erro: Segundo termo inválido!\n";
+    }
 }

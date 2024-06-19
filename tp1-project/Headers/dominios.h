@@ -66,7 +66,7 @@ public:
     void setEstado(const string& novoEstado);
 };
 
-class Nome{
+class Nome {
 private:
     string primeiroTermo;
     string segundoTermo;
@@ -76,6 +76,8 @@ public:
     Nome(const string& nomeCompleto);
     string getPrimeiroTermo() const;
     string getSegundoTermo() const;
+    void setPrimeiroTermo(const string& primeiroTermo);
+    void setSegundoTermo(const string& segundoTermo);
 };
 
 class Percentual{
