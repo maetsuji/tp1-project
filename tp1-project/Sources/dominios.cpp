@@ -338,21 +338,16 @@ string Senha::get(){
 };
 
 //Setor
-Setor::Setor(const string& novoNome) {
-    validarNome(novoNome);
-    nome = novoNome;
+string Setor::getSetor(){
+    return setor;
 };
 
-string Setor::getNome() const {
-    return nome;
+void Setor::setSetor(string novoSetor) {
+    validar(novoSetor);
+    setor = novoSetor;
 };
 
-void Setor::setNome(const string& novoNome) {
-    validarNome(novoNome);
-    nome = novoNome;
-};
-
-void Setor::validarNome(const string& nome) const {
+void Setor::validar(string setor){
     static const string setoresValidos[] = {
         "Agricultura",
         "Construção civil",
@@ -367,13 +362,13 @@ void Setor::validarNome(const string& nome) const {
     };
 
     bool encontrado = false;
-    for (const auto& setor : setoresValidos) {
-        if (nome == setor) {
+    for (const string setorValido : setoresValidos) {
+        if (setor == setorValido) {
             encontrado = true;
             break;
         }
     }
     if (!encontrado) {
-        throw invalid_argument("Setor inválido");
+        throw invalid_argument("Setor invalido");
     }
 };
