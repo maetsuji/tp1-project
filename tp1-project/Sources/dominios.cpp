@@ -285,7 +285,7 @@ void Nome::setSegundoTermo(const string& segundoTermo) {
 /**
 * Armazena o percentual informado caso o mesmo seja v&aacute;lido.
 *
-* Lan&ccedil;a exce&ccedil;&atilde;o caso o c&oacute;digo informado seja inv&aacute;lido.
+* Lan&ccedil;a exce&ccedil;&atilde;o caso o percentual informado seja inv&aacute;lido.
 *
 * @param valor Percentual.
 *
