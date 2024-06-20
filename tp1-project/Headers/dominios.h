@@ -9,8 +9,18 @@ public:
     void setCodigo(string);
     string getCodigo();
 };
+//Codigo de titulo
 
-class codigoDeTitulo{
+/**
+* Padr&atilde;o para representa&ccedil;&atilde;o de c&oacute;digo de t&iacute;tulo.
+*
+* Regras de formato:
+*
+* - C&oacute;digo de t&iacute;tulo &eacute; v&aacute;lido se possui 11 caracteres alfanum&eacute;ricos, com as letras sendo mai&uacute;sculas.
+* - O identificador de cada t&iacute;tulo (3 primeiras letras) deve pertencer a uma lista de identificadores v&aacute;lidos.
+*/
+
+class codigoDeTitulo{                   //IMPLEMENTADA POR 231028746
 private:
     string codigoDeTitulo;
     string identificador;
@@ -20,6 +30,7 @@ public:
     string getCodigo();
 };
 
+//CPF
 class CPF{
 private:
     string CPF;
