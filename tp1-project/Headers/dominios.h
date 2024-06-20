@@ -79,7 +79,18 @@ public:
     void setSegundoTermo(const string& segundoTermo);
 };
 
-class Percentual{
+//Percentual
+
+/**
+* Padr&atilde;o para representa&ccedil;&atilde;o de Percentual.
+*
+* Regras de formato:
+*
+* - Percentual &eacute; v&aacute;lido se maior ou igual a 0 e menor ou igual a 100.
+*/
+
+class Percentual                        //IMPLEMENTADA POR 231028746
+{
 private:
     int valor;
 public:
@@ -88,6 +99,7 @@ public:
     int getValor();
 };
 
+//Senha
 class Senha{
 private:
     string senha;
