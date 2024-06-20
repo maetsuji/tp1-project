@@ -281,17 +281,47 @@ void Nome::setSegundoTermo(const string& segundoTermo) {
 };
 
 //Percentual
-void Percentual::setValor(int valor){
+
+/**
+* Armazena o percentual informado caso o mesmo seja v&aacute;lido.
+*
+* Lan&ccedil;a exce&ccedil;&atilde;o caso o c&oacute;digo informado seja inv&aacute;lido.
+*
+* @param valor Percentual.
+*
+* @throw invalid_argument
+*/
+
+void Percentual::setValor(int valor)
+{
     validar(valor);
     this->valor=valor;
 };
 
-void Percentual::validar(int valor){
+/**
+* Verifica se o percentual a ser validado vai de 0 a 100.
+*
+* Lan&ccedil;a exce&ccedil;&atilde;o caso o percentual seja inv&aacute;lido.
+*
+* @param valor Percentual.
+*
+* @throw invalid_argument
+*/
+
+void Percentual::validar(int valor)
+{
     if (valor < 0 || valor > 100)
         throw invalid_argument("Percentual Invalido.");
 };
 
-int Percentual::getValor(){
+/**
+* Retorna Percentual
+*
+* @return Percentual
+*/
+
+int Percentual::getValor()
+{
     return valor;
 };
 
