@@ -22,10 +22,33 @@ string codigoDePagamento::getCodigo(){
 };
 
 //Codigo de titulo
+
+/**
+* Armazena o c&oacute;digo informado caso o mesmo seja v&aacute;lido.
+*
+* Lan&ccedil;a exce&ccedil;&atilde;o caso o c&oacute;digo informado seja inv&aacute;lido.
+*
+* @param valor C&oacute;digo.
+*
+* @throw invalid_argument
+*/
+
 void codigoDeTitulo::setCodigo(string codigoDeTitulo){
     validar(codigoDeTitulo);
     this->codigoDeTitulo=codigoDeTitulo;
 };
+
+/**
+* Verifica se o c&oacute;digo possui exatamente 11 caracteres, com as letras sendo mai&uacute;sculas.
+*
+* Depois, verifica se o identificador (3 primeiros caracteres) faz parte da lista de c&oacute;digos v&aacute;lidos: -CDB -CRA -CRI -LCA -LCI -DEB
+*
+* Lan&ccedil;a exce&ccedil;&atilde;o caso o c&oacute;digo seja inv&aacute;lido.
+*
+* @param codigoDeTitulo C&oacute;digo.
+*
+* @throw invalid_argument
+*/
 
 void codigoDeTitulo::validar(string codigoDeTitulo){
     identificador.assign(codigoDeTitulo,0,3);
@@ -50,6 +73,11 @@ void codigoDeTitulo::validar(string codigoDeTitulo){
     throw invalid_argument("Codigo de Titulo Invalido. (Identificador desconhecido)");
 };
 
+/**
+* Retorna c&oacute;digo de t&iacute;tulo
+*
+* @return C&oacute;digo
+*/
 
 string codigoDeTitulo::getCodigo(){
     return codigoDeTitulo;
