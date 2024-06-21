@@ -67,7 +67,17 @@ public:
     float getValor();
 };
 
-class Estado{
+//Estado
+
+/**
+* Padr&atilde;o para representa&ccedil;&atilde;o de Estado.
+*
+* Regras de formato:
+*
+* - Estado &eacute; v&aacute;lido se for "Previsto", "Liquidado" ou "Inadimplente".
+*/
+
+class Estado{                        //IMPLEMENTADA POR 231021360
 private:
     string estado;
 public:
@@ -121,7 +131,17 @@ public:
 
 };
 
-class Setor{
+//Setor
+
+/**
+* Padr&atilde;o para representa&ccedil;&atilde;o de Setor.
+*
+* Regras de formato:
+*
+* - Setor &eacute; v&aacute;lido se pertence a uma lista de setores v&aacute;lidos.
+*/
+
+class Setor{                        //IMPLEMENTADA POR 231021360           
 private:
     string setor;
 public:
