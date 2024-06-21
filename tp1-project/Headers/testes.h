@@ -90,3 +90,37 @@ public:
     int run();                              // Método para executar os testes.
 
 };
+
+class TUSetor {
+private:
+    const static string VALOR_VALIDO    = "Agricultura";  //Setor fictício válido
+    const static string VALOR_INVALIDO  = "Agronomia";  //Setor fictício inválido
+    Setor *setor;                           // Referência para unidade em teste.
+    int estado;                             // Estado do teste.
+    void setUp();                           // Método para criar unidade em teste.
+    void tearDown();                        // Método para destruir unidade em teste.
+    void testarCenarioSucesso();            // Cenário de teste.
+    void testarCenarioFalha();              // Cenário de teste.
+
+public:
+    const static int SUCESSO =  0;          // Definição de constante para reportar resultado de teste.
+    const static int FALHA   = -1;          // Definição de constante para reportar resultado de teste.
+    int run();                              // Método para executar teste.
+};
+
+class TUEstado {
+private:
+    const static string VALOR_VALIDO    = "Previsto";  //Estado fictício válido
+    const static string VALOR_INVALIDO  = "Imprevisto";  //Estado fictício inválido
+    Estado *estado;                         // Referência para unidade em teste.
+    int estado;                             // Estado do teste.
+    void setUp();                           // Método para criar unidade em teste.
+    void tearDown();                        // Método para destruir unidade em teste.
+    void testarCenarioSucesso();            // Cenário de teste.
+    void testarCenarioFalha();              // Cenário de teste.
+
+public:
+    const static int SUCESSO =  0;          // Definição de constante para reportar resultado de teste.
+    const static int FALHA   = -1;          // Definição de constante para reportar resultado de teste.
+    int run();                              // Método para executar teste.
+};
