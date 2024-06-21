@@ -168,3 +168,81 @@ int TUData::run() {
     tearDown();
     return estado;
 }
+
+void TUEstado::setUp(){
+    estad_o = new Setor();
+    estado = SUCESSO;
+}
+
+void TUEstado::tearDown(){
+    delete estad_o;
+}
+
+void TUEstado::testarCenarioSucesso(){
+    try{
+        estad_o->setEstado(VALOR_VALIDO);
+        if (estad_o->getEstado() != VALOR_VALIDO)
+            estado = FALHA;
+    }
+    catch(invalid_argument &excecao){
+        estado = FALHA;
+    }
+}
+
+void TUEstado::testarCenarioFalha(){
+    try{
+        estad_o->setEstado(VALOR_INVALIDO);
+        estado = FALHA;
+    }
+    catch(invalid_argument &excecao){
+        if (estad_o->getEstado() == VALOR_INVALIDO)
+            estado = FALHA;
+    }
+}
+
+int TUEstado::run(){
+    setUp();
+    testarCenarioSucesso();
+    testarCenarioFalha();
+    tearDown();
+    return estado;
+}
+
+void TUSetor::setUp(){
+    setor = new Setor();
+    estado = SUCESSO;
+}
+
+void TUSetor::tearDown(){
+    delete setor;
+}
+
+void TUSetor::testarCenarioSucesso(){
+    try{
+        setor->setSetor(VALOR_VALIDO);
+        if (setor->getSetor() != VALOR_VALIDO)
+            estado = FALHA;
+    }
+    catch(invalid_argument &excecao){
+        estado = FALHA;
+    }
+}
+
+void TUSetor::testarCenarioFalha(){
+    try{
+        setor->setSetor(VALOR_INVALIDO);
+        estado = FALHA;
+    }
+    catch(invalid_argument &excecao){
+        if (setor->getSetor() == VALOR_INVALIDO)
+            estado = FALHA;
+    }
+}
+
+int TUSetor::run(){
+    setUp();
+    testarCenarioSucesso();
+    testarCenarioFalha();
+    tearDown();
+    return estado;
+}
