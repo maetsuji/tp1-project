@@ -36,11 +36,11 @@ public:
     int run();                              // Método para executar teste.
 };
 
-class TUValor {
+class TUDinheiro {
 private:
     const static float VALOR_VALIDO    = 7343.57;  // Valor válido
     const static float VALOR_INVALIDO  = 4000999.69;  // Valor inválido
-    Valor *valor;                                   // Referência para unidade em teste.
+    Dinheiro *valor;                                   // Referência para unidade em teste.
     int estado;                             // Estado do teste.
     void setUp();                           // Método para criar unidade em teste.
     void tearDown();                        // Método para destruir unidade em teste.

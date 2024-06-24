@@ -111,16 +111,16 @@ int TUCPF::run(){
     return estado;
 }
 
-void TUValor::setUp(){
+void TUDinheiro::setUp(){
     valor = new Valor();
     estado = SUCESSO;
 }
 
-void TUValor::tearDown(){
+void TUDinheiro::tearDown(){
     delete valor;
 }
 
-void TUValor::testarCenarioSucesso(){
+void TUDinheiror::testarCenarioSucesso(){
     try{
         valor->setValor(VALOR_VALIDO);
         if (valor->getValor() != VALOR_VALIDO)
@@ -131,7 +131,7 @@ void TUValor::testarCenarioSucesso(){
     }
 }
 
-void TUValor::testarCenarioFalha(){
+void TUDinheiro::testarCenarioFalha(){
     try{
         valor->setValor(VALOR_INVALIDO);
         estado = FALHA;
@@ -142,7 +142,7 @@ void TUValor::testarCenarioFalha(){
     }
 }
 
-int TUValor::run(){
+int TUDinheiro::run(){
     setUp();
     testarCenarioSucesso();
     testarCenarioFalha();

@@ -29,7 +29,7 @@ public:
     void setSetor(const Setor&);
     void setEmissao(const Data&);
     void setVencimento(const Data&);
-    void setValor(const Valor&);
+    void setValor(const Dinheiro&);
     codigoDeTitulo getCodigo() const;
     Nome getEmissor() const;
     Setor getSetor() const;

@@ -84,6 +84,16 @@ string codigoDeTitulo::getCodigo(){
 };
 
 // CPF
+/**
+ * Armazena o CPF informado caso este seja v&aacute;lido
+ *
+ * Lança a exce&ccedil;&atilde;o caso o CPF informado seja inv&aacute;lido.
+ *
+ * @param CPF cpf.
+ *
+ * @throw invalid_argument
+ */
+
 void CPF::setCPF(string CPF){
     validar(CPF);
     this->CPF=CPF;

@@ -58,7 +58,7 @@ private:
     bool validarData() const;
 };
 
-class Valor{
+class Dinheiro{
 private:
     float valor;
 public:
