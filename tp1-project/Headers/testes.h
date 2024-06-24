@@ -19,23 +19,6 @@ public:
     int run();                              // Método para executar teste.
 };
 
-class TUPercentual {
-private:
-    const static int VALOR_VALIDO   = 97;    // Definição de constante para evitar número mágico.
-    const static int VALOR_INVALIDO = 107;   // Definição de constante para evitar número mágico.
-    Percentual *percentual;                         // Referência para unidade em teste.
-    int estado;                             // Estado do teste.
-    void setUp();                           // Método para criar unidade em teste.
-    void tearDown();                        // Método para destruir unidade em teste.
-    void testarCenarioSucesso();            // Cenário de teste.
-    void testarCenarioFalha();              // Cenário de teste.
-
-public:
-    const static int SUCESSO =  0;          // Definição de constante para reportar resultado de teste.
-    const static int FALHA   = -1;          // Definição de constante para reportar resultado de teste.
-    int run();                              // Método para executar teste.
-};
-
 class TUCPF {
 private:
     const static string VALOR_VALIDO    = "761.776.634-35";  //CPF fictício válido
@@ -51,24 +34,6 @@ public:
     const static int SUCESSO =  0;          // Definição de constante para reportar resultado de teste.
     const static int FALHA   = -1;          // Definição de constante para reportar resultado de teste.
     int run();                              // Método para executar teste.
-};
-
-class TUNome {
-private:
-    const static string NOME_VALIDO  = "João Silva";   // Definição de constante para evitar valores mágicos.
-    const static string NOME_INVALIDO = "123456"; // Definição de constante para evitar valores mágicos.
-    Nome *nome;                             // Referência para a unidade em teste.
-    int estado;                             // Estado do teste.
-    void setUp();                           // Método para criar unadade em teste.
-    void tearDown();                        // Método para destruir unidade em teste.
-    void testarCenarioSucesso();            // Cenário de teste.
-    void testarCenarioFalha();              // Cenário de teste.
-
-public:
-    const static int SUCESSO =  0;          // Definição de constante para reportar resultado de teste.
-    const static int FALHA   = -1;          // Definição de constante para reportar resultado de teste.
-    int run();                              // Método para executar os testes.
-
 };
 
 class TUData {
@@ -93,6 +58,58 @@ public:
 
 };
 
+class TUEstado {
+private:
+    const static string VALOR_VALIDO    = "Previsto";  //Estado fictício válido
+    const static string VALOR_INVALIDO  = "Imprevisto";  //Estado fictício inválido
+    Estado *estado;                         // Referência para unidade em teste.
+    int estado;                             // Estado do teste.
+    void setUp();                           // Método para criar unidade em teste.
+    void tearDown();                        // Método para destruir unidade em teste.
+    void testarCenarioSucesso();            // Cenário de teste.
+    void testarCenarioFalha();              // Cenário de teste.
+
+public:
+    const static int SUCESSO =  0;          // Definição de constante para reportar resultado de teste.
+    const static int FALHA   = -1;          // Definição de constante para reportar resultado de teste.
+    int run();                              // Método para executar teste.
+};
+
+class TUNome {
+private:
+    const static string NOME_VALIDO  = "João Silva";   // Definição de constante para evitar valores mágicos.
+    const static string NOME_INVALIDO = "123456"; // Definição de constante para evitar valores mágicos.
+    Nome *nome;                             // Referência para a unidade em teste.
+    int estado;                             // Estado do teste.
+    void setUp();                           // Método para criar unadade em teste.
+    void tearDown();                        // Método para destruir unidade em teste.
+    void testarCenarioSucesso();            // Cenário de teste.
+    void testarCenarioFalha();              // Cenário de teste.
+
+public:
+    const static int SUCESSO =  0;          // Definição de constante para reportar resultado de teste.
+    const static int FALHA   = -1;          // Definição de constante para reportar resultado de teste.
+    int run();                              // Método para executar os testes.
+
+};
+
+class TUPercentual {
+private:
+    const static int VALOR_VALIDO   = 97;    // Definição de constante para evitar número mágico.
+    const static int VALOR_INVALIDO = 107;   // Definição de constante para evitar número mágico.
+    Percentual *percentual;                         // Referência para unidade em teste.
+    int estado;                             // Estado do teste.
+    void setUp();                           // Método para criar unidade em teste.
+    void tearDown();                        // Método para destruir unidade em teste.
+    void testarCenarioSucesso();            // Cenário de teste.
+    void testarCenarioFalha();              // Cenário de teste.
+
+public:
+    const static int SUCESSO =  0;          // Definição de constante para reportar resultado de teste.
+    const static int FALHA   = -1;          // Definição de constante para reportar resultado de teste.
+    int run();                              // Método para executar teste.
+};
+
 class TUSetor {
 private:
     const static string VALOR_VALIDO    = "Agricultura";  //Setor fictício válido
@@ -110,22 +127,7 @@ public:
     int run();                              // Método para executar teste.
 };
 
-class TUEstado {
-private:
-    const static string VALOR_VALIDO    = "Previsto";  //Estado fictício válido
-    const static string VALOR_INVALIDO  = "Imprevisto";  //Estado fictício inválido
-    Estado *estado;                         // Referência para unidade em teste.
-    int estado;                             // Estado do teste.
-    void setUp();                           // Método para criar unidade em teste.
-    void tearDown();                        // Método para destruir unidade em teste.
-    void testarCenarioSucesso();            // Cenário de teste.
-    void testarCenarioFalha();              // Cenário de teste.
 
-public:
-    const static int SUCESSO =  0;          // Definição de constante para reportar resultado de teste.
-    const static int FALHA   = -1;          // Definição de constante para reportar resultado de teste.
-    int run();                              // Método para executar teste.
-};
 
 //TESTES DE ENTIDADE
 
