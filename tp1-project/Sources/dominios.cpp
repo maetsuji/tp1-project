@@ -84,7 +84,7 @@ string codigoDeTitulo::getCodigo(){
 };
 
 // CPF
-void CPF::setCpf(string CPF){
+void CPF::setCPF(string CPF){
     validar(CPF);
     this->CPF=CPF;
 };
@@ -157,7 +157,7 @@ void CPF::validar(string CPF){
     };
 };
 
-string CPF::getCpf(){
+string CPF::getCPF(){
     return CPF;
 };
 
@@ -204,7 +204,7 @@ void Data::setDia(int dia) {
     this->dia = dia;
     if (!validarData()) {
         cerr << "Erro: Data inválida!\n";
-        this->dia = 0; 
+        this->dia = 0;
     }
 };
 
@@ -212,7 +212,7 @@ void Data::setMes(int mes) {
     this->mes = mes;
     if (!validarData()) {
         cerr << "Erro: Data inválida!\n";
-        this->mes = 0; 
+        this->mes = 0;
     }
 };
 
@@ -220,7 +220,7 @@ void Data::setAno(int ano) {
     this->ano = ano;
     if (!validarData()) {
         cerr << "Erro: Data inválida!\n";
-        this->ano = 0; 
+        this->ano = 0;
     }
 };
 

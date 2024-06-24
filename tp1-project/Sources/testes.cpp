@@ -83,8 +83,8 @@ void TUCPF::tearDown(){
 
 void TUCPF::testarCenarioSucesso(){
     try{
-        cpf->set(VALOR_VALIDO);
-        if (cpf->get() != VALOR_VALIDO)
+        cpf->setCPF(VALOR_VALIDO);
+        if (cpf->getCPF() != VALOR_VALIDO)
             estado = FALHA;
     }
     catch(invalid_argument &excecao){
@@ -94,16 +94,55 @@ void TUCPF::testarCenarioSucesso(){
 
 void TUCPF::testarCenarioFalha(){
     try{
-        codigo->set(VALOR_INVALIDO);
+        cpf->setCPF(VALOR_INVALIDO);
         estado = FALHA;
     }
     catch(invalid_argument &excecao){
-        if (codigo->get() == VALOR_INVALIDO)
+        if (cpf->getCPF() == VALOR_INVALIDO)
             estado = FALHA;
     }
 }
 
 int TUCPF::run(){
+    setUp();
+    testarCenarioSucesso();
+    testarCenarioFalha();
+    tearDown();
+    return estado;
+}
+
+void TUValor::setUp(){
+    valor = new Valor();
+    estado = SUCESSO;
+}
+
+void TUValor::tearDown(){
+    delete valor;
+}
+
+void TUValor::testarCenarioSucesso(){
+    try{
+        valor->setValor(VALOR_VALIDO);
+        if (valor->getValor() != VALOR_VALIDO)
+            estado = FALHA;
+    }
+    catch(invalid_argument &excecao){
+        estado = FALHA;
+    }
+}
+
+void TUValor::testarCenarioFalha(){
+    try{
+        valor->setValor(VALOR_INVALIDO);
+        estado = FALHA;
+    }
+    catch(invalid_argument &excecao){
+        if (valor->getCPF() == VALOR_INVALIDO)
+            estado = FALHA;
+    }
+}
+
+int TUValor::run(){
     setUp();
     testarCenarioSucesso();
     testarCenarioFalha();

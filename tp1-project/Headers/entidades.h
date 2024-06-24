@@ -3,14 +3,14 @@ using namespace std;
 
 class Conta{
 private:
-    Cpf cpf;
+    CPF cpf;
     Nome nome;
     Senha senha;
 public:
-    void setCpf(const Cpf&);
+    void setCPF(const CPF&);
     void setNome(const Nome&);
     void setSenha(const Senha&);
-    Cpf getCpf() const;
+    CPF getCPF() const;
     Nome getNome() const;
     Senha getSenha() const;
 };
@@ -22,20 +22,20 @@ private:
     Setor setor;
     Data emissao;
     Data vencimento;
-    Dinheiro valor;
+    Valor valor;
 public:
     void setCodigo(const codigoDeTitulo&);
     void setEmissor(const Nome&);
     void setSetor(const Setor&);
     void setEmissao(const Data&);
     void setVencimento(const Data&);
-    void setDinheiro(const Valor&);
+    void setValor(const Valor&);
     codigoDeTitulo getCodigo() const;
     Nome getEmissor() const;
     Setor getSetor() const;
     Data getEmissao() const;
     Data getVencimento() const;
-    Dinheiro getValor() const;
+    Valor getValor() const;
 };
 
 class Pagamento{

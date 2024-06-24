@@ -21,8 +21,8 @@ public:
 
 class TUCPF {
 private:
-    const static string VALOR_VALIDO    = "761.776.634-35";  //CPF fictício válido
-    const static string VALOR_INVALIDO  = "099.000.999-88";  //CPF fictício inválido
+    const static string VALOR_VALIDO    = "761.776.634-35";  // CPF fictício válido
+    const static string VALOR_INVALIDO  = "099.000.999-88";  // CPF fictício inválido
     CPF *cpf;                                   // Referência para unidade em teste.
     int estado;                             // Estado do teste.
     void setUp();                           // Método para criar unidade em teste.
@@ -34,6 +34,22 @@ public:
     const static int SUCESSO =  0;          // Definição de constante para reportar resultado de teste.
     const static int FALHA   = -1;          // Definição de constante para reportar resultado de teste.
     int run();                              // Método para executar teste.
+};
+
+class TUValor {
+private:
+    const static float VALOR_VALIDO    = 7343.57;  // Valor válido
+    const static float VALOR_INVALIDO  = 4000999.69;  // Valor inválido
+    Valor *valor;                                   // Referência para unidade em teste.
+    int estado;                             // Estado do teste.
+    void setUp();                           // Método para criar unidade em teste.
+    void tearDown();                        // Método para destruir unidade em teste.
+    void testarCenarioSucesso();            // Cenário de teste.
+    void testarCenarioFalha();              // Cenário de teste.
+public:
+    const static int SUCESSO =  0;          // Definição de constante para reportar resultado de teste.
+    const static int FALHA   = -1;          // Definição de constante para reportar resultado de teste.
+    int run();                              // Método para executar os testes.
 };
 
 class TUData {
@@ -126,7 +142,6 @@ public:
     const static int FALHA   = -1;          // Definição de constante para reportar resultado de teste.
     int run();                              // Método para executar teste.
 };
-
 
 
 //TESTES DE ENTIDADE

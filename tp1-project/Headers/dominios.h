@@ -35,9 +35,9 @@ class CPF{
 private:
     string CPF;
 public:
-    void setCpf(string);
+    void setCPF(string);
     void validar(string);
-    string getCpf();
+    string getCPF();
 };
 
 class Data {
@@ -58,7 +58,7 @@ private:
     bool validarData() const;
 };
 
-class Dinheiro{
+class Valor{
 private:
     float valor;
 public:
@@ -141,7 +141,7 @@ public:
 * - Setor &eacute; v&aacute;lido se pertence a uma lista de setores v&aacute;lidos.
 */
 
-class Setor{                        //IMPLEMENTADA POR 231021360           
+class Setor{                        //IMPLEMENTADA POR 231021360
 private:
     string setor;
 public:

@@ -1,5 +1,5 @@
 //Class Conta
-void Conta::setCpf(const Cpf& cpf){
+void Conta::setCPF(const CPF& cpf){
     this->cpf = cpf;
 }
 
@@ -11,7 +11,7 @@ void Conta::setSenha(const Senha& senha){
     this->senha = senha;
 }
 
-Cpf Conta::getCpf() const{
+CPF Conta::getCPF() const{
     return cpf;
 }
 
@@ -44,7 +44,7 @@ void Titulo::void setVencimento(const Data& vencimento){
     this->vencimento = vencimento;
 }
 
-void Titulo::setDinheiro(const Valor& valor){
+void Titulo::setValor(const Valor& valor){
     this->valor = valor;
 }
 
