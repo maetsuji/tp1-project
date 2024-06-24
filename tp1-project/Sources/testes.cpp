@@ -1,5 +1,7 @@
 using namespace std;
 
+//TESTES DE DOMÍNIOS
+
 void TUCodigoDeTitulo::setUp(){
     codigo = new codigoDeTitulo();
     estado = SUCESSO;
@@ -245,4 +247,42 @@ int TUSetor::run(){
     testarCenarioFalha();
     tearDown();
     return estado;
+}
+
+//TESTES DE ENTIDADE
+
+void TUConta::setUp(){
+    conta = new Conta();
+    estado = SUCESSO;
+}
+
+void TUConta::tearDown(){
+    delete codigo;
+}
+
+void TUConta::testarCenarioSucesso(){
+    CPF cpf;
+    cpf.setCpf(CPF_VALIDO);
+    conta->setCpf(cpf);
+    if (conta->getCpf().getCpf() != CPF_VALIDO)
+        estado = FALHA;
+
+    Nome nome;
+    nome.setCpf(NOME_VALIDO);
+    conta->setNome(nome);
+    if (conta->getNome().getNome() != NOME_VALIDO)
+        estado = FALHA;
+
+    Senha senha;
+    senha.setSenha(SENHA_VALIDA);
+    conta->setSenha(senha);
+    if (conta->getSenha().getSenha() != SENHA_VALIDA)
+        estado = FALHA;
+}
+
+int TUConta::run(){
+    setUp();
+    testarCenarioSucesso();
+    tearDown();
+    return estado;
 }
