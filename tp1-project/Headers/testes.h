@@ -1,5 +1,7 @@
 using namespace std;
 
+//TESTES DE DOMÍNIO
+
 class TUCodigoDeTitulo {
 private:
     const string VALOR_VALIDO   = "CRA1913576A";   // Definição de constante para evitar número mágico.
@@ -124,3 +126,22 @@ public:
     const static int FALHA   = -1;          // Definição de constante para reportar resultado de teste.
     int run();                              // Método para executar teste.
 };
+
+//TESTES DE ENTIDADE
+
+class TUConta{
+private:
+    const int CPF_VALIDO="063.179.831-51";  // Definição de constante para evitar número mágico.
+    const string NOME_VALIDO="Caio Rafik";  // Definição de constante para evitar número mágico.
+    const int SENHA_VALIDA="063179";        // Definição de constante para evitar número mágico.
+    Conta *conta                            // Referência para unidade em teste.
+    int estado;                             // Estado do teste.
+    void setUp();                           // Método para criar unidade em teste.
+    void tearDown();                        // Método para destruir unidade em teste.
+    void testarCenarioSucesso();
+public:
+    const static int SUCESSO =  0;          // Definição de constante para reportar resultado de teste.
+    const static int FALHA   = -1;          // Definição de constante para reportar resultado de teste.
+    int run();                              // Método para executar teste.
+};
+
