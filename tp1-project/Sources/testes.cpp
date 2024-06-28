@@ -334,3 +334,50 @@ int TUConta::run(){
     tearDown();
     return estado;
 }
+
+void TuTitulo::setUp() {
+    titulo = new Titulo();
+    estado = SUCESSO;
+}
+
+void TUtitulo::tearDown() {
+    delete titulo;
+}
+
+void TUTitulo::testarCenarioSucesso(){
+    codigodeTitulo TITULO_VALIDO = "CDB";
+    Nome NOME_VALIDO;
+    NOME_VALIDO.setNome("Nome Emissor");
+    Setor SETOR_VALIDO;
+    SETOR_VALIDO.setSetor("Setor Válido);
+    Data DATA_VALIDA;
+    DATA_VALIDA.setData("01/01/2023");
+    Dinheiro VALOR_VALIDO;
+    VALOR_VALIDO.setValor(1000.00);
+
+    titulo->setCodigo(CODIGO_VALIDO);
+    if (titulo->getCodigo() != CODIGO_VALIDO)
+        estado = FALHA;
+    titulo->setEmissor(NOME_VALIDO);
+    if (titulo->getEmissor().getNome() != "Nome Emissor")
+        estado = FALHA;
+    titulo->setSetor(SETOR_VALIDO);
+    if (titulo->getSetor().getSetor() != "Setor Válido")
+        estado = FALHA;
+    titulo->setEmissao(DATA_VALIDA);
+    if (titulo->getEmissao().getData() != "01/01/2023")
+        estado = FALHA;
+    titulo->setVencimento(DATA_VALIDA);
+    if (titulo->getVencimento().getData() != "01/01/2023")
+        estado = FALHA;
+    titulo->setValor(VALOR_VALIDO);
+    if (titulo->getValor().getValor() != 1000.00)
+        estado = FALHA;
+}
+
+int TUTitulo::run() {
+    setUp();
+    testarCenarioSucesso();
+    tearDown();
+    return estado;
+}
