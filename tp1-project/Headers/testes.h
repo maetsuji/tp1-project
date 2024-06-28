@@ -158,3 +158,21 @@ public:
     int run();                              // Método para executar teste.
 };
 
+class TUTitulo {
+private:
+    const std::string CODIGO_VALIDO = "CDB";         //Definição de constante para evitar número mágico.
+    const std::string NOME_VALIDO = "Caio Rafik";   //Definição de constante para evitar número mágico.
+    const std::string SETOR_VALIDO = "Agricultura";  //Definição de constante para evitar número mágico.
+    const std::string DATA_VALIDA = "01/01/2023";    //Definição de constante para evitar número mágico.
+    const double VALOR_VALIDO = 1000.00;             //Definição de constante para evitar número mágico.
+
+    Titulo *titulo;                                  // Referência para unidade em teste.
+    int estado;                                      //Estado do teste.
+    void setUp();                                    // Método para criar unidade em teste.
+    void tearDown();                                 //Método para destruir unidade em teste.
+    void testarCenarioSucesso();
+public:
+    const static int SUCESSO = 0;                   // Definição de constante para reportar resultado de teste.
+    const static int FALHA = -1;                    // Definição de constante para reportar resultado de teste.
+    int run();                                      //Método para executar teste.
+};
