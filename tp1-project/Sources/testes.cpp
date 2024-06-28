@@ -180,25 +180,34 @@ int TUNome::run() {
     return estado;
 }
 
-void TUData::setUp() {
-    data = new Data(DIA_VALIDO, MES_VALIDO, ANO_VALIDO);
+void TUData::setUp(){
+    data = new Data();
     estado = SUCESSO;
 }
 
-void TUData::tearDown() {
+void TUData::tearDown(){
     delete data;
 }
 
-void TUData::testarCenarioSucesso() {
-    if (data->getDia() != DIA_VALIDO || data->getMes() != MES_VALIDO || data->getAno() != ANO_VALIDO) {
+void TUData::testarCenarioSucesso(){
+    try{
+        data->setData(VALOR_VALIDO);
+        if (data->getData() != VALOR_VALIDO)
+            estado = FALHA;
+    }
+    catch(std::invalid_argument &excecao){
         estado = FALHA;
     }
 }
 
-void TUData::testarCenarioFalha() {
-    Data dataInvalida(DIA_INVALIDO, MES_INVALIDO, ANO_INVALIDO);
-    if (dataInvalida.getDia() != 0 || dataInvalida.getMes() != 0 || dataInvalida.getAno() != 0) {
+void TUData::testarCenarioFalha(){
+    try{
+        data->setData(VALOR_INVALIDO);
         estado = FALHA;
+    }
+    catch(std::invalid_argument &excecao){
+        if (data->getData() == VALOR_INVALIDO)
+            estado = FALHA;
     }
 }
 

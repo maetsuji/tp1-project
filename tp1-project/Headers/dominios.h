@@ -40,23 +40,14 @@ public:
     string getCPF();
 };
 
-class Data {
+class Data {                   //IMPLEMENTADA POR 180077911
 private:
-    int dia;
-    int mes;
-    int ano;
+    string data;
 public:
-    Data(int dia, int mes, int ano);
-    int getDia() const;
-    int getMes() const;
-    int getAno() const;
-    void setDia(int dia);
-    void setMes(int mes);
-    void setAno(int ano);
-    void imprimirData() const;
-private:
-    bool validarData() const;
-};
+    void setData(string);
+    void validar(string);
+    string getData();
+}
 
 class Dinheiro{
 private:

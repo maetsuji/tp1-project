@@ -54,12 +54,8 @@ public:
 
 class TUData {
 private:
-    const static int DIA_VALIDO  = 10;   // Definição de constante para evitar valores mágicos.
-    const static int MES_VALIDO  = 5;   // Definição de constante para evitar valores mágicos.
-    const static int ANO_VALIDO  = 2023;   // Definição de constante para evitar valores mágicos.
-    const static int DIA_INVALIDO  = 32;   // Definição de constante para evitar valores mágicos.
-    const static int MES_INVALIDO  = 13;   // Definição de constante para evitar valores mágicos.
-    const static int ANO_INVALIDO  = 1999;   // Definição de constante para evitar valores mágicos.
+    const std::string VALOR_VALIDO   = "29-02-2020";   // Definição de constante para evitar valores mágicos.
+    const std::string VALOR_INVALIDO = "31-02-2021";   // Definição de constante para evitar valores mágicos.
     Data *data;                             // Referência para a unidade em teste.
     int estado;                             // Estado do teste.
     void setUp();                           // Método para criar unadade em teste.

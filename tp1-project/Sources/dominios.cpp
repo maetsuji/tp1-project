@@ -189,72 +189,45 @@ float Dinheiro::getValor() {
 };
 
 //Data
-void Data::Data(int dia, int mes, int ano) : dia(dia), mes(mes), ano(ano) {
-    if (!validarData()) {
-        cerr << "Erro: Data inválida!\n";
-        this->dia = 0;
-        this->mes = 0;
-        this->ano = 0;
+void Data::setData(string data) {
+    validar(data);
+    this->data = data;
+}
+
+void Data::validar(string data) {
+    if (data.length() != 10 || data[2] != '-' || data[5] != '-') {
+        throw invalid_argument("Formato de data inválido. Use DD-MM-AAAA.");
     }
-};
 
-int Data::getDia() const {
-    return dia;
-};
+    int dia, mes, ano;
+    char hifen1, hifen2;
+    std::istringstream iss(data);
+    iss >> setw(2) >> dia >> hifen1 >> setw(2) >> mes >> hifen2 >> setw(4) >> ano;
 
-int Data::getMes() const {
-    return mes;
-};
-
-int Data::getAno() const {
-    return ano;
-};
-
-void Data::setDia(int dia) {
-    this->dia = dia;
-    if (!validarData()) {
-        cerr << "Erro: Data inválida!\n";
-        this->dia = 0;
+    if (hifen1 != '-' || hifen2 != '-') {
+        throw invalid_argument("Formato de data inválido. Use DD-MM-AAAA.");
     }
-};
 
-void Data::setMes(int mes) {
-    this->mes = mes;
-    if (!validarData()) {
-        cerr << "Erro: Data inválida!\n";
-        this->mes = 0;
+    if (mes < 1 || mes > 12) {
+        throw invalid_argument("Mês inválido. Deve ser entre 01 e 12.");
     }
-};
 
-void Data::setAno(int ano) {
-    this->ano = ano;
-    if (!validarData()) {
-        cerr << "Erro: Data inválida!\n";
-        this->ano = 0;
+    if (ano < 2000 || ano > 2100) {
+        throw invalid_argument("Ano inválido. Deve ser entre 2000 e 2100.");
     }
-};
 
-bool Data::validarData() const {      // validar a data
-    if (ano < 2000 || ano > 2100 || mes < 1 || mes > 12)
-        return false;
-    if (dia < 1)
-        return false;
-    switch (mes) {
-        case 2: // Fevereiro
-            if ((ano % 4 == 0 && ano % 100 != 0) || (ano % 400 == 0))
-                return dia <= 29;
-            else
-                return dia <= 28;
-        case 4: case 6: case 9: case 11: // Meses com 30 dias
-            return dia <= 30;
-        default: // Meses com 31 dias
-            return dia <= 31;
+    bool bissexto = (ano % 4 == 0 && (ano % 100 != 0 || ano % 400 == 0));
+
+    int diasPorMes[] = { 31, (bissexto ? 29 : 28), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
+    if (dia < 1 || dia > diasPorMes[mes - 1]) {
+        throw invalid_argument("Dia inválido para o mês especificado.");
     }
-};
+}
 
-void Data::imprimirData() const {    //  imprimir a data
-    cout << dia << "-" << mes << "-" << ano << endl;
-};
+string Data::getData() {
+    return data;
+}
 
 //Estado
 string Estado::getEstado(){
