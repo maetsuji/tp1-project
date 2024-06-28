@@ -201,7 +201,7 @@ void Data::validar(string data) {
 
     int dia, mes, ano;
     char hifen1, hifen2;
-    std::istringstream iss(data);
+    istringstream iss(data);
     iss >> setw(2) >> dia >> hifen1 >> setw(2) >> mes >> hifen2 >> setw(4) >> ano;
 
     if (hifen1 != '-' || hifen2 != '-') {
