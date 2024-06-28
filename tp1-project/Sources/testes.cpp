@@ -349,7 +349,7 @@ void TUTitulo::testarCenarioSucesso(){
     Nome NOME_VALIDO;
     NOME_VALIDO.setNome("Nome Emissor");
     Setor SETOR_VALIDO;
-    SETOR_VALIDO.setSetor("Setor Válido);
+    SETOR_VALIDO.setSetor("Setor Válido");
     Data DATA_VALIDA;
     DATA_VALIDA.setData("01/01/2023");
     Dinheiro VALOR_VALIDO;
