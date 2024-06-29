@@ -230,14 +230,39 @@ string Data::getData() {
 }
 
 //Estado
+/**
+* Obtém o estado atual.
+*
+* @return o estado atual.
+*/
 string Estado::getEstado(){
     return estado;
 };
+
+/**
+* Define o estado após validar a entrada.
+*
+* Lan&ccedil;a exce&ccedil;&atilde;o caso o estado seja inv&aacute;lido.
+*
+* @param novoEstado O novo estado.
+*
+* @throw invalid_argument
+*/
 
 void Estado::setEstado(string novoEstado){
     validar(novoEstado);
     estado = novoEstado;
 };
+
+/**
+* Valida se o estado fornecido é um dos estados válidos.
+*
+* Lan&ccedil;a exce&ccedil;&atilde;o caso o estado seja inv&aacute;lido.
+*
+* @param estado O estado a ser validado.
+*
+* @throw invalid_argument
+*/
 
 void Estado::validar(string estado){
     if (estado != "Previsto" && estado != "Liquidado" && estado != "Inadimplente") {
@@ -379,15 +404,37 @@ string Senha::get(){
 };
 
 //Setor
+/**
+* Obtém o nome do setor.
+*
+* @return O nome do setor.
+*/
 string Setor::getSetor(){
     return setor;
 };
-
+/**
+* Define o nome do setor após validar a entrada.
+*
+* Lan&ccedil;a exce&ccedil;&atilde;o caso o setor seja inv&aacute;lido.
+*
+* @param novoSetor O novo nome do setor.
+*
+* @throw invalid_argument
+*/
 void Setor::setSetor(string novoSetor) {
     validar(novoSetor);
     setor = novoSetor;
 };
 
+/**
+* Valida se o setor fornecido está entre os setores válidos.
+*
+* Lan&ccedil;a exce&ccedil;&atilde;o caso o setor seja inv&aacute;lido.
+*
+* @param setor O nome do setor a ser validado.
+*
+* @throw invalid_argument
+*/
 void Setor::validar(string setor){
     static const string setoresValidos[] = {
         "Agricultura",
