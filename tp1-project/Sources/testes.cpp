@@ -345,33 +345,33 @@ void TUtitulo::tearDown() {
 }
 
 void TUTitulo::testarCenarioSucesso(){
-    codigodeTitulo TITULO_VALIDO = "CDB";
-    Nome NOME_VALIDO;
-    NOME_VALIDO.setNome("Nome Emissor");
-    Setor SETOR_VALIDO;
-    SETOR_VALIDO.setSetor("Setor Válido");
-    Data DATA_VALIDA;
-    DATA_VALIDA.setData("01/01/2023");
-    Dinheiro VALOR_VALIDO;
-    VALOR_VALIDO.setValor(1000.00);
-
     titulo->setCodigo(CODIGO_VALIDO);
     if (titulo->getCodigo() != CODIGO_VALIDO)
         estado = FALHA;
-    titulo->setEmissor(NOME_VALIDO);
-    if (titulo->getEmissor().getNome() != "Nome Emissor")
+    Nome emissor;
+    emissor.setNome(NOME_VALIDO);
+    emissor->setEmissor(emissor);
+    if (titulo->getEmissao().getNome() != NOME_VALIDO)
         estado = FALHA;
-    titulo->setSetor(SETOR_VALIDO);
-    if (titulo->getSetor().getSetor() != "Setor Válido")
+    Setor setor;
+    setor.setSetor(SETOR_VALIDO);
+    titulo->setSetor(setor);
+    if (titulo->getSetor().getSetor() != SETOR_VALIDO)
         estado = FALHA;
-    titulo->setEmissao(DATA_VALIDA);
-    if (titulo->getEmissao().getData() != "01/01/2023")
+    Data emissao;
+    emissao.setData(DATA_VALIDA);
+    titulo->setEmissao(emissao);
+    if (titulo->getEmissao().getData() != NOME_VALIDO)
         estado = FALHA;
-    titulo->setVencimento(DATA_VALIDA);
-    if (titulo->getVencimento().getData() != "01/01/2023")
+    Data vencimento;
+    vencimento.setData(DATA_VALIDA);
+    titulo->setVencimento(vencimento);
+    if (titulo->getVencimento().getData() != DATA_VALIDA)
         estado = FALHA;
-    titulo->setValor(VALOR_VALIDO);
-    if (titulo->getValor().getValor() != 1000.00)
+    Dinheiro valor;
+    valor.setValor(VALOR_VALIDO);
+    titulo->setValor(valor);
+    if (titulo->getValor().getValor() != VALOR_VALIDO)
         estado = FALHA;
 }
 
