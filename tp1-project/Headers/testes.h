@@ -54,8 +54,8 @@ public:
 
 class TUData {
 private:
-    const std::string VALOR_VALIDO   = "29-02-2020";   // Definição de constante para evitar valores mágicos.
-    const std::string VALOR_INVALIDO = "31-02-2021";   // Definição de constante para evitar valores mágicos.
+    const string VALOR_VALIDO   = "29-02-2020";   // Definição de constante para evitar valores mágicos.
+    const string VALOR_INVALIDO = "31-02-2021";   // Definição de constante para evitar valores mágicos.
     Data *data;                             // Referência para a unidade em teste.
     int estado;                             // Estado do teste.
     void setUp();                           // Método para criar unadade em teste.
@@ -160,10 +160,10 @@ public:
 
 class TUTitulo {
 private:
-    const std::string CODIGO_VALIDO = "CDB";         //Definição de constante para evitar número mágico.
-    const std::string NOME_VALIDO = "Caio Rafik";   //Definição de constante para evitar número mágico.
-    const std::string SETOR_VALIDO = "Agricultura";  //Definição de constante para evitar número mágico.
-    const std::string DATA_VALIDA = "01/01/2023";    //Definição de constante para evitar número mágico.
+    const string CODIGO_VALIDO = "CDB";         //Definição de constante para evitar número mágico.
+    const string NOME_VALIDO = "Caio Rafik";   //Definição de constante para evitar número mágico.
+    const string SETOR_VALIDO = "Agricultura";  //Definição de constante para evitar número mágico.
+    const string DATA_VALIDA = "01/01/2023";    //Definição de constante para evitar número mágico.
     const double VALOR_VALIDO = 1000.00;             //Definição de constante para evitar número mágico.
 
     Titulo *titulo;                                  // Referência para unidade em teste.
