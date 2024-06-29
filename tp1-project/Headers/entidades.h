@@ -22,7 +22,7 @@ private:
     Setor setor;
     Data emissao;
     Data vencimento;
-    Valor valor;
+    Dinheiro valor;
 public:
     void setCodigo(const codigoDeTitulo&);
     void setEmissor(const Nome&);
@@ -35,7 +35,7 @@ public:
     Setor getSetor() const;
     Data getEmissao() const;
     Data getVencimento() const;
-    Valor getValor() const;
+    Dinheiro getValor() const;
 };
 
 class Pagamento{
