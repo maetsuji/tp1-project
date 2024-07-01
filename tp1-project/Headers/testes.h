@@ -89,8 +89,8 @@ public:
 
 class TUNome {
 private:
-    const static string NOME_VALIDO  = "João Silva";   // Definição de constante para evitar valores mágicos.
-    const static string NOME_INVALIDO = "123456"; // Definição de constante para evitar valores mágicos.
+    const static string NOME_VALIDO  = "João Silva";   // Definição de constante para evitar Nomes mágicos.
+    const static string NOME_INVALIDO = "123456"; // Definição de constante para evitar Nomes mágicos.
     Nome *nome;                             // Referência para a unidade em teste.
     int estado;                             // Estado do teste.
     void setUp();                           // Método para criar unadade em teste.

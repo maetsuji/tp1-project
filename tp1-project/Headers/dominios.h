@@ -77,19 +77,15 @@ public:
     void setEstado(string);
 };
 
-class Nome {
+class Nome {                        //IMPLEMENTADA POR 180077911
 private:
-    string primeiroTermo;
-    string segundoTermo;
-    bool validarTermo(const string& termo) const;
-
+    string nome;
 public:
-    Nome(const string& nomeCompleto);
-    string getPrimeiroTermo() const;
-    string getSegundoTermo() const;
-    void setPrimeiroTermo(const string& primeiroTermo);
-    void setSegundoTermo(const string& segundoTermo);
+    void setNome(string);
+    void validar(string);
+    string getNome();
 };
+
 
 //Percentual
 

@@ -151,7 +151,7 @@ int TUDinheiro::run(){
 }
 
 void TUNome::setUp() {
-    nome = new Nome(NOME_VALIDO);
+    nome = new Nome();
     estado = SUCESSO;
 }
 
@@ -160,22 +160,31 @@ void TUNome::tearDown() {
 }
 
 void TUNome::testarCenarioSucesso() {
-    if (nome->getPrimeiroTermo() != "João" || nome->getSegundoTermo() != "Silva") {
+    try {
+        nome->setNome(NOME_VALIDO);
+        if (nome->getNome() != NOME_VALIDO) {
+            estado = FALHA;
+        }
+    } catch (invalid_argument &e) {
         estado = FALHA;
     }
 }
 
 void TUNome::testarCenarioFalha() {
-    Nome nomeInvalido(NOME_INVALIDO);
-    if (!nomeInvalido.getPrimeiroTermo().empty() || !nomeInvalido.getSegundoTermo().empty()) {
-        estado = FALHA;
+    try {
+        nome->setNome(NOME_INVALIDO);
+        estado = FALHA;  // Se não lançar exceção, falha o teste
+    } catch (invalid_argument &e) {
+        // Exceção esperada, o estado permanece SUCESSO
     }
 }
 
 int TUNome::run() {
     setUp();
     testarCenarioSucesso();
-    testarCenarioFalha();
+    if (estado == SUCESSO) {
+        testarCenarioFalha();
+    }
     tearDown();
     return estado;
 }

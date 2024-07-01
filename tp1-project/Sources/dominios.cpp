@@ -271,50 +271,48 @@ void Estado::validar(string estado){
 };
 
 //Nome
-void Nome::Nome(const std::string& nomeCompleto) {
-    size_t pos = nomeCompleto.find(' ');
-    primeiroTermo = nomeCompleto.substr(0, pos);
-    if (pos != std::string::npos) {
-        segundoTermo = nomeCompleto.substr(pos + 1);
+
+// Função para definir o valor do nome
+void Nome::setNome(string nome) { 
+    validar(nome);
+    this->nome = nome;
+}
+
+// Função de validação
+void Nome::validar(string nome) {
+    size_t len = nome.length();
+    if (len < 3 || len > 21) {
+        throw invalid_argument("Nome deve ter entre 3 e 21 caracteres.");
     }
-    if (!validarTermo(primeiroTermo) || !validarTermo(segundoTermo)) {
-        std::cerr << "Erro: Termo(s) inválido(s)!\n";
-        primeiroTermo.clear();
-        segundoTermo.clear();
+
+    int termo_count = count(nome.begin(), nome.end(), ' ') + 1;
+    if (termo_count > 2) {
+        throw invalid_argument("Nome deve ser composto por um ou dois termos.");
+    }
+
+    string::size_type pos = 0;
+    for (int i = 0; i < termo_count; ++i) {
+        string::size_type next_space = nome.find(' ', pos);
+        size_t term_len = (next_space == string::npos) ? len - pos : next_space - pos;
+        if (term_len < 3 || term_len > 10) {
+            throw invalid_argument("Cada termo deve ter entre 3 e 10 caracteres.");
+        }
+        for (size_t j = pos; j < pos + term_len; ++j) {
+            if (!isalpha(nome[j])) {
+                throw invalid_argument("Cada caractere deve ser uma letra.");
+            }
+        }
+        if (!isupper(nome[pos])) {
+            throw invalid_argument("Primeiro caractere de cada termo deve ser letra maiúscula.");
+        }
+        pos = next_space + 1;
     }
 }
 
-bool Nome::validarTermo(const std::string& termo) const {
-    if (termo.empty() || !isupper(termo[0])) // Primeiro caractere deve ser maiúscula
-        return false;
-    for (char c : termo) {
-        if (!isalpha(c))
-            return false; // Caractere não é uma letra
-    }
-    return true;
+// Função para obter o valor do nome
+string Nome::getNome() {
+    return nome;
 }
-string Nome::getPrimeiroTermo() const {
-    return primeiroTermo;
-}
-string Nome::getSegundoTermo() const {
-    return segundoTermo;
-};
-
-void Nome::setPrimeiroTermo(const string& primeiroTermo) {
-    if (validarTermo(primeiroTermo)) {
-        this->primeiroTermo = primeiroTermo;
-    } else {
-        cerr << "Erro: Primeiro termo inválido!\n";
-    }
-};
-
-void Nome::setSegundoTermo(const string& segundoTermo) {
-    if (validarTermo(segundoTermo)) {
-        this->segundoTermo = segundoTermo;
-    } else {
-        cerr << "Erro: Segundo termo inválido!\n";
-    }
-};
 
 //Percentual
 
