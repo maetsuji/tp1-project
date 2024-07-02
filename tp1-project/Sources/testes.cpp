@@ -354,29 +354,36 @@ void TUtitulo::tearDown() {
 }
 
 void TUTitulo::testarCenarioSucesso(){
-    titulo->setCodigo(CODIGO_VALIDO);
-    if (titulo->getCodigo() != CODIGO_VALIDO)
+    codigoDeTitulo codigodetitulo
+    codigodetitulo.setCodigo(CODIGO_VALIDO);
+    titulo->setCodigo(codigodetitulo);
+    if (titulo->getCodigo().getCodigo() != CODIGO_VALIDO)
         estado = FALHA;
+    
     Nome emissor;
     emissor.setNome(NOME_VALIDO);
-    emissor->setEmissor(emissor);
-    if (titulo->getEmissao().getNome() != NOME_VALIDO)
+    titulo->setEmissor(emissor);
+    if (titulo->getEmissor().getNome() != NOME_VALIDO)
         estado = FALHA;
+    
     Setor setor;
     setor.setSetor(SETOR_VALIDO);
     titulo->setSetor(setor);
     if (titulo->getSetor().getSetor() != SETOR_VALIDO)
         estado = FALHA;
+    
     Data emissao;
     emissao.setData(DATA_VALIDA);
     titulo->setEmissao(emissao);
     if (titulo->getEmissao().getData() != DATA_VALIDO)
         estado = FALHA;
+    
     Data vencimento;
     vencimento.setData(DATA_VALIDA);
     titulo->setVencimento(vencimento);
     if (titulo->getVencimento().getData() != DATA_VALIDA)
         estado = FALHA;
+    
     Dinheiro valor;
     valor.setValor(VALOR_VALIDO);
     titulo->setValor(valor);
@@ -385,6 +392,48 @@ void TUTitulo::testarCenarioSucesso(){
 }
 
 int TUTitulo::run() {
+    setUp();
+    testarCenarioSucesso();
+    tearDown();
+    return estado;
+}
+
+void TUPagamento::setUp(){
+    pagamento = new Pagamento();
+    estado = SUCESSO;
+}
+
+void TUPagamento::tearDown(){
+    delete pagamento;
+}
+
+void TUPagamento::testarCenarioSucesso(){
+    codigoDePagamento codigodepagamento;
+    codigodepagamento.setCodigo(CODIGO_VALIDO);
+    pagamento->setCodigo(codigodepagamento);
+    if (pagamento->getCodigo().getCodigo() != CODIGO_VALIDO)
+        estado = FALHA;
+    
+    Data data;
+    data.setData(DATA_VALIDA);
+    pagamento->setData(data);
+    if (pagamento->getData().getData() != DATA_VALIDA)
+        estado = FALHA;
+    
+    Percentual percentual;
+    percentual.setPercentual(PERCENTUAL_VALIDO);
+    pagamento->setPercentual(percentual);
+    if (pagamento->getPercentual().getPercentual() != PERCENTUAL_VALIDO)
+        estado = FALHA;
+
+    Estado estado_obj;
+    estado_obj.setEstado(ESTADO_VALIDO);
+    pagamento->setEstado(estado_obj);
+    if (pagamento->getEstado().getEstado() != ESTADO_VALIDO)
+        estado = FALHA;
+}
+
+int TUPagamento::run(){
     setUp();
     testarCenarioSucesso();
     tearDown();
