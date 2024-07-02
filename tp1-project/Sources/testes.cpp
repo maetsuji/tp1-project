@@ -370,7 +370,7 @@ void TUTitulo::testarCenarioSucesso(){
     Data emissao;
     emissao.setData(DATA_VALIDA);
     titulo->setEmissao(emissao);
-    if (titulo->getEmissao().getData() != NOME_VALIDO)
+    if (titulo->getEmissao().getData() != DATA_VALIDO)
         estado = FALHA;
     Data vencimento;
     vencimento.setData(DATA_VALIDA);
