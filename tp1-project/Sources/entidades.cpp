@@ -44,7 +44,7 @@ void Titulo::void setVencimento(const Data& vencimento){
     this->vencimento = vencimento;
 }
 
-void Titulo::setValor(const Valor& valor){
+void Titulo::setValor(const Dinheiro& valor){
     this->valor = valor;
 }
 
