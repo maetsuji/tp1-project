@@ -1,6 +1,17 @@
 using namespace std;
 
-class codigoDePagamento{
+
+//Codigo de Pagamento
+
+/**
+* Padr&atilde;o para representa&ccedil;&atilde;o de c&oacute;digo de pagamento.
+*
+* Regras de formato:
+*
+* - C&oacute;digo de pagamento &eacute; v&aacute;lido se possui exatamente 9 caracteres sendo d&iacute;gitos num&eacute;ricos de 0 a 9.
+* - O primeiro d&iacute;gito &eacute; diferente de '0'.
+*/
+class codigoDePagamento{            //IMPLEMENTADA POR 231019003
 private:
     string codigoDePagamento;
 
@@ -107,14 +118,27 @@ public:
     int getValor();
 };
 
+
 //Senha
-class Senha{
+
+/**
+* Padr&atilde;o para representa&ccedil;&atilde;o de senha.
+*
+* Regras de formato:
+*
+* - Senha &eacute; v&aacute;lida se possui exatamente 6 caracteres sendo d&iacute;gitos num&eacute;ricos de 0 a 9 sem repeti&ccedil;&atilde;o de d&iacute;gitos.
+* - O primeiro d&iacute;gito &eacute; diferente de '0'.
+* - Sequ&ecirc;ncia de caracteres n&atilde;o pode ser sequ&ecirc;ncia de d&iacute;gitos em ordem crescente ou decrescente.
+*/
+
+
+class Senha{                //IMPLEMENTADA POR 231019003
 private:
     string senha;
 public:
     void validar(string);
-    void set(string);
-    string get();
+    void setSenha(string);
+    string getSenha();
 
 };
 

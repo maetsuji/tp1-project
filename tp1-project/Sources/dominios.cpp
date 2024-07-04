@@ -1,21 +1,52 @@
 using namespace std;
 
 //Codigo de pagamento
+
+/**
+* Verifica se o c&oacute;digo possui exatamente 9 caracteres.
+*
+* Depois, verifica se o todos os caracteres s&atilde;o d&iacute;gitos.
+*
+* Depois, verifica se o primeiro d&iacute;gito &eacute; diferente de '0'.
+*
+* Lan&ccedil;a exce&ccedil;&atilde;o caso o c&oacute;digo seja inv&aacute;lido.
+*
+* @param codigoDePagamento C&oacute;digo.
+*
+* @throw invalid_argument
+*/
+
 void codigoDePagamento::validar(string codigoDePagamento){
      int tamanho = codigoDePagamento.size();
             if(tamanho != 9){
                     throw invalid_argument("Codigo de Pagamento Fornecido Invalido (nao tem 9 caracteres)");} //checa se tem 9 digitos
-            if(codigoDePagamento[0] == '0') {
-                throw invalid_argument( "Codigo de Pagamento Fornecido Invalido (o primeiro digito e 0)"); } //checa se o primeiro digito !=0
             for(int i = 0; i < tamanho; i++){
                 if(!isdigit(codigoDePagamento[i])){
                     throw invalid_argument ( "Codigo de Pagamento Fornecido Invalido (nem todos os caracteres sao digitos)");}} // checa se os digitos sao digitos
+            if(codigoDePagamento[0] == '0') {
+                throw invalid_argument( "Codigo de Pagamento Fornecido Invalido (o primeiro digito e 0)"); } //checa se o primeiro digito !=0
 };
+
+/**
+* Armazena o c&oacute;digo informado caso o mesmo seja v&aacute;lido.
+*
+* Lan&ccedil;a exce&ccedil;&atilde;o caso o c&oacute;digo informado seja inv&aacute;lido.
+*
+* @param valor C&oacute;digo.
+*
+* @throw invalid_argument
+*/
 
 void codigoDePagamento::setCodigo(string codigoDePagamento){
     validar(codigoDePagamento);
     this->codigoDePagamento = codigoDePagamento;
 };
+
+/**
+* Retorna c&oacute;digo de pagamento.
+*
+* @return C&oacute;digo
+*/
 
 string codigoDePagamento::getCodigo(){
     return codigoDePagamento;
@@ -403,6 +434,23 @@ int Percentual::getValor()
 };
 
 //Senha
+
+/**
+* Verifica se a senha possui exatamente 6 caracteres.
+*
+* Depois, verifica se o todos os caracteres s&atilde;o d&iacute;gitos.
+*
+* Depois, verifica se o primeiro caracter &eacute; diferente de '0'.
+*
+* Depois, verifica se todos os caracteres s&atilde;o d&iacute;gitos num&eacute;ricos de 0 a 9 e checa se est&atilde;o em ordem crescente ou decrescente.
+*
+* Lan&ccedil;a exce&ccedil;&atilde;o caso a senha seja inv&aacute;lida.
+*
+* @param valor Senha.
+*
+* @throw invalid_argument
+*/
+
 void Senha::validar(string senha){
     int tamanho = senhaTeste.size();
         if(tamanho != 6){
@@ -435,12 +483,27 @@ void Senha::validar(string senha){
 
         };
 
-void Senha::set(string senha){
+/**
+* Armazena a senha informada caso a mesma seja v&aacute;lida.
+*
+* Lan&ccedil;a exce&ccedil;&atilde;o caso a senha informada seja inv&aacute;lida.
+*
+* @param valor Senha.
+*
+* @throw invalid_argument
+*/
+
+void Senha::setSenha(string senha){
     validar(senha);
     this->senha=senha;
 };
 
-string Senha::get(){
+/**
+* Retorna a senha.
+*
+* @return Senha.
+*/
+string Senha::getSenha(){
     return senha;
 };
 

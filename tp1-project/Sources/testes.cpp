@@ -1,6 +1,84 @@
 using namespace std;
 
 //TESTES DE DOMÍNIOS
+void TUCodigoDePagamento::setUp(){
+    codigo = new codigoDePagamento();
+    estado = SUCESSO;
+}
+
+void TUCodigoDePagamento::tearDown(){
+    delete codigo;
+}
+
+void TUCodigoDePagamento::testarCenarioSucesso(){
+    try{
+        codigo->setCodigo(VALOR_VALIDO);
+        if (codigo->getCodigo() != VALOR_VALIDO)
+            estado = FALHA;
+    }
+    catch(invalid_argument &excecao){
+        estado = FALHA;
+    }
+}
+
+void TUCodigoDePagamento::testarCenarioFalha(){
+    try{
+        codigo->setCodigo(VALOR_INVALIDO);
+        estado = FALHA;
+    }
+    catch(invalid_argument &excecao){
+        if (codigo->getCodigo() == VALOR_INVALIDO)
+            estado = FALHA;
+    }
+}
+
+int TUCodigoDePagamento::run(){
+    setUp();
+    testarCenarioSucesso();
+    testarCenarioFalha();
+    tearDown();
+    return estado;
+}
+
+void TUSenha::setUp(){
+    senha = new Senha();
+    estado = SUCESSO;
+}
+
+void TUSenha::tearDown(){
+    delete senha;
+}
+
+void TUSenha::testarCenarioSucesso(){
+    try{
+        senha->setSenha(VALOR_VALIDO);
+        if (senha->getSenha() != VALOR_VALIDO)
+            estado = FALHA;
+    }
+    catch(invalid_argument &excecao){
+        estado = FALHA;
+    }
+}
+
+void TUSenha::testarCenarioFalha(){
+    try{
+        senha->setSenha(VALOR_INVALIDO);
+        estado = FALHA;
+    }
+    catch(invalid_argument &excecao){
+        if (senha->getSenha() == VALOR_INVALIDO)
+            estado = FALHA;
+    }
+}
+
+int TUSenha::run(){
+    setUp();
+    testarCenarioSucesso();
+    testarCenarioFalha();
+    tearDown();
+    return estado;
+}
+
 
 void TUCodigoDeTitulo::setUp(){
     codigo = new codigoDeTitulo();
