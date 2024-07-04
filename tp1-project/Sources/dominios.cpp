@@ -83,7 +83,7 @@ string codigoDeTitulo::getCodigo(){
     return codigoDeTitulo;
 };
 
-// CPF
+// CPF, implementado por 232009502
 /**
  * Armazena o CPF informado caso este seja v&aacute;lido
  *
@@ -98,6 +98,17 @@ void CPF::setCPF(string CPF){
     validar(CPF);
     this->CPF=CPF;
 };
+
+/**
+ * Analisa se o CPF inserido &eacute; v&aacute;lido por meio do algoritmo disponibilizado pelo Minist&eacute;rio da Fazenda.
+ * Verifica-se o tamanho, o formato, e a validez de acordo com os d&iacute;gitos de valida&ccedil;&atilde;o.
+ *
+ * Lança a exce&ccedil;&atilde;o caso o CPF informado seja inv&aacute;lido.
+ *
+ * @param CPF cpf.
+ *
+ * @throw invalid_argument
+ */
 
 void CPF::validar(string CPF){
     // modelo: XXX.XXX.XXX-CC
@@ -167,15 +178,41 @@ void CPF::validar(string CPF){
     };
 };
 
+/**
+* Retorna CPF
+*
+* @return CPF
+*/
+
 string CPF::getCPF(){
     return CPF;
 };
 
-//Dinheiro
+//Dinheiro, implementado por 232009502
+
+/**
+* Armazena o Valor monet&aacute;rio informado caso este seja v&aacute;lido
+*
+* Lança a exce&ccedil;&atilde;o caso o valor informado seja inv&aacute;lido.
+*
+* @param Dinheiro valor
+*
+* @throw invalid_argument
+*/
 void Dinheiro::setValor(float valor){
     validar(valor);
     this->valor=valor;
 };
+
+/**
+ * Verifica se o valor inserido se encontra no intervalo [0, 1000000]
+ *
+ * Lança a exce&ccedil;&atilde;o caso o valor informado esteja fora do intervalo proposto.
+ *
+ * @param Dinheiro valor.
+ *
+ * @throw invalid_argument
+ */
 
 void Dinheiro::validar(float valor){
     //codar aqui
@@ -183,6 +220,12 @@ void Dinheiro::validar(float valor){
       throw invalid_argument("Valor invalido!");
     };
 };
+
+/**
+* Retorna o valor
+*
+* @return valor
+*/
 
 float Dinheiro::getValor() {
     return valor;
@@ -273,7 +316,7 @@ void Estado::validar(string estado){
 //Nome
 
 // Função para definir o valor do nome
-void Nome::setNome(string nome) { 
+void Nome::setNome(string nome) {
     validar(nome);
     this->nome = nome;
 }
