@@ -2,6 +2,45 @@ using namespace std;
 
 //TESTES DE DOMÍNIO
 
+class TUCodigoDePagamento {                 //IMPLEMENTADA POR 231019003
+private:
+    const string VALOR_VALIDO = 901765432   // Definição de constante para evitar valores mágicos.
+    const string VALOR_INVALIDO = 098887777 // Definição de constante para evitar valores mágicos.
+    codigoDePagamento * codigo;             // Referência para unidade em teste.
+    int estado();                           // Estado do teste.
+    void setUp();                           // Método para criar unidade em teste.
+    void tearDown();                        // Método para destruir unidade em teste.
+    void testarCenarioSucesso();            // Cenário de teste.
+    void testarCenarioFalha();              // Cenário de teste.
+
+public:
+    const static int SUCESSO = 0;           // Definição de constante para reportar resultado de teste.
+    const static int FALHA = -1;            // Definição de constante para reportar resultado de teste.
+    int run();                              // Método para executar teste.
+
+};
+
+
+class TUSenha {                             // IMPLEMENTADA POR 231019003
+private:
+    const string VALOR_VALIDO = 290805      // Definição de constante para evitar valores mágicos.
+    const string VALOR_INVALIDO = 123456    // Definição de constante para evitar valores mágicos.
+    Senha * senha;                          // Referência para unidade em teste.
+    int estado();                           // Estado do teste.
+    void setUp();                           // Método para criar unidade em teste.
+    void tearDown();                        // Método para destruir unidade em teste.
+    void testarCenarioSucesso();            // Cenário de teste.
+    void testarCenarioFalha();              // Cenário de teste.
+
+public:
+    const static int SUCESSO = 0;           // Definição de constante para reportar resultado de teste.
+    const static int FALHA = -1;            // Definição de constante para reportar resultado de teste.
+    int run();                              // Método para executar teste.
+
+};
+
+
+
 class TUCodigoDeTitulo {                   //IMPLEMENTADA POR 231028746
 private:
     const string VALOR_VALIDO   = "CRA1913576A";   // Definição de constante para evitar número mágico.

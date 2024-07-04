@@ -392,12 +392,12 @@ void Senha::validar(string senha){
 
         };
 
-void Senha::set(string senha){
+void Senha::setSenha(string senha){
     validar(senha);
     this->senha=senha;
 };
 
-string Senha::get(){
+string Senha::getSenha(){
     return senha;
 };
 
