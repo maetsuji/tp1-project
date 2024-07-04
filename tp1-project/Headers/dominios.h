@@ -41,8 +41,17 @@ public:
     string getCodigo();
 };
 
-//CPF
-class CPF{
+/**
+* Padr&atilde;o para representa&ccedil;&atilde;o de CPF.
+*
+* Regras de formato:
+*
+* - CPF &eacute; v&aacute;lido se for uma string no formato "XXX.XXX.XXX-CC"
+* - Os algarismos do CPF não podem ser todos iguais (CPFs notavelmente inv&aacute;lidos)
+* - O CPF deve passar na valida&ccedil;&atilde;o dos dois d&iacute;gitos (conforme determinado pelo Minist&eacute;rio da Fazenda)
+*/
+
+class CPF{                     // Implementada por 232009502
 private:
     string CPF;
 public:
@@ -60,7 +69,16 @@ public:
     string getData();
 }
 
-class Dinheiro{
+/**
+* Padr&atilde;o para representa&ccedil;&atilde;o do Dinheiro
+*
+* Regras de formato:
+*
+* - O valor deve ser um float maior-igual a zero e menor-igual a 1000000
+*/
+
+
+class Dinheiro{                 // Implementada por 232009502
 private:
     float valor;
 public:

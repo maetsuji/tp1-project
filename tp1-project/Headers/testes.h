@@ -53,12 +53,12 @@ private:
     void testarCenarioFalha();              // Cenário de teste.
 
 public:
-    const static int SUCESSO =  0;       
-    const static int FALHA   = -1;      
+    const static int SUCESSO =  0;
+    const static int FALHA   = -1;
     int run();
 };
 
-class TUCPF {
+class TUCPF {                               // Implementada por 232009502
 private:
     const static string VALOR_VALIDO    = "761.776.634-35";   // CPF fictício válido
     const static string VALOR_INVALIDO  = "099.000.999-88";   // CPF fictício inválido
@@ -70,12 +70,12 @@ private:
     void testarCenarioFalha();
 
 public:
-    const static int SUCESSO =  0;       
-    const static int FALHA   = -1;      
+    const static int SUCESSO =  0;
+    const static int FALHA   = -1;
     int run();
 };
 
-class TUDinheiro {
+class TUDinheiro {                          // Implementada por 232009502
 private:
     const static float VALOR_VALIDO    = 7343.57;      // Valor válido
     const static float VALOR_INVALIDO  = 4000999.69;   // Valor inválido
@@ -86,8 +86,8 @@ private:
     void testarCenarioSucesso();
     void testarCenarioFalha();
 public:
-    const static int SUCESSO =  0;       
-    const static int FALHA   = -1;      
+    const static int SUCESSO =  0;
+    const static int FALHA   = -1;
     int run();
 };
 
@@ -103,8 +103,8 @@ private:
     void testarCenarioFalha();
 
 public:
-    const static int SUCESSO =  0;       
-    const static int FALHA   = -1;      
+    const static int SUCESSO =  0;
+    const static int FALHA   = -1;
     int run();
 
 };
@@ -121,8 +121,8 @@ private:
     void testarCenarioFalha();
 
 public:
-    const static int SUCESSO =  0;       
-    const static int FALHA   = -1;      
+    const static int SUCESSO =  0;
+    const static int FALHA   = -1;
     int run();
 };
 
@@ -138,8 +138,8 @@ private:
     void testarCenarioFalha();
 
 public:
-    const static int SUCESSO =  0;       
-    const static int FALHA   = -1;      
+    const static int SUCESSO =  0;
+    const static int FALHA   = -1;
     int run();
 };
 
@@ -155,26 +155,26 @@ private:
     void testarCenarioFalha();
 
 public:
-    const static int SUCESSO =  0;       
-    const static int FALHA   = -1;      
-    int run();                         
+    const static int SUCESSO =  0;
+    const static int FALHA   = -1;
+    int run();
 };
 
 class TUSetor {
 private:
     const static string VALOR_VALIDO    = "Agricultura";  //Setor fictício válido
     const static string VALOR_INVALIDO  = "Agronomia";  //Setor fictício inválido
-    Setor *setor;                       
+    Setor *setor;
     int estado;
     void setUp();
     void tearDown();
     void testarCenarioSucesso();
-    void testarCenarioFalha();      
+    void testarCenarioFalha();
 
 public:
-    const static int SUCESSO =  0;       
-    const static int FALHA   = -1;      
-    int run();                         
+    const static int SUCESSO =  0;
+    const static int FALHA   = -1;
+    int run();
 };
 
 
@@ -198,36 +198,36 @@ public:
 
 class TUTitulo {
 private:
-    const string CODIGO_VALIDO = "CDB";       
-    const string NOME_VALIDO = "Caio Rafik"; 
-    const string SETOR_VALIDO = "Agricultura";  
-    const string DATA_VALIDA = "01/01/2023";   
-    const double VALOR_VALIDO = 1000.00;         
+    const string CODIGO_VALIDO = "CDB";
+    const string NOME_VALIDO = "Caio Rafik";
+    const string SETOR_VALIDO = "Agricultura";
+    const string DATA_VALIDA = "01/01/2023";
+    const double VALOR_VALIDO = 1000.00;
 
-    Titulo *titulo;                     
-    int estado;                             
-    void setUp();                                 
-    void tearDown();                           
+    Titulo *titulo;
+    int estado;
+    void setUp();
+    void tearDown();
     void testarCenarioSucesso();
 public:
-    const static int SUCESSO = 0;             
-    const static int FALHA = -1;                 
-    int run();                              
+    const static int SUCESSO = 0;
+    const static int FALHA = -1;
+    int run();
 };
 
 class TUPagamento{                   //IMPLEMENTADA POR 231028746
 private:
-    const int CODIGO_VALIDO="789456123";  
-    const string DATA_VALIDA = "01/01/2023"; 
-    const int PERCENTUAL_VALIDO="92";       
+    const int CODIGO_VALIDO="789456123";
+    const string DATA_VALIDA = "01/01/2023";
+    const int PERCENTUAL_VALIDO="92";
     const int ESTADO_VALIDO="Previsto";
-    Pagamento *pagamento 
-    int estado;                           
-    void setUp();                       
-    void tearDown();                   
+    Pagamento *pagamento
+    int estado;
+    void setUp();
+    void tearDown();
     void testarCenarioSucesso();
 public:
-    const static int SUCESSO =  0;         
-    const static int FALHA   = -1;        
-    int run();                           
+    const static int SUCESSO =  0;
+    const static int FALHA   = -1;
+    int run();
 };
