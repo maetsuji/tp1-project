@@ -1,3 +1,6 @@
+#include <stdexcept>
+#include "testes.h"
+
 using namespace std;
 
 //TESTES DE DOMÍNIOS
@@ -190,7 +193,7 @@ int TUCPF::run(){
 }
 
 void TUDinheiro::setUp(){
-    valor = new Valor();
+    valor = new Dinheiro();
     estado = SUCESSO;
 }
 
@@ -198,7 +201,7 @@ void TUDinheiro::tearDown(){
     delete valor;
 }
 
-void TUDinheiror::testarCenarioSucesso(){
+void TUDinheiro::testarCenarioSucesso(){
     try{
         valor->setValor(VALOR_VALIDO);
         if (valor->getValor() != VALOR_VALIDO)
@@ -215,7 +218,7 @@ void TUDinheiro::testarCenarioFalha(){
         estado = FALHA;
     }
     catch(invalid_argument &excecao){
-        if (valor->getCPF() == VALOR_INVALIDO)
+        if (valor->getValor() == VALOR_INVALIDO)
             estado = FALHA;
     }
 }
@@ -282,7 +285,7 @@ void TUData::testarCenarioSucesso(){
         if (data->getData() != VALOR_VALIDO)
             estado = FALHA;
     }
-    catch(std::invalid_argument &excecao){
+    catch(invalid_argument &excecao){
         estado = FALHA;
     }
 }
@@ -292,7 +295,7 @@ void TUData::testarCenarioFalha(){
         data->setData(VALOR_INVALIDO);
         estado = FALHA;
     }
-    catch(std::invalid_argument &excecao){
+    catch(invalid_argument &excecao){
         if (data->getData() == VALOR_INVALIDO)
             estado = FALHA;
     }
@@ -307,18 +310,18 @@ int TUData::run() {
 }
 
 void TUEstado::setUp(){
-    estad_o = new Setor();
+    estado_obj = new Estado();
     estado = SUCESSO;
 }
 
 void TUEstado::tearDown(){
-    delete estad_o;
+    delete estado_obj;
 }
 
 void TUEstado::testarCenarioSucesso(){
     try{
-        estad_o->setEstado(VALOR_VALIDO);
-        if (estad_o->getEstado() != VALOR_VALIDO)
+        estado_obj->setEstado(VALOR_VALIDO);
+        if (estado_obj->getEstado() != VALOR_VALIDO)
             estado = FALHA;
     }
     catch(invalid_argument &excecao){
@@ -328,11 +331,11 @@ void TUEstado::testarCenarioSucesso(){
 
 void TUEstado::testarCenarioFalha(){
     try{
-        estad_o->setEstado(VALOR_INVALIDO);
+        estado_obj->setEstado(VALOR_INVALIDO);
         estado = FALHA;
     }
     catch(invalid_argument &excecao){
-        if (estad_o->getEstado() == VALOR_INVALIDO)
+        if (estado_obj->getEstado() == VALOR_INVALIDO)
             estado = FALHA;
     }
 }
@@ -342,7 +345,7 @@ int TUEstado::run(){
     testarCenarioSucesso();
     testarCenarioFalha();
     tearDown();
-    return estado;
+    return estado;
 }
 
 void TUSetor::setUp(){
@@ -381,7 +384,7 @@ int TUSetor::run(){
     testarCenarioSucesso();
     testarCenarioFalha();
     tearDown();
-    return estado;
+    return estado;
 }
 
 //TESTES DE ENTIDADE
@@ -392,18 +395,18 @@ void TUConta::setUp(){
 }
 
 void TUConta::tearDown(){
-    delete codigo;
+    delete conta;
 }
 
 void TUConta::testarCenarioSucesso(){
     CPF cpf;
-    cpf.setCpf(CPF_VALIDO);
-    conta->setCpf(cpf);
-    if (conta->getCpf().getCpf() != CPF_VALIDO)
+    cpf.setCPF(CPF_VALIDO);
+    conta->setCPF(cpf);
+    if (conta->getCPF().getCPF() != CPF_VALIDO)
         estado = FALHA;
 
     Nome nome;
-    nome.setCpf(NOME_VALIDO);
+    nome.setNome(NOME_VALIDO);
     conta->setNome(nome);
     if (conta->getNome().getNome() != NOME_VALIDO)
         estado = FALHA;
@@ -422,46 +425,46 @@ int TUConta::run(){
     return estado;
 }
 
-void TuTitulo::setUp() {
+void TUTitulo::setUp() {
     titulo = new Titulo();
     estado = SUCESSO;
 }
 
-void TUtitulo::tearDown() {
+void TUTitulo::tearDown() {
     delete titulo;
 }
 
 void TUTitulo::testarCenarioSucesso(){
-    codigoDeTitulo codigodetitulo
+    codigoDeTitulo codigodetitulo;
     codigodetitulo.setCodigo(CODIGO_VALIDO);
     titulo->setCodigo(codigodetitulo);
     if (titulo->getCodigo().getCodigo() != CODIGO_VALIDO)
         estado = FALHA;
-    
+
     Nome emissor;
     emissor.setNome(NOME_VALIDO);
     titulo->setEmissor(emissor);
     if (titulo->getEmissor().getNome() != NOME_VALIDO)
         estado = FALHA;
-    
+
     Setor setor;
     setor.setSetor(SETOR_VALIDO);
     titulo->setSetor(setor);
     if (titulo->getSetor().getSetor() != SETOR_VALIDO)
         estado = FALHA;
-    
+
     Data emissao;
     emissao.setData(DATA_VALIDA);
     titulo->setEmissao(emissao);
-    if (titulo->getEmissao().getData() != DATA_VALIDO)
+    if (titulo->getEmissao().getData() != DATA_VALIDA)
         estado = FALHA;
-    
+
     Data vencimento;
     vencimento.setData(DATA_VALIDA);
     titulo->setVencimento(vencimento);
     if (titulo->getVencimento().getData() != DATA_VALIDA)
         estado = FALHA;
-    
+
     Dinheiro valor;
     valor.setValor(VALOR_VALIDO);
     titulo->setValor(valor);
@@ -491,17 +494,17 @@ void TUPagamento::testarCenarioSucesso(){
     pagamento->setCodigo(codigodepagamento);
     if (pagamento->getCodigo().getCodigo() != CODIGO_VALIDO)
         estado = FALHA;
-    
+
     Data data;
     data.setData(DATA_VALIDA);
     pagamento->setData(data);
     if (pagamento->getData().getData() != DATA_VALIDA)
         estado = FALHA;
-    
+
     Percentual percentual;
-    percentual.setPercentual(PERCENTUAL_VALIDO);
+    percentual.setValor(PERCENTUAL_VALIDO);
     pagamento->setPercentual(percentual);
-    if (pagamento->getPercentual().getPercentual() != PERCENTUAL_VALIDO)
+    if (pagamento->getPercentual().getValor() != PERCENTUAL_VALIDO)
         estado = FALHA;
 
     Estado estado_obj;
