@@ -263,10 +263,31 @@ float Dinheiro::getValor() {
 };
 
 //Data
+
+/**
+ * Armazena a data informada caso a mesma seja válida.
+ *
+ * Lança exceção caso a data informada seja inválida.
+ *
+ * @param data Data no formato DD-MM-AAAA.
+ *
+ * @throw invalid_argument
+ */
+
 void Data::setData(string data) {
     validar(data);
     this->data = data;
 }
+
+/**
+ * Verifica se a data possui o formato DD-MM-AAAA e se é uma data válida.
+ *
+ * Lança exceção caso a data seja inválida de acordo com as regras especificadas.
+ *
+ * @param data Data no formato DD-MM-AAAA.
+ *
+ * @throw invalid_argument
+ */
 
 void Data::validar(string data) {
     if (data.length() != 10 || data[2] != '-' || data[5] != '-') {
@@ -298,6 +319,12 @@ void Data::validar(string data) {
         throw invalid_argument("Dia inválido para o mês especificado.");
     }
 }
+
+/**
+ * Retorna a data armazenada.
+ *
+ * @return Data no formato DD-MM-AAAA
+ */
 
 string Data::getData() {
     return data;
@@ -346,13 +373,31 @@ void Estado::validar(string estado){
 
 //Nome
 
-// Função para definir o valor do nome
+/**
+ * Armazena o nome informado caso o mesmo seja válido.
+ *
+ * Lança exceção caso o nome informado seja inválido.
+ *
+ * @param nome Nome a ser definido.
+ *
+ * @throw invalid_argument
+ */
+
 void Nome::setNome(string nome) {
     validar(nome);
     this->nome = nome;
 }
 
-// Função de validação
+/**
+ * Função de validação para verificar se o nome atende aos critérios especificados.
+ *
+ * Lança exceção caso o nome seja inválido de acordo com as regras estabelecidas.
+ *
+ * @param nome Nome a ser validado.
+ *
+ * @throw invalid_argument
+ */
+
 void Nome::validar(string nome) {
     size_t len = nome.length();
     if (len < 3 || len > 21) {
@@ -383,7 +428,12 @@ void Nome::validar(string nome) {
     }
 }
 
-// Função para obter o valor do nome
+/**
+ * Retorna o valor do nome armazenado.
+ *
+ * @return Nome
+ */
+
 string Nome::getNome() {
     return nome;
 }
