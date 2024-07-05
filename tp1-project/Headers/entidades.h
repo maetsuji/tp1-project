@@ -5,6 +5,17 @@
 
 using namespace std;
 
+
+/**
+* Padr&atilde;o para representa&ccedil;&atilde;o de conta.
+*
+* Regras de formato:
+*
+* - Conta possui os atributos cpf, nome e senha.
+* - Conta &eacute; v&acute;lida se os atributos forem v&acute;lidos.
+*/
+
+
 class Conta{
 private:
     CPF cpf;
@@ -18,6 +29,15 @@ public:
     Nome getNome() const;
     Senha getSenha() const;
 };
+
+/**
+* Padr&atilde;o para representa&ccedil;&atilde;o de t&iacute;tulo.
+*
+* Regras de formato:
+*
+* - T&iacute;tulo possui os atributos c&oacute;digo, emissor, setor, emiss&atilde;o, vencimento e valor.
+* - T&iacute;tulo &eacute; v&acute;lido se os atributos forem v&acute;lidos.
+*/
 
 class Titulo{                     //IMPLEMENTADA POR 231021360
 private:
@@ -41,6 +61,15 @@ public:
     Data getVencimento() const;
     Dinheiro getValor() const;
 };
+
+/**
+* Padr&atilde;o para representa&ccedil;&atilde;o de pagamento.
+*
+* Regras de formato:
+*
+* - Pagamento possui os atributos c&oacute;digo, data, percentual e estado.
+* - Pagamento &eacute; v&acute;lido se os atributos forem v&acute;lidos
+*/
 
 class Pagamento{
 private:
