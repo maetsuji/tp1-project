@@ -1,4 +1,8 @@
-#include <iostream>
+#ifndef ENTIDADES_H_INCLUDED
+#define ENTIDADES_H_INCLUDED
+
+#include "dominios.h"
+
 using namespace std;
 
 class Conta{
@@ -54,3 +58,5 @@ public:
     Percentual getPercentual() const;
     Estado getEstado() const;
 };
+
+#endif // ENTIDADES_H_INCLUDED
