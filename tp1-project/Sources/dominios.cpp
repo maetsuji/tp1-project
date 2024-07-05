@@ -1,3 +1,8 @@
+#include <stdexcept>
+#include <algorithm>
+#include <iomanip>
+#include "dominios.h"
+
 using namespace std;
 
 //Codigo de pagamento
@@ -201,9 +206,6 @@ void CPF::validar(string CPF){
                 throw invalid_argument("Erro: CPF Invalido, erro na segunda validacao.");
             } else if (testModulo_2 != validDigit_2) {
                 throw invalid_argument("Erro: CPF Invalido, erro na segunda validacao.");
-            } else {
-                // se chegar até aqui, a validação teve sucesso.
-                cout << "CPF Valido!" << endl;
             };
         };
     };
@@ -502,25 +504,25 @@ int Percentual::getValor()
 */
 
 void Senha::validar(string senha){
-    int tamanho = senhaTeste.size();
+    int tamanho = senha.size();
         if(tamanho != 6){
             throw invalid_argument ("Senha Fornecida Invalida (nao tem 6 caracteres)");} //checa se tem 6 caracteres
-        if(senhaTeste[0] == '0') {
+        if(senha[0] == '0') {
             throw invalid_argument ("Senha Fornecida Invalida(o primeiro digito e 0)"); } // checa se o primeiro digito !=0
         bool sequenciacresc = true, sequenciadecresc =  true;
         for(int i = 0; i < tamanho; i++){
-            if(!isdigit(senhaTeste[i])){
+            if(!isdigit(senha[i])){
                 throw invalid_argument ("Senha Fornecida Invalida (nem todos caracteres sao digitos)");}// checa se todos caracteres sao digitos
             if(i<tamanho-1){
-                int atualc = senhaTeste[i] - '0';
-                int proxc = senhaTeste[i+1] -'0';
+                int atualc = senha[i] - '0';
+                int proxc = senha[i+1] -'0';
                 if(atualc != proxc-1){ sequenciacresc = false;}
 
 
             }
             if( i<tamanho-1){
-                int atuald = senhaTeste[i]-'0';
-                int proxd = senhaTeste[i+1]-'0';
+                int atuald = senha[i]-'0';
+                int proxd = senha[i+1]-'0';
                 if(atuald != proxd+1){ sequenciadecresc = false;}
             }
         }
