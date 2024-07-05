@@ -19,7 +19,7 @@ public:
     Senha getSenha() const;
 };
 
-class Titulo{
+class Titulo{                     //IMPLEMENTADA POR 231021360
 private:
     codigoDeTitulo codigo;
     Nome emissor;
