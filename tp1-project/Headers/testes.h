@@ -112,7 +112,7 @@ public:
 
 };
 
-class TUEstado {
+class TUEstado {                     //IMPLEMENTADA POR 231021360
 private:
     const string VALOR_VALIDO    = "Previsto";
     const string VALOR_INVALIDO  = "Imprevisto";
@@ -163,7 +163,7 @@ public:
     int run();
 };
 
-class TUSetor {
+class TUSetor {                     //IMPLEMENTADA POR 231021360
 private:
     const string VALOR_VALIDO    = "Agricultura";
     const string VALOR_INVALIDO  = "Agronomia";
