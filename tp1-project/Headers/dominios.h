@@ -47,7 +47,7 @@ public:
 * Regras de formato:
 *
 * - CPF &eacute; v&aacute;lido se for uma string no formato "XXX.XXX.XXX-CC"
-* - Os algarismos do CPF n�o podem ser todos iguais (CPFs notavelmente inv&aacute;lidos)
+* - Os algarismos do CPF n�o podem ser todos iguais (CPFs notavelmente inv&aacute;lidos)
 * - O CPF deve passar na valida&ccedil;&atilde;o dos dois d&iacute;gitos (conforme determinado pelo Minist&eacute;rio da Fazenda)
 */
 
@@ -59,6 +59,18 @@ public:
     void validar(string);
     string getCPF();
 };
+
+/**
+ * Padrão para representação de data no formato DD-MM-AAAA.
+ *
+ * Regras de formato:
+ * 
+ * - DD representa o dia e varia de 01 a 31.
+ * - MM representa o mês e varia de 01 a 12.
+ * - AAAA representa o ano e varia de 2000 a 2100.
+ * - Hífens são usados para separar dia, mês e ano.
+ * - O ano pode ser bissexto.
+ */
 
 class Data {                   //IMPLEMENTADA POR 180077911
 private:
@@ -105,6 +117,17 @@ public:
     void validar(string);
     void setEstado(string);
 };
+
+
+/**
+ * Padrão para representação de nome.
+ *
+ * Regras de formato:
+ * 
+ * - O nome pode ter um ou dois termos e cada termo deve ter entre 3 e 10 caracteres.
+ * - Cada caractere deve ser uma letra (A-Z, a-z).
+ * - O primeiro caractere de cada termo deve ser uma letra maiúscula.
+ */
 
 class Nome {                        //IMPLEMENTADA POR 180077911
 private:
