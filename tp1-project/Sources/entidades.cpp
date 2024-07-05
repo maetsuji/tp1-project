@@ -1,3 +1,7 @@
+#include "entidades.h"
+
+using namespace std;
+
 //Class Conta
 void Conta::setCPF(const CPF& cpf){
     this->cpf = cpf;
@@ -40,7 +44,7 @@ void Titulo::setEmissao(const Data& emissao){
     this->emissao = emissao;
 }
 
-void Titulo::void setVencimento(const Data& vencimento){
+void Titulo::setVencimento(const Data& vencimento){
     this->vencimento = vencimento;
 }
 
@@ -104,4 +108,3 @@ Percentual Pagamento::getPercentual() const{
 Estado Pagamento::getEstado() const{
     return estado;
 }
-
