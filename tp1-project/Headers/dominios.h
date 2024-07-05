@@ -1,5 +1,9 @@
-using namespace std;
+#ifndef DOMINIOS_H_INCLUDED
+#define DOMINIOS_H_INCLUDED
 
+#include <string>
+
+using namespace std;
 
 //Codigo de Pagamento
 
@@ -64,7 +68,7 @@ public:
  * Padrão para representação de data no formato DD-MM-AAAA.
  *
  * Regras de formato:
- * 
+ *
  * - DD representa o dia e varia de 01 a 31.
  * - MM representa o mês e varia de 01 a 12.
  * - AAAA representa o ano e varia de 2000 a 2100.
@@ -79,7 +83,7 @@ public:
     void setData(string);
     void validar(string);
     string getData();
-}
+};
 
 /**
 * Padr&atilde;o para representa&ccedil;&atilde;o do Dinheiro
@@ -123,7 +127,7 @@ public:
  * Padrão para representação de nome.
  *
  * Regras de formato:
- * 
+ *
  * - O nome pode ter um ou dois termos e cada termo deve ter entre 3 e 10 caracteres.
  * - Cada caractere deve ser uma letra (A-Z, a-z).
  * - O primeiro caractere de cada termo deve ser uma letra maiúscula.
@@ -201,3 +205,5 @@ public:
     void validar(string);
     void setSetor(string);
 };
+
+#endif // DOMINIOS_H_INCLUDED
