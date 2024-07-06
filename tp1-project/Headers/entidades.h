@@ -16,7 +16,7 @@ using namespace std;
 */
 
 
-class Conta{
+class Conta{                        //IMPLEMENTADA POR 231028746
 private:
     CPF cpf;
     Nome nome;
@@ -71,7 +71,7 @@ public:
 * - Pagamento &eacute; v&acute;lido se os atributos forem v&acute;lidos
 */
 
-class Pagamento{
+class Pagamento{                        //IMPLEMENTADA POR 231028746
 private:
     codigoDePagamento codigo;
     Data data;
