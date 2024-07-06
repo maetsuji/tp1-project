@@ -12,7 +12,7 @@ using namespace std;
 * Regras de formato:
 *
 * - Conta possui os atributos cpf, nome e senha.
-* - Conta &eacute; v&acute;lida se os atributos forem v&acute;lidos.
+* - Conta &eacute; v&aacute;lida se os atributos forem v&aacute;lidos.
 */
 
 
@@ -36,7 +36,7 @@ public:
 * Regras de formato:
 *
 * - T&iacute;tulo possui os atributos c&oacute;digo, emissor, setor, emiss&atilde;o, vencimento e valor.
-* - T&iacute;tulo &eacute; v&acute;lido se os atributos forem v&acute;lidos.
+* - T&iacute;tulo &eacute; v&aacute;lido se os atributos forem v&aacute;lidos.
 */
 
 class Titulo{                     //IMPLEMENTADA POR 231021360
@@ -68,7 +68,7 @@ public:
 * Regras de formato:
 *
 * - Pagamento possui os atributos c&oacute;digo, data, percentual e estado.
-* - Pagamento &eacute; v&acute;lido se os atributos forem v&acute;lidos
+* - Pagamento &eacute; v&aacute;lido se os atributos forem v&aacute;lidos
 */
 
 class Pagamento{                        //IMPLEMENTADA POR 231028746
