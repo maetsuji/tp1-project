@@ -5,8 +5,8 @@ using namespace std;
 //Class Conta
 
 /**
-* Armazena, como atributo da classe de entidade Conta, um objeto da classe CPF chamado cpf, caso contenha um cpf v&aacute;lido
-* 
+* Armazena, como atributo da classe de entidade Conta, um objeto da classe CPF chamado cpf, caso contenha um cpf v&aacute;lido.
+*
 * @param CPF cpf
 *
 * @throw invalid_argument
@@ -17,8 +17,8 @@ void Conta::setCPF(const CPF& cpf){
 }
 
 /**
-* Armazena, como atributo da classe de entidade Conta, um objeto da classe Nome chamado nome, caso contenha um nome v&aacute;lido
-* 
+* Armazena, como atributo da classe de entidade Conta, um objeto da classe Nome chamado nome, caso contenha um nome v&aacute;lido.
+*
 * @param Nome nome
 *
 * @throw invalid_argument
@@ -29,8 +29,8 @@ void Conta::setNome(const Nome& nome){
 }
 
 /**
-* Armazena, como atributo da classe de entidade Conta, um objeto da classe Senha chamado senha, caso contenha uma senha v&aacute;lida
-* 
+* Armazena, como atributo da classe de entidade Conta, um objeto da classe Senha chamado senha, caso contenha uma senha v&aacute;lida.
+*
 * @param Senha senha
 *
 * @throw invalid_argument
@@ -74,8 +74,8 @@ Senha Conta::getSenha() const{
 //Class Titulo
 
 /**
-* Armazena, como atributo da classe de entidade Titulo, um objeto da classe codigoDeTitulo chamado codigo, caso contenha um c&oacute;digo de t&iacute;tulo v&aacute;lido
-* 
+* Armazena, como atributo da classe de entidade Titulo, um objeto da classe codigoDeTitulo chamado codigo, caso contenha um c&oacute;digo de t&iacute;tulo v&aacute;lido.
+*
 * @param codigoDeTitulo codigo
 *
 * @throw invalid_argument
@@ -86,8 +86,8 @@ void Titulo::setCodigo(const codigoDeTitulo& codigo){
 }
 
 /**
-* Armazena, como atributo da classe de entidade Titulo, um objeto da classe Nome chamado emissor, caso contenha um nome v&aacute;lido
-* 
+* Armazena, como atributo da classe de entidade Titulo, um objeto da classe Nome chamado emissor, caso contenha um nome v&aacute;lido.
+*
 * @param Nome emissor
 *
 * @throw invalid_argument
@@ -98,8 +98,8 @@ void Titulo::setEmissor(const Nome& emissor){
 }
 
 /**
-* Armazena, como atributo da classe de entidade Titulo, um objeto da classe Setor chamado setor, caso contenha um setor v&aacute;lido
-* 
+* Armazena, como atributo da classe de entidade Titulo, um objeto da classe Setor chamado setor, caso contenha um setor v&aacute;lido.
+*
 * @param Setor setor
 *
 * @throw invalid_argument
@@ -110,8 +110,8 @@ void Titulo::setSetor(const Setor& setor){
 }
 
 /**
-* Armazena, como atributo da classe de entidade Titulo, um objeto da classe Data chamado emissao, caso contenha uma data v&aacute;lida
-* 
+* Armazena, como atributo da classe de entidade Titulo, um objeto da classe Data chamado emissao, caso contenha uma data v&aacute;lida.
+*
 * @param Data emissao
 *
 * @throw invalid_argument
@@ -122,8 +122,8 @@ void Titulo::setEmissao(const Data& emissao){
 }
 
 /**
-* Armazena, como atributo da classe de entidade Titulo, um objeto da classe Data chamado vencimento, caso contenha uma data v&aacute;lida
-* 
+* Armazena, como atributo da classe de entidade Titulo, um objeto da classe Data chamado vencimento, caso contenha uma data v&aacute;lida.
+*
 * @param Data vencimento
 *
 * @throw invalid_argument
@@ -134,8 +134,8 @@ void Titulo::setVencimento(const Data& vencimento){
 }
 
 /**
-* Armazena, como atributo da classe de entidade Titulo, um objeto da classe Dinheiro chamado valor, caso contenha um valor v&aacute;lido
-* 
+* Armazena, como atributo da classe de entidade Titulo, um objeto da classe Dinheiro chamado valor, caso contenha um valor v&aacute;lido.
+*
 * @param Dinheiro valor
 *
 * @throw invalid_argument
@@ -208,8 +208,8 @@ Dinheiro Titulo::getValor() const{
 //Class Pagamento
 
 /**
-* Armazena, como atributo da classe de entidade Pagamento, um objeto da classe codigoDePagamento chamado codigo, caso contenha um c&oacute;digo v&aacute;lido
-* 
+* Armazena, como atributo da classe de entidade Pagamento, um objeto da classe codigoDePagamento chamado codigo, caso contenha um c&oacute;digo v&aacute;lido.
+*
 * @param codigoDePagamento codigo
 *
 * @throw invalid_argument
@@ -220,8 +220,8 @@ void Pagamento::setCodigo(const codigoDePagamento& codigo){
 }
 
 /**
-* Armazena, como atributo da classe de entidade Pagamento, um objeto da classe Data chamado data, caso contenha uma data v&aacute;lida
-* 
+* Armazena, como atributo da classe de entidade Pagamento, um objeto da classe Data chamado data, caso contenha uma data v&aacute;lida.
+*
 * @param Data data
 *
 * @throw invalid_argument
@@ -232,8 +232,8 @@ void Pagamento::setData(const Data& data){
 }
 
 /**
-* Armazena, como atributo da classe de entidade Pagamento, um objeto da classe Percentual chamado percentual, caso contenha um percentual v&aacute;lido
-* 
+* Armazena, como atributo da classe de entidade Pagamento, um objeto da classe Percentual chamado percentual, caso contenha um percentual v&aacute;lido.
+*
 * @param Percentual percentual
 *
 * @throw invalid_argument
@@ -244,8 +244,8 @@ void Pagamento::setPercentual(const Percentual& percentual){
 }
 
 /**
-* Armazena, como atributo da classe de entidade Pagamento, um objeto da classe Estado chamado estado, caso contenha um estado v&aacute;lido
-* 
+* Armazena, como atributo da classe de entidade Pagamento, um objeto da classe Estado chamado estado, caso contenha um estado v&aacute;lido.
+*
 * @param Estado estado
 *
 * @throw invalid_argument
