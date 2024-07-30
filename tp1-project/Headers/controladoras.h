@@ -13,7 +13,7 @@ class CntrAprAuth:public IAprAuth{
 private:
     IServAuth *cntrservauth;
 public:
-    void setCntrServAuth(IServAuth*);
+    inline void setCntrServAuth(IServAuth*);
     int executar(CPF*);
 };
 

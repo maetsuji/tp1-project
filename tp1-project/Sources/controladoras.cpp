@@ -46,3 +46,37 @@ void CntrAprConta::criarConta{
         return;
 
 };
+
+
+void CntrAprAuth::setCntrServAuth(IServAuth *cntrservauth){
+    this->cntrservauth=cntrservauth;
+};
+
+int CntrAprAuth::executar(CPF *cpf){
+    Senha senha;
+    string tempCPF;
+    string tempSenha;
+    bool resultado;
+
+    while (true){
+        try{
+            cout << " Informar CPF:" <<endl;
+            cin >> tempCPF;
+            cpf->setCPF(tempCPF);
+            
+            cout << " Informar Senha:"<<endl;
+            cin >> tempSenha;
+            senha.setSenha(tempSenha);
+            break;
+        }
+        catch (invalid_argument &e) {
+            cout << "Dado Inválido."
+            return 0;
+        }
+    }
+
+    resultado=CntrServAuth::autenticar(cpf,senha);
+    if !resultado
+        return 0;
+    return 1;
+};
