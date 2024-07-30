@@ -63,14 +63,14 @@ int CntrAprAuth::executar(CPF *cpf){
             cout << " Informar CPF:" <<endl;
             cin >> tempCPF;
             cpf->setCPF(tempCPF);
-            
+
             cout << " Informar Senha:"<<endl;
             cin >> tempSenha;
             senha.setSenha(tempSenha);
             break;
         }
         catch (invalid_argument &e) {
-            cout << "Dado Inválido."
+            cout << "Dado Inválido." << endl;
             return 0;
         }
     }
