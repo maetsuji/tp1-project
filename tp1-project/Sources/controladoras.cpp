@@ -2,16 +2,16 @@ using namespace std;
 
 void CntrAprConta::criarConta{
 
-    //Inst‚ncias de classes domÌnios
+    //Inst√¢ncias de classes dom√≠nios
     Nome nome;
     CPF cpf;
     Senha senha;
 
-    //Vari·vel tempor·ria para inserÁ„o de dados
+    //Vari√°vel tempor√°ria para inser√ß√£o de dados
     string temp;
     bool resultado;
 
-    //Loop para inserÁ„o e definiÁ„o dos dados
+    //Loop para inser√ß√£o e defini√ß√£o dos dados
 
     while (true){
         try{
@@ -27,7 +27,7 @@ void CntrAprConta::criarConta{
             break;
         }
         catch (invalid_argument &e) {
-            cout << "Dado Inv·lido."
+            cout << "Dado Inv√°lido."
             return;
         }
     }
@@ -39,7 +39,7 @@ void CntrAprConta::criarConta{
     conta.setNome(nome);
     conta.setSenha(senha);
 
-    //Registrar no banco de dados e verificar lÛgica de negÛcio (¡ fazer)
+    //Registrar no banco de dados e verificar l√≥gica de neg√≥cio (√Å fazer)
 
     resultado=CntrServConta::criarConta(conta);
     if !resultado
