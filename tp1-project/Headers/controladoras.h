@@ -16,6 +16,7 @@ inline void CntrAprConta::setCntrServConta(IServConta *cntrservconta){
     this->cntrservconta=cntrservconta
 };
 
+
 class CntrAprAuth:public IAprAuth{
 private:
     IServAuth *cntrservauth;
