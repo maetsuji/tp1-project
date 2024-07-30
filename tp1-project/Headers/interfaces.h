@@ -1,14 +1,14 @@
 using namespace std;
 
-//Declaração Adiantada
+//DeclaraÃ§Ã£o Adiantada
 
 class ISConta;
 class ISAuth;
 class ISInvestimento;
 
-//Camada de Apresentação
+//Camada de ApresentaÃ§Ã£o
 
-//Interface apresentação Conta
+//Interface apresentaÃ§Ã£o Conta
 class IAprConta{
 public:
     virtual void criarConta() = 0;
@@ -17,7 +17,7 @@ public:
     virtual ~IAprConta(){};
 };
 
-//Interface apresentação Autenticação
+//Interface apresentaÃ§Ã£o AutenticaÃ§Ã£o
 class IAprAuth{
 public:
     virtual bool autenticar(CPF*) = 0;
@@ -25,7 +25,7 @@ public:
     virtual ~IAprAuth(){};
 };
 
-//Interface apresentação Investimento
+//Interface apresentaÃ§Ã£o Investimento
 class IAprInvestimento{
 public:
     virtual bool executar(CPF) = 0;
@@ -33,7 +33,7 @@ public:
     virtual ~IAprInvestimento(){};
 };
 
-//Camada de Serviço
+//Camada de ServiÃ§o
 
 
 /*class ISConta{
