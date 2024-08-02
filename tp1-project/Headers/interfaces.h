@@ -40,7 +40,7 @@ public:
 public:
     virtual bool lerConta(CPF*) = 0;
     virtual bool atualizarConta(CPF*) = 0;
-    virtual bool deletarConta(CPF) = 0;
+    virtual bool excluirConta(CPF) = 0;
     virtual ~ISConta(){};
 };
 */
