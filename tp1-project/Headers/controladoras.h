@@ -43,6 +43,7 @@ inline void CntrAprInvestimento::setCntrServInvestimento(IServInvestimento *cntr
 };
 
 
+
 //EXEMPLO PARA AJUDAR NA LÓGICA
 criar{
 try
@@ -61,3 +62,15 @@ setSenha
 
 resultado=CntrServConta::LN/escreverNoBD(Conta conta)
 }
+
+
+
+class CntrServConta {
+    void createConta(Conta);
+    void deleteConta(CPF);
+    void findConta(CPF);
+    void updateConta(Conta);
+};
+
+
+
