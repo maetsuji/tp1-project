@@ -165,3 +165,76 @@ int CntrAprAuth::executar(CPF *cpf){
         return 0;
     return 1;
 };
+
+//tentativa de implementação de controladoras serviço. (não testado)
+void CntrServConta::create(Conta conta){
+    CPF cpf;
+    cpf = conta.getCPF;
+    ComandoExisteConta existeConta(cpf.getValor());
+    try{
+        existeConta.executar();
+    }catch(EErroPersistencia exp){
+        //erro no banco 
+    }
+    if(existeConta.getResultado()){
+        throw EErroPersistencia("Já existe conta associada a esse CPF.");
+    }
+    ComandoCreateConta createConta(conta);
+
+    try{
+        createConta.executar();
+    }catch(EErroPersistencia exp){
+        //erro no banco
+    }
+    cout << "Conta no CPF "<<cpf.getValor()<<" criada com sucesso" << endl;
+    return;
+}
+
+void CntrServConta::findConta(CPF cpf) {
+    ComandoFindConta pesquisarConta(cpf);
+    Conta conta;
+    try {
+        pesquisarConta.executar()
+    }
+    catch{
+    //erro no banco
+    }
+    try {
+        conta = pesquisarConta.getResultado();
+    }catch(EErroPersistencia exp) {
+        //erro doido, nao sei qual
+                cout << endl << exp.what();
+                cout << endl << endl << "Digite algo para continuar.";
+                getch();
+        }
+    //tudo certo
+    return;
+}
+
+void CntrServConta::deleteConta(CPF cpf){
+    ComandoDeleteConta deletarConta(cpf);
+    try {
+        deletarConta.executar();
+    }
+    catch(EErroPersistencia exp){
+        //erro no banco
+    }
+
+    //tudo certo
+    return;
+
+}
+
+void CntrServConta::updateConta(Conta conta){
+    ComandoUpdateConta atualizarConta(conta);
+    try{
+        atualizarConta.executar();
+    }
+    catch {
+        //erro no banco
+    }
+
+    //tudo certo
+    return;
+
+}
