@@ -243,15 +243,94 @@ void CntrServConta::updateConta(Conta conta){
 //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //Investimento
 
-class CntrAprInvestimento:public IAprInvestimento{
-private:
-    IServInvestimento *cntrservinvestimento;
-public:
-    void setCntrServInvestimento(IServInvestimento*);
-    int executar(CPF*);
-};
+class CntrAprInvestimento::executar(CPF *cpf) {
 
-inline void CntrAprInvestimento::setCntrServInvestimento(IServInvestimento *cntrservinvestimento){
-    this->cntrservinvestimento=cntrservinvestimento
-};
+void mostrarMenu() {
+    std::cout << "0. Criar" << std::endl;
+    std::cout << "1. Altear" << std::endl;
+    std::cout << "2. Ler" << std::endl;
+    std::cout << "3. Excluir" << std::endl;
+    std::cout << "4. Voltar" << std::endl;
+    std::cout << "Digite sua opção (0-4): ";
+}
+ 
+    do {
+        int opcao = 0;
+// Exibe o menu de opções
+        std::cout << "Selecione a opção desejada:" << std::endl;
+        std::cout << "1. Pagamentos" << std::endl;
+        std::cout << "2. Títulos" << std::endl;
+        std::cout << "3. Voltar" << std::endl;
+        std::cout << "Digite sua opção (1-3): ";
+        std::cin >> opcao;
+
+        opcao = getch() - 48;
+
+// Processa a opção selecionada
+        switch (opcao) {
+            case 1:
+                do {
+                    int opcao_pagamento = -1;
+                    std::cout << "Você selecionou PAGAMENTO" << std::endl;
+                    mostrarMenu();
+                    std::cin >> opcao_pagamento;
+                    opcao_pagamento = getch() - 48;
+
+                    switch (opcao_pagamento) {
+                        case 0;
+                                criarPagamento();
+                                break
+                        case 1:
+                                alterarPagamento();
+                                break;
+                        case 2:
+                                lerPagamento();
+                                break;
+                        case 3:
+                                excluirPagamento();
+                                break;
+
+                        default:
+                            std::cout << "Opção inválida. Tente novamente." << std::endl;
+                    } 
+                } while (opcao_pagamento != 4 );
+                break;
+
+            case 2:
+                do {
+                    int opcao_titulo = -1;
+                    std::cout << "Você selecionou TÍTULOS" << std::endl;
+                    mostrarMenu();
+                    std::cin >> opcao_titulo;
+                    opcao_titulo = getch() - 48;
+                    switch (opcao_titulo) {
+                        case 0;
+                                criarTitulo();
+                                break;
+                        case 1:
+                                alterarTitulo();
+                                break;
+                        case 2:
+                                lerTitulo();
+                                break;
+                        case 3:
+                                excluirTitulo();
+                                break;
+                        default:
+                            std::cout << "Opção inválida. Tente novamente." << std::endl;
+
+                    } 
+                } while (opcao_titulo != 4 );
+                break;
+
+            default:
+                std::cout << "Opção inválida. Tente novamente." << std::endl;
+        }
+// Linha em branco para melhor visualização
+        std::cout << std::endl;  
+
+    } while (opcao != 3 );  
+
+ }
+
 
