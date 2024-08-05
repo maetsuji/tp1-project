@@ -4,7 +4,7 @@ using namespace std;
 //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //Conta
 
-void CntrAprConta::criarConta{
+void CntrAprConta::criarConta(){
 
     //Instâncias de classes domínios
     Nome nome;
@@ -48,16 +48,14 @@ void CntrAprConta::criarConta{
     conta.setSenha(senha);
 
     //Registrar no banco de dados e verificar lógica de negócio (Á fazer)
-    if(cntrServConta->cadastrar(conta))
-        //IMPLEMENTAR
+    if(cntrServConta->criarConta(conta))
         CLR_SCR;
         cout << "Cadastro realizado com sucesso. Digite algo.";
         getch();
         return;
     else
-        //IMPLEMENTAR
         CLR_SCR;
-        cout << "Falha no cadastro. Retornando para tela inicial. Digite algo."
+        cout << "Falha no cadastro. Retornando para tela inicial. Digite algo.";
         getch();
         return;
 }
@@ -68,7 +66,7 @@ void CntrAprConta::executar(CPF *cpf){
     while (apresentar){
         CLR_SCR;
         cout << "Selecione uma opção :" << endl;
-        cout << "1. Alterar dados cadastrais." << endl;
+        cout << "1. Atualizar dados cadastrais." << endl;
         cout << "2. Ler dados cadastrados." << endl;
         cout << "3. Excluir conta." << endl;
         cout << "4. Voltar." << endl;
@@ -90,11 +88,19 @@ void CntrAprConta::executar(CPF *cpf){
 }
 
 void CntrAprConta::lerConta(CPF cpf){
-    //IDENTIFICAR NO BANCO DE DADOS A INSTANCIA DE CONTA
-    //IMPLEMENTAR
-    nome=CntrServConta::getNome()
-    cpf=CntrServConta::getCPF()
-    senha=CntrServConta::getSenha()
+    Conta conta;
+    
+    try{
+        conta=cntrServConta->lerConta(cpf);
+    }
+    catch(EErroPersistencia exp){
+        cout << "Não foi possível ler a conta";
+    }
+    
+    Nome  nome=conta.getNome();
+    CPF   cpf=conta.getCPF();
+    Senha senha=conta.getSenha();
+    
     CLR_SCR;
     cout << "O Nome cadastrado é: " << nome.getNome() << endl;
     cout << "O CPF cadastrado é: " << cpf.getCPF() << endl;
@@ -105,34 +111,45 @@ void CntrAprConta::lerConta(CPF cpf){
 }
 
 void CntrAprConta::atualizarConta(CPF *cpf){
-    //IDENTIFICAR NO BANCO DE DADOS A INSTANCIA DE CONTA
     string tempNome;
     Nome nome;
     string tempSenha;
     Senha senha;
+    Conta conta;
+    conta.setCPF(cpf);
     try{
         CLR_SCR;
-        cout << "Digite um novo Nome: " << " ";
+        cout << "Digite um novo nome: " << " ";
         cin >> tempNome;
         nome.setNome(tempNome);
-        cout << "Digite uma nova Senha: " << " ";
+        conta.setNome(nome);
+        cout << "Digite uma nova senha: " << " ";
         cin >> tempSenha;
         senha.setSenha(tempSenha);
-        //atualizar no banco de dados
-        cout << "Dados atualizados com sucesso. Digite algo."
-        getch();
-        return;
+        conta.setSenha(senha);
     }
     catch(invalid_argument &e)
         CLR_SCR;
-        cout << "Dado informado no formato inválido. Digite algo."
+        cout << "Dado informado no formato inválido. Digite algo.";
+        getch();
+        return;
+    if (cntrServConta->atualizarConta(conta))
+        cout << "Dados atualizados com sucesso. Digite algo.";
+        getch();
+        return;
+    else
+        CLR_SCR;
+        cout << "Não foi possível atualizar conta. Digite algo.";
         getch();
         return;
 }
 
 void CntrAprConta::excluirConta(CPF *cpf){
-    //IDENTIFICAR NO BANCO DE DADOS A INSTANCIA DE CONTA
-    //IMPLEMENTAR
+    if (cntrservconta.excluirConta(cpf))
+        cout << "Conta excluída com sucesso. Digite algo.";
+        cpf=0;
+    else
+        cout << "Não foi possível excluir a conta. Digite algo.";
 }
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
