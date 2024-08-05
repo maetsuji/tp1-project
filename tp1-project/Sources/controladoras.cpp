@@ -246,23 +246,23 @@ void CntrServConta::updateConta(Conta conta){
 class CntrAprInvestimento::executar(CPF *cpf) {
 
 void mostrarMenu() {
-    std::cout << "0. Criar" << std::endl;
-    std::cout << "1. Altear" << std::endl;
-    std::cout << "2. Ler" << std::endl;
-    std::cout << "3. Excluir" << std::endl;
-    std::cout << "4. Voltar" << std::endl;
-    std::cout << "Digite sua opção (0-4): ";
+    cout << "0. Criar" << endl;
+    cout << "1. Altear" << endl;
+    cout << "2. Ler" << endl;
+    cout << "3. Excluir" << endl;
+    cout << "4. Voltar" << endl;
+    cout << "Digite sua opção (0-4): ";
 }
  
     do {
         int opcao = 0;
 // Exibe o menu de opções
-        std::cout << "Selecione a opção desejada:" << std::endl;
-        std::cout << "1. Pagamentos" << std::endl;
-        std::cout << "2. Títulos" << std::endl;
-        std::cout << "3. Voltar" << std::endl;
-        std::cout << "Digite sua opção (1-3): ";
-        std::cin >> opcao;
+        cout << "Selecione a opção desejada:" << endl;
+        cout << "1. Pagamentos" << endl;
+        cout << "2. Títulos" << endl;
+        cout << "3. Voltar" << endl;
+        cout << "Digite sua opção (1-3): ";
+        cin >> opcao;
 
         opcao = getch() - 48;
 
@@ -271,27 +271,27 @@ void mostrarMenu() {
             case 1:
                 do {
                     int opcao_pagamento = -1;
-                    std::cout << "Você selecionou PAGAMENTO" << std::endl;
+                    cout << "Você selecionou PAGAMENTO" << endl;
                     mostrarMenu();
-                    std::cin >> opcao_pagamento;
+                    cin >> opcao_pagamento;
                     opcao_pagamento = getch() - 48;
 
                     switch (opcao_pagamento) {
                         case 0;
-                                criarPagamento();
+                                criarPagamento(cpf);
                                 break
                         case 1:
-                                alterarPagamento();
+                                alterarPagamento(cpf);
                                 break;
                         case 2:
-                                lerPagamento();
+                                lerPagamento(cpf);
                                 break;
                         case 3:
-                                excluirPagamento();
+                                excluirPagamento(cpf);
                                 break;
 
                         default:
-                            std::cout << "Opção inválida. Tente novamente." << std::endl;
+                            cout << "Opção inválida. Tente novamente." << endl;
                     } 
                 } while (opcao_pagamento != 4 );
                 break;
@@ -299,38 +299,72 @@ void mostrarMenu() {
             case 2:
                 do {
                     int opcao_titulo = -1;
-                    std::cout << "Você selecionou TÍTULOS" << std::endl;
+                    cout << "Você selecionou TÍTULOS" << endl;
                     mostrarMenu();
-                    std::cin >> opcao_titulo;
+                    cin >> opcao_titulo;
                     opcao_titulo = getch() - 48;
                     switch (opcao_titulo) {
                         case 0;
-                                criarTitulo();
+                                criarTitulo(cpf);
                                 break;
                         case 1:
-                                alterarTitulo();
+                                alterarTitulo(cpf);
                                 break;
                         case 2:
-                                lerTitulo();
+                                lerTitulo(cpf);
                                 break;
                         case 3:
-                                excluirTitulo();
+                                excluirTitulo(cpf);
                                 break;
                         default:
-                            std::cout << "Opção inválida. Tente novamente." << std::endl;
+                            cout << "Opção inválida. Tente novamente." << endl;
 
                     } 
                 } while (opcao_titulo != 4 );
                 break;
 
             default:
-                std::cout << "Opção inválida. Tente novamente." << std::endl;
+                cout << "Opção inválida. Tente novamente." << endl;
         }
 // Linha em branco para melhor visualização
-        std::cout << std::endl;  
+        cout << endl;  
 
     } while (opcao != 3 );  
 
  }
 
+//IDENTIFICAR NO BANCO DE DADOS A INSTANCIA DE CONTA
+//IMPLEMENTAR
+
+class CntrAprInvestimento::criarPagamento(CPF *cpf) {
+//Instâncias de classes domínios
+    CPF cpf;
+
+//Variável temporária para inserção de dados
+    string tempNome;
+    string tempCPF;
+    string tempSenha;
+    bool resultado;
+}
+class CntrAprInvestimento::alterarPagamento(CPF *cpf) {
+
+}
+class CntrAprInvestimento::lerPagamento(CPF *cpf) {
+    
+}
+class CntrAprInvestimento::excluirPagamento(CPF *cpf) {
+} 
+
+class CntrAprInvestimento::criarTitulo(CPF *cpf) {
+    
+}
+class CntrAprInvestimento::alterarTitulo(CPF *cpf) {
+    
+}
+class CntrAprInvestimento::lerTitulo(CPF *cpf) {
+    
+}
+class CntrAprInvestimento::excluirTitulo(CPF *cpf) {
+    
+}
 
