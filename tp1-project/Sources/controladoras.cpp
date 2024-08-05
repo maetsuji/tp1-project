@@ -155,7 +155,8 @@ void CntrAprConta::excluirConta(CPF *cpf){
 //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //Auth
 
-int CntrAprAuth::executar(CPF *cpf){
+void CntrAprAuth::executar(CPF *cpf){
+    //O QUE AUTENTICAR RETORNA?
     Senha senha;
     string tempCPF;
     string tempSenha;
@@ -177,11 +178,11 @@ int CntrAprAuth::executar(CPF *cpf){
             return 0;
         }
     }
-
-    resultado=CntrServAuth::autenticar(cpf,senha);
-    if !resultado
-        return 0;
-    return 1;
+    if (cntrservauth.autenticarConta(cpf,senha))
+        cout << "Conta autenticada com sucesso." << endl;
+        cout << "Seja bem-vindo(a). Digite algo.";
+    else
+        cout << "Não foi possível autenticar sua conta. Digite algo.";
 };
 
 //tentativa de implementação de controladoras serviço. (não testado)
