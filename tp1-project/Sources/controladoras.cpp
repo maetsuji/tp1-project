@@ -238,3 +238,19 @@ void CntrServConta::updateConta(Conta conta){
     return;
 
 }
+
+//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//Investimento
+
+class CntrAprInvestimento:public IAprInvestimento{
+private:
+    IServInvestimento *cntrservinvestimento;
+public:
+    void setCntrServInvestimento(IServInvestimento*);
+    int executar(CPF*);
+};
+
+inline void CntrAprInvestimento::setCntrServInvestimento(IServInvestimento *cntrservinvestimento){
+    this->cntrservinvestimento=cntrservinvestimento
+};
+
