@@ -333,27 +333,21 @@ void mostrarMenu() {
 
  }
 
-//IDENTIFICAR NO BANCO DE DADOS A INSTANCIA DE CONTA
-//IMPLEMENTAR
+//IMPLEMENTAR AS CLASSES DE MANUTENÇÃO NO BANCO DE DADOS 
 
-class CntrAprInvestimento::criarPagamento(CPF *cpf) {
-//Instâncias de classes domínios
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+//Instâncias de classes domínios para tabela de TITULO
     CPF cpf;
 
-//Variável temporária para inserção de dados
-    string tempNome;
-    string tempCPF;
-    string tempSenha;
-    bool resultado;
-}
-class CntrAprInvestimento::alterarPagamento(CPF *cpf) {
-
-}
-class CntrAprInvestimento::lerPagamento(CPF *cpf) {
-    
-}
-class CntrAprInvestimento::excluirPagamento(CPF *cpf) {
-} 
+//Variáveis temporárias para inserções de dados na tabela de TITULO
+    string codigo_titulo;   // CHAVE PRIMÁRIA ex.: CDBxxxxxxxx, x letra maiúscula de A-Z ou dígito 1-9
+    string nome_emissor;
+    string setor;           // Agricultura, construção civil, energia, finanças, imobiliário
+                            // papel e celulose, pecuária, química e petroquímica, metalurgia e siderurgia
+                            // mineração
+    string data_emissao;    // DD-MM-AAAA
+    string data_vencimento; // DD-MM-AAAA
+    float  valor;
 
 class CntrAprInvestimento::criarTitulo(CPF *cpf) {
     
@@ -368,3 +362,23 @@ class CntrAprInvestimento::excluirTitulo(CPF *cpf) {
     
 }
 
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//Variáveis temporárias para inserções de dados na tabela de PAGAMENTO
+
+string codigo_pagamento;  // CHAVE PRIMÁRIA, formato XXXXXXXX, X é digito 0-9 e primeiro dígito é diferente de zero 1-9
+string data_pagamento;    // DD-MM-AAAA
+float  percentual;
+string estado;            // PREVISTO, LIQUIDADO OU INADIMPLENTE
+
+
+class CntrAprInvestimento::criarPagamento(CPF *cpf) {
+        
+}
+class CntrAprInvestimento::alterarPagamento(CPF *cpf) {
+
+}
+class CntrAprInvestimento::lerPagamento(CPF *cpf) {
+    
+}
+class CntrAprInvestimento::excluirPagamento(CPF *cpf) {
+} 
