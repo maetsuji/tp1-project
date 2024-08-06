@@ -712,3 +712,98 @@ bool CntrServAuth::autenticarConta(CPF cpf, Senha senha) {
     }
     return false;
 }
+bool CntrServInvestimento::criarTitulo(CPF cpf, Titulo titulo){
+    ComandoCriarTitulo createTitulo(cpf,titulo);
+
+    try{
+        criarTitulo.executar();
+    }
+    catch(EErroPersistencia exp){
+        return false;
+    }
+    return true;
+}
+
+list<Titulo> CntrServInvestimento::lerTitulo(CPF cpf) {
+    return 0;
+
+}
+
+bool CntrServInvestimento::atualizarTitulo(codigoDeTitulo codigo) {
+    ComandoAtualizarTitulo updateTitulo(codigo);
+    try
+    {
+        updateTitulo.executar()
+    }
+    catch(EErroPersistencia exp)
+    {
+        return false;
+    }
+    return true;
+    
+
+}
+
+
+bool CntrServInvestimento::excluirTitulo(codigoDeTitulo codigo) {
+    ComandoExcluirTitulo deletarTitulo(codigo);
+    try
+    {
+        deletarTitulo.executar();
+    }
+    catch(EErroPersistencia exp)
+    {
+        return false;
+    }
+    return true;
+    
+}
+
+bool CntrServInvestimento::criarPagamento(codigoDeTitulo codigo, Pagamento pagamento){
+    ComandoCriarPagamento createPagamento(codigo, pagamento);
+
+    try{createPagamento.executar()}
+    catch(EErroPersistencia exp){
+        return false;
+    }
+    return true;
+
+}
+
+
+bool CntrServInvestimento::atualizarPagamento(codigoDePagamento codigo) {
+    ComandoAtualizarPagamento updatePagamento(codigo);
+    try
+    {
+        updatePagamento.executar()
+    }
+    catch(EErroPersistencia exp)
+    {
+        return false;
+    }
+    return true;
+    
+
+}
+
+
+bool CntrServInvestimento::excluirPagamento(codigoDePagamento codigo) {
+    ComandoExcluirPagamento deletarPagamento(codigo);
+    try
+    {
+        deletarPagamento.executar();
+    }
+    catch(EErroPersistencia exp)
+    {
+        return false;
+    }
+    return true;
+    
+}
+
+list<Pagamento> CntrServInvestimento::lerPagamento(codigoDeTitulo codigo) {
+    ComandoFindPagamentosPorTitulo findPagamentosPorTitulo(codigo);
+    
+    findPagamentosPorTitulo.executar();
+    return findPagamentosPorTitulo.getResultado();
+}
