@@ -168,35 +168,68 @@ ComandoFindTitulo::ComandoFindTitulo(codigoDeTitulo codigo){
     comandoSQL += codigo.getValor();
 }
 
-Conta ComandoFindTitulo::getResultado() {
+Titulo ComandoFindTitulo::getResultado() {
     ElementoResultado resultado;
     Titulo titulo;
+    CodigoDeTitulo codigodetitulo;
+    Nome emissor;
+    Setor setor;
+    Data emissao;
+    Data vencimento;
+    Dinheiro valor;
 
-    // Remover nome;
-        if (listaResultado.empty())
-                throw EErroPersistencia("Lista de resultados vazia.");
-        resultado = listaResultado.back();
-        listaResultado.pop_back();
-        titulo.setCodigo(Codigo(resultado.getValorColuna()));
+    // Remover Codigo;
+    if (listaResultado.empty())
+            throw EErroPersistencia("Lista de resultados vazia.");
+    resultado = listaResultado.back();
+    listaResultado.pop_back();
+    codigodetitulo.setCodigo(resultado.getValorColuna());
+    titulo.setCodigo(codigodetitulo);
 
-        // Remover cpf;
-        if (listaResultado.empty())
-                throw EErroPersistencia("Lista de resultados vazia.");
-        resultado = listaResultado.back();
-        listaResultado.pop_back();
-        conta.setCPF(CPF(resultado.getValorColuna()));
+    // Remover emissor;
+    if (listaResultado.empty())
+            throw EErroPersistencia("Lista de resultados vazia.");
+    resultado = listaResultado.back();
+    listaResultado.pop_back();
+    emissor.setNome(resultado.getValorColuna());
+    titulo.setEmissor(emissor);
+    
+    // Remover setor;
+    if (listaResultado.empty())
+            throw EErroPersistencia("Lista de resultados vazia.");
+    resultado = listaResultado.back();
+    listaResultado.pop_back();
+    setor.setSetor(resultado.getValorColuna());
+    titulo.setSetor(setor);
+    
+    // Remover Emissao;
+    if (listaResultado.empty())
+            throw EErroPersistencia("Lista de resultados vazia.");
+    resultado = listaResultado.back();
+    listaResultado.pop_back();
+    emissao.setData(resultado.getValorColuna());
+    titulo.setEmissao(emissao);
+    
+    // Remover Vencimento;
+    if (listaResultado.empty())
+            throw EErroPersistencia("Lista de resultados vazia.");
+    resultado = listaResultado.back();
+    listaResultado.pop_back();
+    vencimento.setData(resultado.getValorColuna());
+    titulo.setVencimento(vencimento);
 
-        // Remover senha;
-        if (listaResultado.empty())
-                throw EErroPersistencia("Lista de resultados vazia.");
-        resultado = listaResultado.back();
-        listaResultado.pop_back();
-        conta.setSenha(Senha(resultado.getValorColuna()));
-
-        return conta;
+    // Remover Valor;
+    if (listaResultado.empty())
+            throw EErroPersistencia("Lista de resultados vazia.");
+    resultado = listaResultado.back();
+    listaResultado.pop_back();
+    valor.setValor(resultado.getValorColuna());
+    titulo.setValor(vencimento);
+    
+    return titulo;
 }
 //ATUALIZAR====================================================
-ComandoUpdateTitulo::ComandoAtualizarTitulo(Titulo titulo) {
+ComandoAtualizarTitulo::ComandoAtualizarTitulo(Titulo titulo) {
     comandoSQL = "UPDATE Titulo ";
     comandoSQL += "SET Emissor = '" + titulo.getEmissor().getNome();
     comandoSQL += "', Setor = '" + titulo.getSetor().getSetor();
@@ -224,39 +257,55 @@ ComandoCriarPagamento::ComandoCriarPagamento(CodigoDeTitulo codigodetitulo, Paga
     comandoSQL += "'" + pagamento.getEstado().getEstado() + "', ";
 }
 
-//FIND============================================================
+//FIND============================================================NÃO PRONTA, FALAR COM O CAUÊ
 ComandoFindPagamento::ComandoFindPagamento(codigoDePagamento codigo){
     comandoSQL = "SELECT * FROM Pagamento WHERE CodigoPagamento = ";
     comandoSQL += codigo.getCodigo();
 }
 
-Conta ComandoFindPagamento::getResultado() {
+Pagamento ComandoFindPagamento::getResultado() {
     ElementoResultado resultado;
     Pagamento pagamento;
+    CodigoDePagamento codigodepagamento;
+    Data data;
+    Percentual percentual;
+    Estado estado;
 
-    // Remover nome;
-        if (listaResultado.empty())
-                throw EErroPersistencia("Lista de resultados vazia.");
-        resultado = listaResultado.back();
-        listaResultado.pop_back();
-        titulo.setCodigo(Codigo(resultado.getValorColuna()));
+    // Remover Código;
+    if (listaResultado.empty())
+            throw EErroPersistencia("Lista de resultados vazia.");
+    resultado = listaResultado.back();
+    listaResultado.pop_back();
+    codigodepagamento.setCodigo(resultado.getValorColuna());
+    pagamento.setCodigo(codigodepagamento);
+   
+    // Remover Data;
+    if (listaResultado.empty())
+            throw EErroPersistencia("Lista de resultados vazia.");
+    resultado = listaResultado.back();
+    listaResultado.pop_back();
+    data.setData(resultado.getValorColuna());
+    pagamento.setData(data);
+    
+    // Remover Percentual;
+    if (listaResultado.empty())
+            throw EErroPersistencia("Lista de resultados vazia.");
+    resultado = listaResultado.back();
+    listaResultado.pop_back();
+    percentual.setValor(resultado.getValorColuna());
+    pagamento.setPercentual(percentual);
+    
+    // Remover Estado;
+    if (listaResultado.empty())
+            throw EErroPersistencia("Lista de resultados vazia.");
+    resultado = listaResultado.back();
+    listaResultado.pop_back();
+    estado.setEstado(resultado.getValorColuna());
+    pagamento.setEstado(estado);
 
-        // Remover cpf;
-        if (listaResultado.empty())
-                throw EErroPersistencia("Lista de resultados vazia.");
-        resultado = listaResultado.back();
-        listaResultado.pop_back();
-        conta.setCPF(CPF(resultado.getValorColuna()));
-
-        // Remover senha;
-        if (listaResultado.empty())
-                throw EErroPersistencia("Lista de resultados vazia.");
-        resultado = listaResultado.back();
-        listaResultado.pop_back();
-        conta.setSenha(Senha(resultado.getValorColuna()));
-
-        return conta;
+    return pagamento;
 }
+
 //ATUALIZAR====================================================
 ComandoAtualizarPagamento::ComandoAtualizarPagamento(Pagamento pagamento) {
     comandoSQL = "UPDATE Pagamento ";
