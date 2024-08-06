@@ -56,17 +56,16 @@ class CntrServAuth {
 
 class CntrServInvestimento {
 
-    bool criarTitulo(Titulo);
+    bool criarTitulo(CPF, Titulo);
     bool excluirTitulo(CodigoTitulo);
-    Titulo lerTitulo(CodigoTitulo);
+    Titulo lerTitulo(CPF);
     bool atualizarTitulo(Titulo);
 
-    bool criarPagamento(Pagamento);
+    bool criarPagamento(codigoDeTitulo, Pagamento);
     bool excluirPagamento(CodigoPagamento);
-    Pagamento lerPagamento(CodigoPagamento);
-    bool atualizarPagamento(Pagamaento)
+    Pagamento lerPagamento(codigoDeTitulo);
+    bool atualizarPagamento(Pagamento)
 
 };
-
 
 
