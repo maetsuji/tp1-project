@@ -8,7 +8,7 @@ private:
     void excluirConta(CPF*)
 public:
     void criarConta();
-    int executar(CPF*);
+    void executar(CPF*);
     void setCntrServConta(IServConta*);
 };
 
@@ -22,7 +22,7 @@ private:
     IServAuth *cntrservauth;
 public:
     void setCntrServAuth(IServAuth*);
-    int executar(CPF*);
+    void executar(CPF*);
 };
 
 inline void CntrAprAuth::setCntrServAuth(IServAuth *cntrservauth){
@@ -43,34 +43,14 @@ inline void CntrAprInvestimento::setCntrServInvestimento(IServInvestimento *cntr
 };
 
 
-
-//EXEMPLO PARA AJUDAR NA LÓGICA
-criar{
-try
-cin CPF
-cpf.setValor
-cin Nome
-nome.setValor
-cin Senha
-senha.setValor
-catch
-
-Conta conta;
-setCPF
-setNome
-setSenha
-
-resultado=CntrServConta::LN/escreverNoBD(Conta conta)
-}
-
-
-
 class CntrServConta {
     void createConta(Conta);
     void deleteConta(CPF);
     void findConta(CPF);
     void updateConta(Conta);
 };
+
+
 
 
 
