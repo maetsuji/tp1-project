@@ -36,11 +36,17 @@ public:
 //Camada de Serviço
 
 
-/*class ISConta{
+class IServConta{
 public:
+    virtual bool criarConta() = 0;
     virtual bool lerConta(CPF*) = 0;
     virtual bool atualizarConta(CPF*) = 0;
     virtual bool excluirConta(CPF) = 0;
-    virtual ~ISConta(){};
+    virtual ~IServConta(){};
 };
-*/
+
+class IServAuth{
+public:
+    virtual bool autenticarConta(CPF) = 0;
+    virtual ~IServAuth(){};
+};
