@@ -634,3 +634,78 @@ void CntrAprInvestimento::excluirPagamento(CPF *cpf) {
         getch();
         return;
 };
+
+//Serviço de conta---------------------------
+bool CntrServConta::criarConta(Conta conta){
+    CPF cpf;
+    cpf = conta.getCPF;
+    ComandoExisteConta existeConta(cpf.getValor());
+    try{
+        existeConta.executar();
+    }catch(EErroPersistencia exp){
+        //logica de erro
+    }
+    if(existeConta.getResultado()){
+        return false;
+    }
+    ComandoCreateConta createConta(conta);
+
+    try{
+        createConta.executar();
+    }catch(EErroPersistencia exp){
+        return false;
+    }
+    return true;
+}
+
+
+Conta CntrServConta::lerConta(CPF cpf) {
+    ComandoFindConta pesquisarConta(cpf);
+    Conta conta;
+    pesquisarConta.executar();
+    conta = pesquisarConta.getResultado();
+    return conta;
+}
+
+bool CntrServConta::excluirConta(CPF cpf){
+    ComandoDeleteConta deletarConta(cpf);
+    try {
+        deletarConta.executar();
+    }
+    catch(EErroPersistencia exp){
+        throw
+    }
+
+    //tudo certo
+    return true;
+
+}
+
+bool CntrServConta::atualizarConta(Conta conta){
+    ComandoUpdateConta updateConta(conta);
+    try{
+        updateConta.executar();
+    }
+    catch {
+        //erro no
+        return false;
+    }
+    return true;
+
+
+}
+
+
+bool CntrServAuth::autenticarConta(CPF cpf, Senha senha) {
+ ComandoLerSenhaConta lerSenha(cpf);
+
+ try {
+    lerSenha.executar();
+ } catch {
+  return false;
+ }
+    if(senha.getSenha() == lerSenha.getResultado()){
+        return true;
+    }
+    return false;
+}
