@@ -44,13 +44,29 @@ inline void CntrAprInvestimento::setCntrServInvestimento(IServInvestimento *cntr
 
 
 class CntrServConta {
-    void createConta(Conta);
-    void deleteConta(CPF);
-    void findConta(CPF);
-    void updateConta(Conta);
+    bool criarConta(Conta);
+    bool excluirConta(CPF);
+    Conta lerConta(CPF);
+    bool atualizarConta(Conta);
 };
 
+class CntrServAuth {
+    bool autenticarConta(CPF, Senha);
+};
 
+class CntrServInvestimento {
+
+    bool criarTitulo(Titulo);
+    bool excluirTitulo(CodigoTitulo);
+    Titulo lerTitulo(CodigoTitulo);
+    bool atualizarTitulo(Titulo);
+
+    bool criarPagamento(Pagamento);
+    bool excluirPagamento(CodigoPagamento);
+    Pagamento lerPagamento(CodigoPagamento);
+    bool atualizarPagamento(Pagamaento)
+
+};
 
 
 
