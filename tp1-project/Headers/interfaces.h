@@ -45,11 +45,34 @@ public:
     virtual ~IAprConta(){};
 };
 
-//Interface apresentação Autenticação
-class IAprAuth{
+/**
+ * Interface para apresenta&ccedil;&atilde;o de Autentica&ccedil;&atilde;o.
+ *
+ * Fun&ccedil;&otilde;es principais:
+ *
+ * - Autentica um usu&aacute;rio com base no CPF.
+ * - Define o controlador de servi&ccedil;os de autentica&ccedil;&atilde;o.
+ */
+class IAprAuth {
 public:
+    /**
+     * Autentica um usu&aacute;rio com base no CPF fornecido.
+     * 
+     * @param cpf Ponteiro para o CPF.
+     * @return Verdadeiro se a autentica&ccedil;&atilde;o for bem-sucedida, falso caso contr&aacute;rio.
+     */
     virtual bool autenticar(CPF*) = 0;
+
+    /**
+     * Define o controlador de serviços de autentica&ccedil;&atilde;o.
+     * 
+     * @param servAuth Ponteiro para o controlador de servi&ccedil;os de autentica&ccedil;&atilde;o.
+     */
     virtual void setCntrServAuth(IServAuth*) = 0;
+
+    /**
+     * Destrutor virtual para garantir a libera&ccedil;&atilde;o correta dos recursos.
+     */
     virtual ~IAprAuth(){};
 };
 
