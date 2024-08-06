@@ -58,7 +58,7 @@ public:
 
 
 //Relativo a Conta -----------------------------------------------
-class ComandoCreateConta:public ComandoSQL {
+class ComandoCriarConta:public ComandoSQL {
 public:
     ComandoCreateConta(Conta);
 };
@@ -75,12 +75,12 @@ public:
     string getResultado();
 };
 
-class ComandoUpdateConta:public ComandoSQL {
+class ComandoAtualizarConta:public ComandoSQL {
 public:
     ComandoUpdateConta(Conta);
 };
 
-class ComandoDeleteConta:public ComandoSQL {
+class ComandoExcluirConta:public ComandoSQL {
 public:
     ComandoDeleteConta(CPF);
 };
