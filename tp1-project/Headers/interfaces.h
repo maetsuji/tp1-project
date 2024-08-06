@@ -50,3 +50,17 @@ public:
     virtual bool autenticarConta(CPF) = 0;
     virtual ~IServAuth(){};
 };
+
+class IServInvestimento{
+public:
+    virtual bool criarTitulo(CPF) = 0;
+    virtual bool lerTitulo(CPF) = 0;
+    virtual bool atualizarTitulo(Titulo) = 0;
+    virtual bool excluirTitulo(codigoDeTitulo) = 0;
+    
+    virtual bool criarPagamaento(codigoDeTitulo) = 0;
+    virtual bool lerPagamento(codigoDeTitulo) = 0;
+    virtual bool atualizarPagamento(Pagamento) = 0;
+    virtual bool excluirPagamento(codigoDePagamento) = 0;
+    virtual ~IServInvestimento(){};
+};
