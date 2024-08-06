@@ -113,6 +113,9 @@ public:
     virtual ~IAprInvestimento(){};
 };
 
+
+//Camada de Serviço
+
 /**
  * Interface para servi&ccedil;os relacionados a contas.
  *
@@ -183,35 +186,82 @@ public:
     virtual ~IServAuth(){};
 };
 
-//Camada de Serviço
-
-
-class IServConta{
+/**
+ * Interface para servi&ccedil;os relacionados a investimentos.
+ *
+ * Fun&ccedil;&otilde;es principais:
+ *
+ * - Cria, l&ecirc;, atualiza e exclui t&iacute;tulos e pagamentos.
+ */
+class IServInvestimento {
 public:
-    virtual bool criarConta() = 0;
-    virtual bool lerConta(CPF*) = 0;
-    virtual bool atualizarConta(CPF*) = 0;
-    virtual bool excluirConta(CPF) = 0;
-    virtual ~IServConta(){};
-};
-
-class IServAuth{
-public:
-    virtual bool autenticarConta(CPF) = 0;
-    virtual ~IServAuth(){};
-};
-
-class IServInvestimento{
-public:
+    /**
+     * Cria um t&iacute;tulo de investimento com base no CPF fornecido.
+     * 
+     * @param cpf CPF para o qual o t&iacute;tulo ser&aacute; criado.
+     * @return Verdadeiro se o t&iacute;tulo for criado com sucesso, falso caso contr&aacute;rio.
+     */
     virtual bool criarTitulo(CPF) = 0;
+
+    /**
+     * L&ecirc; os dados de um t&iacute;tulo de investimento com base no CPF fornecido.
+     * 
+     * @param cpf CPF do t&iacute;tulo a ser lido.
+     * @return Verdadeiro se a leitura for bem-sucedida, falso caso contr&aacute;rio.
+     */
     virtual bool lerTitulo(CPF) = 0;
+
+    /**
+     * Atualiza os dados de um t&iacute;tulo de investimento.
+     * 
+     * @param titulo Dados do t&iacute;tulo a ser atualizado.
+     * @return Verdadeiro se a atualiza&ccedil;&atilde;o for bem-sucedida, falso caso contr&aacute;rio.
+     */
     virtual bool atualizarTitulo(Titulo) = 0;
+
+    /**
+     * Exclui um t&aacute;tulo de investimento com base no c&oacute;digo fornecido.
+     * 
+     * @param codigoDeTitulo C&oacute;digo do t&iacute;tulo a ser exclu&iacute;do.
+     * @return Verdadeiro se a exclus&atilde;o for bem-sucedida, falso caso contr&aacute;rio.
+     */
     virtual bool excluirTitulo(codigoDeTitulo) = 0;
-    
-    virtual bool criarPagamaento(codigoDeTitulo) = 0;
+
+    /**
+     * Cria um pagamento associado a um t&iacute;tulo com base no c&oacute;digo fornecido.
+     * 
+     * @param codigoDeTitulo C&oacute;digo do t&iacute;tulo para o qual o pagamento ser&aacute; criado.
+     * @return Verdadeiro se o pagamento for criado com sucesso, falso caso contr&aacute;rio.
+     */
+    virtual bool criarPagamento(codigoDeTitulo) = 0;
+
+    /**
+     * L&ecirc; os dados de um pagamento associado a um t&iacute;tulo com base no c&iacute;digo fornecido.
+     * 
+     * @param codigoDeTitulo C&iacute;digo do t&iacute;tulo para o qual o pagamento ser&aacute; lido.
+     * @return Verdadeiro se a leitura for bem-sucedida, falso caso contr&aacute;rio.
+     */
     virtual bool lerPagamento(codigoDeTitulo) = 0;
+
+    /**
+     * Atualiza os dados de um pagamento.
+     * 
+     * @param pagamento Dados do pagamento a ser atualizado.
+     * @return Verdadeiro se a atualiza&ccedil;&atilde;o for bem-sucedida, falso caso contr&aacute;rio.
+     */
     virtual bool atualizarPagamento(Pagamento) = 0;
+
+    /**
+     * Exclui um pagamento com base no c&oacute;digo fornecido.
+     * 
+     * @param codigoDePagamento C&oacute;digo do pagamento a ser exclu&iacute;do.
+     * @return Verdadeiro se a exclus&atilde;o for bem-sucedida, falso caso contr&aacute;rio.
+     */
     virtual bool excluirPagamento(codigoDePagamento) = 0;
+
+    /**
+     * Destrutor virtual para garantir a libera&ccedil;&atilde;o correta dos recursos.
+     */
     virtual ~IServInvestimento(){};
 };
 #endif //INTERFACE_H_INCLUDED
