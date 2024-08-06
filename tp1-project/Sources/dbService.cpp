@@ -62,8 +62,8 @@ int ComandoSQL::callback(void *NotUsed, int argc, char **valorColuna, char **nom
 
 //Implementação de métodos relativos a Conta -------------------------------------------
 
-//CREATE================================================================
-ComandoCreateConta::ComandoCreateConta(Conta conta) {
+//CRIAR================================================================
+ComandoCriarConta::ComandoCriarConta(Conta conta) {
     comandoSQL = "INSERT INTO Conta VALUE (";
     comandoSQL += "'" + conta.getCPF().getValor() + "', ";
     comandoSQL += "'" + conta.getNome().getValor() + "', ";
@@ -121,16 +121,16 @@ string ComandoFindSenhaConta::getResultado() {
     senha = resultado.getValorColuna();
     return senha;
 }
-//UPDATE====================================================
-ComandoUpdateConta::ComandoUpdateConta(Conta conta) {
+//ATUALIZAR====================================================
+ComandoAtualizarConta::ComandoAtualizarConta(Conta conta) {
     comandoSQL = "UPDATE Conta ";
-    comandoSQL += "SET Nome = '" + conta.getNome().getValor();
-    comandoSQL += "', Senha = '" + conta.getSenha().getValor();
-    comandoSQL += "' WHERE CPF = " + conta.getCPF().getValor();
+    comandoSQL += "SET Nome = '" + conta.getNome().getNome();
+    comandoSQL += "', Senha = '" + conta.getSenha().getSenha();
+    comandoSQL += "' WHERE CPF = " + conta.getCPF().getCPF();
 }
 
-//DELETE====================================================
-ComandoDeleteConta::ComandoDeleteConta(CPF cpf) {
+//EXCLUIR====================================================
+ComandoExcluirConta::ComandoExcluirConta(CPF cpf) {
     comandoSQL = "DELETE FROM Conta WHERE CPF = ";
     comandoSQL += cpf.getValor();
 }
@@ -151,15 +151,15 @@ bool ComandoExisteConta::getResultado() {
 }
 //Implementação de métodos relativos a Titulo-----------------------------------------------------------
 
-//CREATE=======================================================
-ComandoCreateTitulo::ComandoCreateTitulo(Titulo titulo){
+//CRIAR=======================================================
+ComandoCriarTitulo::ComandoCriarTitulo(CPF cpf,Titulo titulo){
     comandoSQL = "INSERT INTO Titulo VALUE (";
-    comandoSQL += "'" + titulo.getCodigo().getValor() + "', ";
-    comandoSQL += "'" + titulo.getConta().getValor() + "', ";
-    comandoSQL += "'" + titulo.getEmissor().getValor() + "', ";
-    comandoSQL += "'" + titulo.getSetor().getValor() + "', ";
-    comandoSQL += "'" + titulo.getEmissao().getValor() + "', ";
-    comandoSQL += "'" + titulo.getVencimento().getValor() + "', ";
+    comandoSQL += "'" + titulo.getCodigo().getCodigo() + "', ";
+    comandoSQL += "'" + cpf.getCPF() + "', ";
+    comandoSQL += "'" + titulo.getEmissor().getNome() + "', ";
+    comandoSQL += "'" + titulo.getSetor().getSetor() + "', ";
+    comandoSQL += "'" + titulo.getEmissao().getData() + "', ";
+    comandoSQL += "'" + titulo.getVencimento().getData() + "', ";
     comandoSQL += "'" + titulo.getDinheiro().getValor() + "')";
 }
 //FIND TITULO============================================================
@@ -195,41 +195,39 @@ Conta ComandoFindTitulo::getResultado() {
 
         return conta;
 }
-//UPDATE====================================================
-ComandoUpdateTitulo::ComandoUpdateTitulo(Titulo titulo) {
+//ATUALIZAR====================================================
+ComandoUpdateTitulo::ComandoAtualizarTitulo(Titulo titulo) {
     comandoSQL = "UPDATE Titulo ";
-    comandoSQL += "SET Emissor = '" + conta.getNome().getValor();
-    comandoSQL += "', Setor = '" + conta.getSenha().getValor();
-    comandoSQL += "', Emissao = '" + conta.getSenha().getValor
-    comandoSQL += "', Vencimento = '" + conta.getSenha().getValor();
-    comandoSQL += "', Dinheiro = '" + conta.getSenha().getValor();
-    comandoSQL += "' WHERE CodigoTitulo = " + conta.getCPF().getValor();
+    comandoSQL += "SET Emissor = '" + titulo.getEmissor().getNome();
+    comandoSQL += "', Setor = '" + titulo.getSetor().getSetor();
+    comandoSQL += "', Emissao = '" + titulo.getEmissao().getData();
+    comandoSQL += "', Vencimento = '" + titulo.getVencimento().getData();
+    comandoSQL += "', Dinheiro = '" + titulo.getDinheiro().getValor();
+    comandoSQL += "' WHERE CodigoTitulo = " + titulo.getCodigo().getCodigo();
 }
 
-//DELETE====================================================
-ComandoDeleteTitulo::ComandoDeleteTitulo(codigoDeTitulo codigo) {
+//EXCLUIR====================================================
+ComandoExcluirTitulo::ComandoExcluirTitulo(codigoDeTitulo codigo) {
     comandoSQL = "DELETE FROM Titulo WHERE CodigoTitulo = ";
-    comandoSQL += codigo.getValor();
+    comandoSQL += codigo.getCodigo();
 }
 
 //Implementação de métodos relativos a Pagamento-----------------------------------------------------------
 
-//CREATE=======================================================
-ComandoCreatePagamento::ComandoCreatePagamento(Pagamento pagamento){
+//CRIAR=======================================================
+ComandoCriarPagamento::ComandoCriarPagamento(CodigoDeTitulo codigodetitulo, Pagamento pagamento){
     comandoSQL = "INSERT INTO Titulo VALUE (";
-    comandoSQL += "'" + titulo.getCodigo().getValor() + "', ";
-    comandoSQL += "'" + titulo.getConta().getValor() + "', ";
-    comandoSQL += "'" + titulo.getEmissor().getValor() + "', ";
-    comandoSQL += "'" + titulo.getSetor().getValor() + "', ";
-    comandoSQL += "'" + titulo.getEmissao().getValor() + "', ";
-    comandoSQL += "'" + titulo.getVencimento().getValor() + "', ";
-    comandoSQL += "'" + titulo.getDinheiro().getValor() + "')";
+    comandoSQL += "'" + pagamento.getCodigo().getCodigo() + "', ";
+    comandoSQL += "'" + codigodetitulo.getCodigo() + "', ";
+    comandoSQL += "'" + pagamento.getData().getData() + "', ";
+    comandoSQL += "'" + pagamento.getPercentual().getPercentual() + "', ";
+    comandoSQL += "'" + pagamento.getEstado().getEstado() + "', ";
 }
 
 //FIND============================================================
 ComandoFindPagamento::ComandoFindPagamento(codigoDePagamento codigo){
     comandoSQL = "SELECT * FROM Pagamento WHERE CodigoPagamento = ";
-    comandoSQL += codigo.getValor();
+    comandoSQL += codigo.getCodigo();
 }
 
 Conta ComandoFindPagamento::getResultado() {
@@ -259,17 +257,17 @@ Conta ComandoFindPagamento::getResultado() {
 
         return conta;
 }
-//UPDATE====================================================
-ComandoUpdatePagamento::ComandoUpdatePagamento(Pagamento pagamento) {
+//ATUALIZAR====================================================
+ComandoAtualizarPagamento::ComandoAtualizarPagamento(Pagamento pagamento) {
     comandoSQL = "UPDATE Pagamento ";
-    comandoSQL += "SET Data = '" + conta.getNome().getValor();
-    comandoSQL += "', Percentual = '" + conta.getSenha().getValor();
-    comandoSQL += "', Estado = '" + conta.getSenha().getValor;
-    comandoSQL += "' WHERE CodigoPagamento = " + conta.getCPF().getValor();
+    comandoSQL += "SET Data = '" + pagamento.getData().getData();
+    comandoSQL += "', Percentual = '" + pagamento.getPercentual().getPercentual();
+    comandoSQL += "', Estado = '" + pagamento.getEstado().getEstado();
+    comandoSQL += "' WHERE CodigoPagamento = " + pagamento.getCodigo().getCodigo();
 }
 
-//DELETE====================================================
-ComandoDeletePagamento::ComandoDeletePagamento (codigoDePagamento codigo) {
+//EXCLUIR====================================================
+ComandoExcluirPagamento::ComandoExcluirPagamento (codigoDePagamento codigo) {
     comandoSQL = "DELETE FROM Pagamento WHERE CodigoPagamento = ";
-    comandoSQL += codigo.getValor();
+    comandoSQL += codigo.getCodigo();
 }
