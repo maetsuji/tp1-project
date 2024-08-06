@@ -48,17 +48,19 @@ void CntrAprConta::criarConta(){
     conta.setSenha(senha);
 
     //Registrar no banco de dados e verificar lógica de negócio (Á fazer)
-    if(cntrServConta->criarConta(conta))
+    if(cntrServConta->criarConta(conta)){
         CLR_SCR;
         cout << "Cadastro realizado com sucesso. Digite algo.";
         getch();
         return;
-    else
+    }
+    else{
         CLR_SCR;
         cout << "Falha no cadastro. Retornando para tela inicial. Digite algo.";
         getch();
         return;
-}
+    }
+};
 
 void CntrAprConta::executar(CPF *cpf){
     bool apresentar = true;
@@ -85,22 +87,23 @@ void CntrAprConta::executar(CPF *cpf){
                 break;
         }
     }
-}
+};
 
 void CntrAprConta::lerConta(CPF cpf){
     Conta conta;
-    
+
     try{
         conta=cntrServConta->lerConta(cpf);
     }
     catch(EErroPersistencia exp){
+        CLR_SCR;
         cout << "Não foi possível ler a conta";
     }
-    
+
     Nome  nome=conta.getNome();
     CPF   cpf=conta.getCPF();
     Senha senha=conta.getSenha();
-    
+
     CLR_SCR;
     cout << "O Nome cadastrado é: " << nome.getNome() << endl;
     cout << "O CPF cadastrado é: " << cpf.getCPF() << endl;
@@ -108,7 +111,7 @@ void CntrAprConta::lerConta(CPF cpf){
     cout << "Digite algo para retornar.";
     getch();
     return;
-}
+};
 
 void CntrAprConta::atualizarConta(CPF *cpf){
     string tempNome;
@@ -142,15 +145,17 @@ void CntrAprConta::atualizarConta(CPF *cpf){
         cout << "Não foi possível atualizar conta. Digite algo.";
         getch();
         return;
-}
+};
 
 void CntrAprConta::excluirConta(CPF *cpf){
     if (cntrservconta.excluirConta(cpf))
+        CLR_SCR;
         cout << "Conta excluída com sucesso. Digite algo.";
         cpf=0;
     else
+        CLR_SCR;
         cout << "Não foi possível excluir a conta. Digite algo.";
-}
+};
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //Auth
@@ -164,6 +169,7 @@ void CntrAprAuth::executar(CPF *cpf){
 
     while (true){
         try{
+            CLR_SCR;
             cout << " Informar CPF:" <<endl;
             cin >> tempCPF;
             cpf->setCPF(tempCPF);
@@ -179,84 +185,13 @@ void CntrAprAuth::executar(CPF *cpf){
         }
     }
     if (cntrservauth.autenticarConta(cpf,senha))
+        CLR_SCR;
         cout << "Conta autenticada com sucesso." << endl;
         cout << "Seja bem-vindo(a). Digite algo.";
     else
+        CLR_SCR;
         cout << "Não foi possível autenticar sua conta. Digite algo.";
 };
-
-//tentativa de implementação de controladoras serviço. (não testado)
-void CntrServConta::create(Conta conta){
-    CPF cpf;
-    cpf = conta.getCPF;
-    ComandoExisteConta existeConta(cpf.getValor());
-    try{
-        existeConta.executar();
-    }catch(EErroPersistencia exp){
-        //erro no banco 
-    }
-    if(existeConta.getResultado()){
-        throw EErroPersistencia("Já existe conta associada a esse CPF.");
-    }
-    ComandoCreateConta createConta(conta);
-
-    try{
-        createConta.executar();
-    }catch(EErroPersistencia exp){
-        //erro no banco
-    }
-    cout << "Conta no CPF "<<cpf.getValor()<<" criada com sucesso" << endl;
-    return;
-}
-
-void CntrServConta::findConta(CPF cpf) {
-    ComandoFindConta pesquisarConta(cpf);
-    Conta conta;
-    try {
-        pesquisarConta.executar()
-    }
-    catch{
-    //erro no banco
-    }
-    try {
-        conta = pesquisarConta.getResultado();
-    }catch(EErroPersistencia exp) {
-        //erro doido, nao sei qual
-                cout << endl << exp.what();
-                cout << endl << endl << "Digite algo para continuar.";
-                getch();
-        }
-    //tudo certo
-    return;
-}
-
-void CntrServConta::deleteConta(CPF cpf){
-    ComandoDeleteConta deletarConta(cpf);
-    try {
-        deletarConta.executar();
-    }
-    catch(EErroPersistencia exp){
-        //erro no banco
-    }
-
-    //tudo certo
-    return;
-
-}
-
-void CntrServConta::updateConta(Conta conta){
-    ComandoUpdateConta atualizarConta(conta);
-    try{
-        atualizarConta.executar();
-    }
-    catch {
-        //erro no banco
-    }
-
-    //tudo certo
-    return;
-
-}
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //Investimento
@@ -270,8 +205,8 @@ void mostrarMenu() {
     cout << "3. Excluir" << endl;
     cout << "4. Voltar" << endl;
     cout << "Digite sua opção (0-4): ";
-}
- 
+};
+
     do {
         int opcao = 0;
 // Exibe o menu de opções
@@ -310,7 +245,7 @@ void mostrarMenu() {
 
                         default:
                             cout << "Opção inválida. Tente novamente." << endl;
-                    } 
+                    }
                 } while (opcao_pagamento != 4 );
                 break;
 
@@ -337,7 +272,7 @@ void mostrarMenu() {
                         default:
                             cout << "Opção inválida. Tente novamente." << endl;
 
-                    } 
+                    }
                 } while (opcao_titulo != 4 );
                 break;
 
@@ -345,58 +280,357 @@ void mostrarMenu() {
                 cout << "Opção inválida. Tente novamente." << endl;
         }
 // Linha em branco para melhor visualização
-        cout << endl;  
+        cout << endl;
 
-    } while (opcao != 3 );  
+    } while (opcao != 3 );
 
- }
+ };
 
-//IMPLEMENTAR AS CLASSES DE MANUTENÇÃO NO BANCO DE DADOS 
+//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//Título
 
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-//Instâncias de classes domínios para tabela de TITULO
-    CPF cpf;
+void CntrAprInvestimento::criarTitulo(CPF *cpf) {
 
-//Variáveis temporárias para inserções de dados na tabela de TITULO
-    string codigo_titulo;   // CHAVE PRIMÁRIA ex.: CDBxxxxxxxx, x letra maiúscula de A-Z ou dígito 1-9
-    string nome_emissor;
-    string setor;           // Agricultura, construção civil, energia, finanças, imobiliário
-                            // papel e celulose, pecuária, química e petroquímica, metalurgia e siderurgia
-                            // mineração
-    string data_emissao;    // DD-MM-AAAA
-    string data_vencimento; // DD-MM-AAAA
-    float  valor;
+    //Domínios
+    string tempCodigo;
+    codigoDeTitulo codigo;
+    string tempEmissor;
+    Nome emissor;
+    string tempSetor;
+    Setor setor;
+    string tempEmissao;
+    Data emissao;
+    string tempVencimento;
+    Data vencimento;
+    float tempValor;
+    Dinheiro valor;
+    Titulo titulo;
 
-class CntrAprInvestimento::criarTitulo(CPF *cpf) {
-    
-}
-class CntrAprInvestimento::alterarTitulo(CPF *cpf) {
-    
-}
-class CntrAprInvestimento::lerTitulo(CPF *cpf) {
-    
-}
-class CntrAprInvestimento::excluirTitulo(CPF *cpf) {
-    
-}
+    //Inserção de dados
+    while (true){
+        try{
+        CLR_SCR;
+        cout << "Informar código de título:" << " ";
+        cin >> tempCodigo;
+        codigo.setCodigo(tempCodigo);
+        cout << "Informar emissor:" << " ";
+        cin >> tempEmissor;
+        nome.setNome(tempEmissor);
+        cout << "Informar setor:" << " ";
+        cin >> tempSetor;
+        setor.setSetor(tempSetor);
+        cout << "Informar data de emissão:" << " ";
+        cin >> tempEmissao;
+        emissao.setData(tempEmissao);
+        cout << "Informar data de vencimento:" << " ";
+        cin >> tempVencimento;
+        vencimento.setData(tempVencimento);
+        cout << "Informar valor:" << " ";
+        cin >> tempValor;
+        valor.setValor(tempValor);
+        break;
+        }
 
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//Variáveis temporárias para inserções de dados na tabela de PAGAMENTO
+        catch(invalid_argument &e){
+            cout << "Valor inválido. Digite algo"
+            getch();
+            return;
+        }
+    }
 
-string codigo_pagamento;  // CHAVE PRIMÁRIA, formato XXXXXXXX, X é digito 0-9 e primeiro dígito é diferente de zero 1-9
-string data_pagamento;    // DD-MM-AAAA
-float  percentual;
-string estado;            // PREVISTO, LIQUIDADO OU INADIMPLENTE
+    //Entidade
+    titulo.setCodigo(codigo);
+    titulo.setEmissor(emissor);
+    titulo.setSetor(setor);
+    titulo.setEmissao(emissao);
+    titulo.setVencimento(vencimento);
+    titulo.setValor(valor);
+
+    if (cntrservinvestimento.criarTitulo(titulo,cpf))
+        cout << "Título criado com sucesso. Digite algo.";
+        getch();
+        return;
+    else
+        cout << "Título não foi criado. Digite algo."
+        getch();
+        return;
+};
+
+void CntrAprInvestimento::atualizarTitulo(CPF *cpf) {
+    //Domínios
+    string tempCodigo;
+    codigoDeTitulo codigo;
+    string tempEmissor;
+    Nome emissor;
+    string tempSetor;
+    Setor setor;
+    string tempEmissao;
+    Data emissao;
+    string tempVencimento;
+    Data vencimento;
+    float tempValor;
+    Dinheiro valor;
+    Titulo titulo;
+
+    //Inserção de dados
+    while (true){
+        try{
+        CLR_SCR;
+        cout << "Informar código de título que será alterado:" << " ";
+        cin >> tempCodigo;
+        codigo.setCodigo(tempCodigo);
+        cout << "Informar emissor:" << " ";
+        cin >> tempEmissor;
+        nome.setNome(tempEmissor);
+        cout << "Informar setor:" << " ";
+        cin >> tempSetor;
+        setor.setSetor(tempSetor);
+        cout << "Informar data de emissão:" << " ";
+        cin >> tempEmissao;
+        emissao.setData(tempEmissao);
+        cout << "Informar data de vencimento:" << " ";
+        cin >> tempVencimento;
+        vencimento.setData(tempVencimento);
+        cout << "Informar valor:" << " ";
+        cin >> tempValor;
+        valor.setValor(tempValor);
+        break;
+        }
+
+        catch(invalid_argument &e){
+            cout << "Valor inválido. Digite algo"
+            getch();
+            return;
+        }
+    }
+
+    //Entidade
+    titulo.setCodigo(codigo);
+    titulo.setEmissor(emissor);
+    titulo.setSetor(setor);
+    titulo.setEmissao(emissao);
+    titulo.setVencimento(vencimento);
+    titulo.setValor(valor);
+
+    if (cntrservinvestimento.atualizarTitulo(titulo)){
+        cout << "Título atualizado com sucesso. Digite algo.";
+        getch();
+        return;
+    }
+    else{
+        cout << "Título não foi atualizado. Digite algo."
+        getch();
+        return;
+    }
+};
+
+void CntrAprInvestimento::lerTitulo(CPF *cpf) {
+    CLR_SCR;
+    Titulo lista_titulo[]=cntrservainvestimento.lerTitulo(cpf);
+    if (lista_titulo.size()==0){
+        cout << "Não existem títulos cadastrados. Digite algo.";
+        getch();
+        return;
+    }
+    cout << "Título(s) associado(s) ao seu CPF:";
+    for (Titulo titulo : lista_titulo){
+        cout << "Código de título: " << titulo.getCodigo().getCodigo();
+        cout << "Emissor: " << titulo.getCodigo().getCodigo();
+        cout << "Setor: " << titulo.getCodigo().getCodigo();
+        cout << "Data de emissão: " << titulo.getCodigo().getCodigo();
+        cout << "Data de vencimento: " << titulo.getCodigo().getCodigo();
+        cout << "Valor: " << titulo.getCodigo().getCodigo();
+        cout << endl;
+    };
+    cout << "Digite algo.";
+    getch();
+    return;
+};
+
+void CntrAprInvestimento::excluirTitulo(CPF *cpf) {
+    codigoDeTitulo codigodetitulo;
+    string tempCodigo;
+    try{
+        cout << "Informe o código do título que será excluído: ";
+        cin << tempCodigo;
+        codigodetitulo.setCodigo(tempCodigo);
+    }
+    catch(invalid_argument &e){
+        cout << "Código inválido. Digite algo.";
+        getch();
+        return;
+    }
+
+    if (cntrservinvestimento.excluirTitulo(codigodetitulo)){
+        cout << "Título excluído com sucesso. Digite algo."
+        getch();
+        return;
+    else
+        cout << "Título não foi excluído. Digite algo."
+        getch();
+        return;
+    }
+};
+
+//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//Pagamento
+
+void CntrAprInvestimento::criarPagamento(CPF *cpf) {
+    //Domínios
+    string tempCodigo;
+    codigoDePagamento codigo;
+    string tempData;
+    Data data;
+    int tempPercentual;
+    Percentual percentual;
+    string tempEstado;
+    Estado estado;
+    Pagamento pagamento;
+
+    while (true){
+        try{
+            CLR_SCR;
+            cout << "Informar código de pagamento:" << " ";
+            cin >> tempCodigo;
+            codigo.setCodigo(tempCodigo);
+            cout << "Informar data de pagamento:" << " ";
+            cin >> tempData;
+            data.setData(tempData);
+            cout << "Informar percentual:" << " ";
+            cin >> tempPercentual;
+            setor.setPercentual(tempPercentual);
+            cout << "Informar estado:" << " ";
+            cin >> tempEstado;
+            estado.setEstado(tempEstado);
+            break;
+            }
+
+        catch(invalid_argument &e){
+            CLR_SCR;
+            cout << "Valor inválido. Digite algo"
+            getch();
+            return;
+            }
+    }
+    pagamento.setCodigo(codigo);
+    pagamento.setData(data);
+    pagamento.setPercentual(percentual);
+    pagamento.setEstado(estado);
+
+    if (cntrservinvestimento.criarPagamento(pagamento,cpf))
+        CLR_SCR;
+        cout << "Pagamento criado com sucesso. Digite algo.";
+        getch();
+        return;
+    else
+        CLR_SCR;
+        cout << "Pagamento não foi criado."
+        getch();
+        return;
+};
+
+void CntrAprInvestimento::atualizarPagamento(CPF *cpf) {
 
 
-class CntrAprInvestimento::criarPagamento(CPF *cpf) {
-        
-}
-class CntrAprInvestimento::alterarPagamento(CPF *cpf) {
+    //Domínios
+    string tempCodigo;
+    codigoDePagamento codigo;
+    string tempData;
+    Data data;
+    int tempPercentual;
+    Percentual percentual;
+    string TempEstado;
+    Estado estado;
+    Pagamento pagamento;
 
-}
-class CntrAprInvestimento::lerPagamento(CPF *cpf) {
-    
-}
-class CntrAprInvestimento::excluirPagamento(CPF *cpf) {
-} 
+    while (true){
+        try{
+            CLR_SCR;
+            cout << "Informar código do pagamento que será alterado:" << " ";
+            cin >> tempCodigo;
+            codigo.setCodigo(tempCodigo);
+            cout << "Informar data de pagamento:" << " ";
+            cin >> tempData;
+            data.setData(tempData);
+            cout << "Informar percentual:" << " ";
+            cin >> tempPercentual;
+            setor.setPercentual(percentual);
+            cout << "Informar estado:" << " ";
+            cin >> TempEstado;
+            estado.setEstado(estado);
+            break;
+            }
+
+        catch(invalid_argument &e){
+            CLR_SCR;
+            cout << "Valor inválido. Digite algo"
+            getch();
+            return;
+            }
+    }
+    pagamento.setCodigo(codigo);
+    pagamento.setData(data);
+    pagamento.setPercentual(percentual);
+    pagamento.setEstado(estado);
+
+    if (cntrservinvestimento.atualizarPagamento(pagamento))
+        CLR_SCR;
+        cout << "Pagamento atualizado com sucesso.";
+        getch();
+        return;
+    else
+        CLR_SCR;
+        cout << "Pagamento não atualizado.";
+        getch();
+        return;
+
+};
+
+void CntrAprInvestimento::lerPagamento(CPF *cpf) {
+    CLR_SCR;
+    codigoDeTitulo codigodetitulo;
+    string temp_titulo;
+    cout << "Informe o código do título ao qual o pagamento é associado:";
+    cin << temp_titulo;
+    codigodetitulo.setCodigo(temp_titulo);
+    Pagamento lista_pagamento[]=cntrservinvestimento.lerPagamento(codigodetitulo);
+    if (lista_pagamento.size()==0){
+        cout << "Não existem títulos cadastrados. Digite algo.";
+        getch();
+        return;
+    }
+    cout << "Pagamento(s) associado(s) ao título informado:"
+    for (Pagamento pagamento : lista_pagamento){
+        cout << "Código de pagamento: " << pagamento.getCodigo().getCodigo();
+        cout << "Data de pagamento: " << pagamento.getData().getData();
+        cout << "Percentual: " << pagamento.getPercentual().getValor();
+        cout << "Estado de pagamento: " << pagamento.getEstado().getEstado();
+        cout << "Digite algo."
+    };
+    getch();
+    return;
+};
+
+void CntrAprInvestimento::excluirPagamento(CPF *cpf) {
+    codigoDePagamento codigodepagamento;
+    string tempCodigo;
+    try{
+        cout << "Informe o código do pagamento que será excluído: ";
+        cin << tempCodigo;
+        codigodepagamento.setCodigo(tempCodigo);
+    }
+    catch(invalid_argument &e){
+        cout << "Código inválido. Digite algo.";
+        getch();
+        return;
+    }
+    if (cntrservinvestimento.excluirPagamento(codigodepagamento)){
+        cout << "Pagamento Excluído com sucesso. Digite algo."
+        getch();
+        return;
+    }
+    else
+        cout << "Pagamento não foi excluído. Digite algo."
+        getch();
+        return;
+};
