@@ -1,3 +1,6 @@
+#ifndef CONTROLADORAS_H_INCLUDED
+#define CONTROLADORAS_H_INCLUDED
+
 using namespace std;
 
 class CntrAprConta:public IAprConta{
@@ -67,5 +70,6 @@ class CntrServInvestimento {
     bool atualizarPagamento(Pagamento)
 
 };
+#endif //CONTROLADORAS_H_INCLUDED
 
 
