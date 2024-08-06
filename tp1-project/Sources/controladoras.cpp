@@ -196,7 +196,7 @@ void CntrAprAuth::executar(CPF *cpf){
 //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //Investimento
 
-class CntrAprInvestimento::executar(CPF *cpf) {
+void CntrAprInvestimento::executar(CPF *cpf) {
 
 void mostrarMenu() {
     cout << "0. Criar" << endl;
