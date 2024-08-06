@@ -320,3 +320,56 @@ ComandoExcluirPagamento::ComandoExcluirPagamento (codigoDePagamento codigo) {
     comandoSQL = "DELETE FROM Pagamento WHERE CodigoPagamento = ";
     comandoSQL += codigo.getCodigo();
 }
+
+ComandoFindPagamentosPorTitulo::ComandoFindPagamentosPorTitulo(CodigoDeTitulo codigo) {
+    comandoSQL = "SELECT * FROM Pagamento WHERE CodigoTitulo = '";
+    comandoSQL += codigo.getCodigo() + "'";
+}
+
+list<Pagamento> ComandoFindPagamentosPorTitulo::getResultados() {
+    list<Pagamento> pagamentos;
+    ElementoResultado resultado;
+
+    executar();
+
+    while (!listaResultado.empty()) {
+        resultado = listaResultado.back();
+        listaResultado.pop_back();
+
+        Pagamento pagamento;
+
+        // Extract and set Codigo
+        if (listaResultado.empty()) throw EErroPersistencia("Lista de resultados vazia.");
+        resultado = listaResultado.back();
+        listaResultado.pop_back();
+        pagamento.setCodigo(Codigo(resultado.getValorColuna()));
+
+        // Extract and set CodigoTitulo
+        if (listaResultado.empty()) throw EErroPersistencia("Lista de resultados vazia.");
+        resultado = listaResultado.back();
+        listaResultado.pop_back();
+        pagamento.setCodigoTitulo(CodigoDeTitulo(resultado.getValorColuna()));
+
+        // Extract and set Data
+        if (listaResultado.empty()) throw EErroPersistencia("Lista de resultados vazia.");
+        resultado = listaResultado.back();
+        listaResultado.pop_back();
+        pagamento.setData(Data(resultado.getValorColuna()));
+
+        // Extract and set Percentual
+        if (listaResultado.empty()) throw EErroPersistencia("Lista de resultados vazia.");
+        resultado = listaResultado.back();
+        listaResultado.pop_back();
+        pagamento.setPercentual(Percentual(resultado.getValorColuna()));
+
+        // Extract and set Estado
+        if (listaResultado.empty()) throw EErroPersistencia("Lista de resultados vazia.");
+        resultado = listaResultado.back();
+        listaResultado.pop_back();
+        pagamento.setEstado(Estado(resultado.getValorColuna()));
+
+        pagamentos.push_back(pagamento);
+    }
+
+    return pagamentos;
+}
