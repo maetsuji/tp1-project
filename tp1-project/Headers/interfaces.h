@@ -82,12 +82,105 @@ public:
     virtual ~IAprAuth(){};
 };
 
-//Interface apresentação Investimento
-class IAprInvestimento{
+/**
+ * Interface para apresenta&ccedil;&atilde;o de Investimento.
+ *
+ * Fun&ccedil;&otilde;es principais:
+ *
+ * - Executa opera&ccedil;&otilde;es de investimento com base no CPF.
+ * - Define o controlador de servi&ccedil;os de investimento.
+ */
+class IAprInvestimento {
 public:
+    /**
+     * Executa uma opera&ccedil;&atilde;o de investimento com base no CPF fornecido.
+     * 
+     * @param cpf CPF a ser utilizado na opera&ccedil;&atilde;o.
+     * @return Verdadeiro se a opera&ccedil;&atilde;o for bem-sucedida, falso caso contr&aacute;rio.
+     */
     virtual bool executar(CPF) = 0;
+
+    /**
+     * Define o controlador de servi&ccedil;os de investimento.
+     * 
+     * @param servInvestimento Ponteiro para o controlador de servi&ccedil;os de investimento.
+     */
     virtual void setCntrServInvestimento(IServInvestimento*) = 0;
+
+    /**
+     * Destrutor virtual para garantir a libera&ccedil;&atilde;o correta dos recursos.
+     */
     virtual ~IAprInvestimento(){};
+};
+
+/**
+ * Interface para servi&ccedil;os relacionados a contas.
+ *
+ * Fun&ccedil;&otilde;es principais:
+ *
+ * - Cria, l&ecirc;, atualiza e exclui contas.
+ */
+class IServConta {
+public:
+    /**
+     * Cria uma nova conta.
+     * 
+     * @return Verdadeiro se a conta for criada com sucesso, falso caso contr&aacute;rio.
+     */
+    virtual bool criarConta() = 0;
+
+    /**
+     * L&ecirc; os dados de uma conta com base no CPF fornecido.
+     * 
+     * @param cpf Ponteiro para o CPF da conta a ser lida.
+     * @return Verdadeiro se a leitura for bem-sucedida, falso caso contr&aacute;rio.
+     */
+    virtual bool lerConta(CPF*) = 0;
+
+    /**
+     * Atualiza os dados de uma conta com base no CPF fornecido.
+     * 
+     * @param cpf Ponteiro para o CPF da conta a ser atualizada.
+     * @return Verdadeiro se a atualização for bem-sucedida, falso caso contr&aacute;rio.
+     */
+    virtual bool atualizarConta(CPF*) = 0;
+
+    /**
+     * Exclui uma conta com base no CPF fornecido.
+     * 
+     * @param cpf CPF da conta a ser exclu&iacute;da.
+     * @return Verdadeiro se a exclus&atilde;o for bem-sucedida, falso caso contr&aacute;rio.
+     */
+    virtual bool excluirConta(CPF) = 0;
+
+    /**
+     * Destrutor virtual para garantir a libera&ccedil;&atilde;o correta dos recursos.
+     */
+    virtual ~IServConta(){};
+};
+
+
+/**
+ * Interface para servi&ccedil;os relacionados a autentica&ccedil;&atilde;o.
+ *
+ * Fun&ccedil;&atilde;o principal:
+ *
+ * - Autentica uma conta com base no CPF.
+ */
+class IServAuth {
+public:
+    /**
+     * Autentica uma conta com base no CPF fornecido.
+     * 
+     * @param cpf CPF da conta a ser autenticada.
+     * @return Verdadeiro se a autenticação for bem-sucedida, falso caso contr&aacute;rio.
+     */
+    virtual bool autenticarConta(CPF) = 0;
+
+    /**
+     * Destrutor virtual para garantir a libera&ccedil;&atilde;o correta dos recursos.
+     */
+    virtual ~IServAuth(){};
 };
 
 //Camada de Serviço
