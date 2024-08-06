@@ -1,3 +1,6 @@
+#ifndef INTERFACE_H_INCLUDED
+#define INTERFACE_H_INCLUDED
+
 using namespace std;
 
 //Declaração Adiantada
@@ -115,3 +118,4 @@ public:
     virtual bool excluirPagamento(codigoDePagamento) = 0;
     virtual ~IServInvestimento(){};
 };
+#endif //INTERFACE_H_INCLUDED
