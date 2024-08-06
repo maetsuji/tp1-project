@@ -91,8 +91,49 @@ public:
     bool getResultado();
 
 };
-// Relativo a
+// Relativo a titulo
 
+class ComandoCreateTitulo:public ComandoSQL {
+public:
+    ComandoCreateTitulo(Titulo);
+};
+
+class ComandoFindTitulo:public ComandoSQL {
+public:
+    ComandoFindTitulo(CodigoTitulo);
+    Titulo getResultado();
+};
+
+class ComandoUpdateTitulo:public ComandoSQL {
+public:
+    ComandoUpdateTitulo(Titulo);
+};
+class ComandoDeleteTitulo:public ComandoSQL {
+public:
+    ComandoDeleteTitulo(CodigoTitulo);
+};
+
+// Relativo a Pagamento
+
+class ComandoCreatePagamento:public ComandoSQL {
+public:
+    ComandoCreatePagamento(Pagamento);
+};
+
+class ComandoFindPagamento:public ComandoSQL {
+public:
+    ComandoFindPagamento(CodigoPagamento);
+    Pagamento getResultado();
+};
+
+class ComandoUpdatePagamento:public ComandoSQL {
+public:
+    ComandoUpdatePagamento(Pagamento);
+};
+class ComandoDeletePagamento:public ComandoSQL {
+public:
+    ComandoDeletePagamento(CodigoPagamento);
+};
 
 
 
