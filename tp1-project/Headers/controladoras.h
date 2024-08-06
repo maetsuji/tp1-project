@@ -1,6 +1,8 @@
 #ifndef CONTROLADORAS_H_INCLUDED
 #define CONTROLADORAS_H_INCLUDED
 
+#include "interfaces.h"
+
 using namespace std;
 
 class CntrAprConta:public IAprConta{
